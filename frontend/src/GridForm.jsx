@@ -6,7 +6,7 @@ import { API_BASE_URL } from "./apiConfig";
 function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker }) {
   const [form, setForm] = useState({
     ticker: ticker || "",
-      shares: "", // This line is being removed
+    shares: "",
     grid_up: "",
     grid_down: "",
     grid_increment: "",
@@ -33,37 +33,37 @@ function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker 
     const requiredFields = ["ticker", "shares", "grid_up", "grid_down", "grid_increment", "timeframe"];
     const missing = requiredFields.some(f => !form[f] || String(form[f]).trim() === "");
     if (missing) {
-  setErrorMessage('Please fill in all fields.');
-  setIsLoading(false);
-  return;
+      setErrorMessage('Please fill in all fields.');
+      setIsLoading(false);
+      return;
     }
     // Numeric validation
-    if (Number(form.shares) <= 0) {
-  setErrorMessage('Please fill in all fields.');
-  setIsLoading(false);
-  return;
+    if (isNaN(Number(form.shares)) || Number(form.shares) <= 0) {
+      setErrorMessage('Please fill in all fields.');
+      setIsLoading(false);
+      return;
     }
-    if (Number(form.grid_increment) <= 0) {
-  setErrorMessage('Please fill in all fields.');
-  setIsLoading(false);
-  return;
+    if (isNaN(Number(form.grid_increment)) || Number(form.grid_increment) <= 0) {
+      setErrorMessage('Please fill in all fields.');
+      setIsLoading(false);
+      return;
     }
-    if (Number(form.grid_up) < 0) {
-  setErrorMessage('Please fill in all fields.');
-  setIsLoading(false);
-  return;
+    if (isNaN(Number(form.grid_up)) || Number(form.grid_up) < 0) {
+      setErrorMessage('Please fill in all fields.');
+      setIsLoading(false);
+      return;
     }
-    if (Number(form.grid_down) < 0) {
-  setErrorMessage('Please fill in all fields.');
-  setIsLoading(false);
-  return;
+    if (isNaN(Number(form.grid_down)) || Number(form.grid_down) < 0) {
+      setErrorMessage('Please fill in all fields.');
+      setIsLoading(false);
+      return;
     }
     try {
       const validTickers = ["AAPL", "MSFT", "GOOG"];
       if (!validTickers.includes(form.ticker)) {
-  setErrorMessage('Ticker: Invalid ticker selected.');
-  setIsLoading(false);
-  return;
+        setErrorMessage('Ticker: Invalid ticker selected.');
+        setIsLoading(false);
+        return;
       }
       let fetchUrl = `${API_BASE_URL}/backtest`;
       if (typeof window === 'undefined' && !fetchUrl.startsWith('http')) {
@@ -90,14 +90,22 @@ function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker 
       // Clear error message on success
       setErrorMessage(null);
       setIsLoading(false);
-      setSuccessMessage('Backtest completed successfully');
+        setSuccessMessage('Backtest completed successfully');
+        if (window.successTimeout) clearTimeout(window.successTimeout);
+        window.successTimeout = setTimeout(() => {
+          setSuccessMessage("");
+        }, 10000);
       setTrades && setTrades(data.trades || []);
       setHeldShares && setHeldShares(data.heldShares || []);
       setPerformance && setPerformance(data.performance || {});
+      // Ensure status persists after rapid/edge submissions
+      setTimeout(() => {
+        setSuccessMessage(null);
+      }, 5000);
     } catch (err) {
-    setErrorMessage('Network Error: No response from server.');
-    setIsLoading(false);
-    // Do NOT clear successMessage here; it should persist after errors
+  setErrorMessage('Network Error: No response from server.');
+  setIsLoading(false);
+  // Do NOT clear successMessage here; it should persist after errors
     }
   };
   return (

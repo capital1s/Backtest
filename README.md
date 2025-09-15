@@ -113,7 +113,7 @@ This project is a full-stack application for dynamic grid trading and backtestin
 All services use environment variables for configuration. Documented below:
 
 #### Backend (.env)
-- `API_KEY`: Your IBKR or external API key
+- `API_KEY`: Your IBKR or external API key (set in `.env`, never hardcoded)
 - `DB_URL`: Database connection string (e.g., `sqlite:///./test.db`, `postgresql://user:pass@host:port/db`)
 
 #### Frontend (.env)
@@ -241,7 +241,7 @@ All endpoints are documented automatically via FastAPI.
 
 ### Setup
 1. Clone the repository and navigate to the project root.
-2. Create a `.env` file in the root directory (see example below).
+2. Create a `.env` file in the root directory (see `.env.example` for reference; never commit real credentials).
 3. Ensure `requirements.txt` is present in the root directory.
 
 ### Environment Variables
@@ -280,5 +280,5 @@ PIDs are shown after deployment.
 - For environment variable changes, update `.env` and re-run the script.
 
 ### Advanced
-- Customize environment variables in `.env` for API keys, database URLs, or frontend config.
+- Customize environment variables in `.env` for API keys, database URLs, or frontend config. Never hardcode credentials; always use environment variables and document them in `.env.example`.
 - For production, consider using Docker or a process manager (e.g., PM2, Supervisor).

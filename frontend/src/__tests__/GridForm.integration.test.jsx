@@ -16,6 +16,8 @@ const mockProps = {
 
 describe('GridForm Integration - Multi-step and Edge Cases', () => {
   it('shows error when all fields are empty', async () => {
+    let resolveFirst;
+    const firstPromise = new Promise((resolve) => { resolveFirst = resolve; });
     global.fetch = vi.fn()
       .mockReturnValueOnce(firstPromise)
       .mockResolvedValueOnce({ ok: true, json: async () => ({ result: 'success', trades: [2], heldShares: [3], performance: { profit: 20 } }) });

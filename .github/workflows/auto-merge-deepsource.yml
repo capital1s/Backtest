@@ -1,0 +1,21 @@
+name: Auto-merge DeepSource Fixes
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    if: github.actor == 'deepsource-autofix'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Auto-merge DeepSource PR
+        uses: pascalgn/automerge-action@v0.15.6
+        with:
+          mergeMethod: squash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
