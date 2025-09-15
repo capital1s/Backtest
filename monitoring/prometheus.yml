@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 15s
+scrape_configs:
+  - job_name: 'fastapi-backend'
+    static_configs:
+      - targets: ['backend:8000']
+    metrics_path: /metrics
+
+# Grafana setup instructions:
+# 1. Access Grafana at http://localhost:3001
+# 2. Add Prometheus as a datasource (URL: http://prometheus:9090)
+# 3. Import or create dashboards to visualize FastAPI backend metrics from /metrics

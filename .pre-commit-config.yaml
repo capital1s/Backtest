@@ -1,0 +1,18 @@
+# Pre-commit configuration to run safe pytest on macOS/Python 3.13+
+repos:
+  - repo: https://github.com/psf/black
+    rev: 25.1.0
+    hooks:
+      - id: black
+        language_version: python3.13
+  - repo: https://github.com/PyCQA/pylint
+    rev: v3.3.8
+    hooks:
+      - id: pylint
+        language_version: python3.13
+        additional_dependencies: ["pylint"]
+  - repo: https://github.com/PyCQA/isort
+    rev: 6.0.1
+    hooks:
+      - id: isort
+        language_version: python3.13

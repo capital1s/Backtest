@@ -1,0 +1,239 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`App > matches snapshot 1`] = `
+<DocumentFragment>
+  <main
+    style="padding: 2rem;"
+  >
+    <div
+      class="theme-switcher"
+    >
+      <button
+        aria-label="Toggle dark mode"
+      >
+        🌙 Dark Mode
+      </button>
+    </div>
+    <h1>
+      Grid Trading Bot Dashboard
+    </h1>
+    <div>
+      <section
+        aria-labelledby="grid-form-title"
+      >
+        <div
+          data-testid="hidden-error-success"
+          style="display: none;"
+        >
+          <span />
+          <span />
+        </div>
+        <h2
+          id="grid-form-title"
+          style="display: none;"
+        >
+          Grid Trading Backtest Form
+        </h2>
+        <div
+          class="status-container"
+        />
+        <form
+          aria-describedby="grid-form-desc"
+          role="form"
+          style="display: flex; gap: 1rem; align-items: center;"
+        >
+          <span
+            id="grid-form-desc"
+            style="display: none;"
+          >
+            Enter grid trading parameters and run a backtest. All fields are required.
+          </span>
+          <div
+            aria-labelledby="ticker-label"
+            role="group"
+          >
+            <label
+              for="ticker-select"
+              id="ticker-label"
+            >
+              Ticker
+            </label>
+            <select
+              aria-label="Ticker"
+              aria-required="true"
+              id="ticker-select"
+              name="ticker"
+              required=""
+            >
+              <option
+                value=""
+              >
+                Select ticker
+              </option>
+              <option
+                value="AAPL"
+              >
+                AAPL
+              </option>
+              <option
+                value="MSFT"
+              >
+                MSFT
+              </option>
+              <option
+                value="GOOG"
+              >
+                GOOG
+              </option>
+            </select>
+          </div>
+          <div
+            aria-labelledby="shares-label"
+            role="group"
+          >
+            <label
+              for="shares-input"
+              id="shares-label"
+            >
+              Shares
+            </label>
+            <input
+              aria-invalid="true"
+              aria-label="Number of shares"
+              aria-required="true"
+              id="shares-input"
+              min="1"
+              name="shares"
+              placeholder="Shares"
+              required=""
+              type="number"
+              value=""
+            />
+          </div>
+          <div
+            aria-labelledby="grid-up-label"
+            role="group"
+          >
+            <label
+              for="grid-up-input"
+              id="grid-up-label"
+            >
+              Grid Up
+            </label>
+            <input
+              aria-invalid="true"
+              aria-label="Grid up value"
+              aria-required="true"
+              id="grid-up-input"
+              min="0"
+              name="grid_up"
+              placeholder="Grid Up"
+              required=""
+              step="0.001"
+              type="number"
+              value=""
+            />
+          </div>
+          <div
+            aria-labelledby="grid-down-label"
+            role="group"
+          >
+            <label
+              for="grid-down-input"
+              id="grid-down-label"
+            >
+              Grid Down
+            </label>
+            <input
+              aria-invalid="true"
+              aria-label="Grid down value"
+              aria-required="true"
+              id="grid-down-input"
+              min="0"
+              name="grid_down"
+              placeholder="Grid Down"
+              required=""
+              step="0.001"
+              type="number"
+              value=""
+            />
+          </div>
+          <div
+            aria-labelledby="grid-increment-label"
+            role="group"
+          >
+            <label
+              for="grid-increment-input"
+              id="grid-increment-label"
+            >
+              Grid Increment
+            </label>
+            <input
+              aria-invalid="true"
+              aria-label="Grid increment value"
+              aria-required="true"
+              id="grid-increment-input"
+              min="0.001"
+              name="grid_increment"
+              placeholder="Grid Increment"
+              required=""
+              step="0.001"
+              type="number"
+              value=""
+            />
+          </div>
+          <div
+            aria-labelledby="timeframe-label"
+            role="group"
+          >
+            <label
+              for="timeframe-select"
+              id="timeframe-label"
+            >
+              Timeframe
+            </label>
+            <select
+              aria-label="Backtest timeframe"
+              aria-required="true"
+              id="timeframe-select"
+              name="timeframe"
+              required=""
+            >
+              <option
+                value="1 D"
+              >
+                1 Day
+              </option>
+              <option
+                value="5 D"
+              >
+                5 Days
+              </option>
+              <option
+                value="1 W"
+              >
+                1 Week
+              </option>
+              <option
+                value="1 M"
+              >
+                1 Month
+              </option>
+            </select>
+          </div>
+          <button
+            aria-busy="false"
+            aria-label="Run backtest"
+            type="submit"
+          >
+            Backtest
+          </button>
+        </form>
+      </section>
+    </div>
+    <div>
+      Loading charts...
+    </div>
+  </main>
+</DocumentFragment>
+`;

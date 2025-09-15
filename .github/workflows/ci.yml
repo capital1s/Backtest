@@ -1,0 +1,140 @@
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: testdb
+          POSTGRES_USER: testuser
+          POSTGRES_PASSWORD: testpass
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      DB_URL: postgresql://testuser:testpass@localhost:5432/testdb
+      API_KEY: testkey
+      TEST_MODE: "1"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Cache Python dependencies
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: ${{ runner.os }}-venv-${{ matrix.python-version || '3.11' }}-${{ hashFiles('backend/requirements.txt') }}-${{ hashFiles('backend/pyproject.toml') }}
+      - name: Install backend dependencies
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install -r backend/requirements.txt
+          pip install alembic pytest-xdist pytest-rerunfailures pytest-timeout
+      - name: Lint backend
+        run: |
+          source .venv/bin/activate
+          pip install flake8 black mypy
+          flake8 backend
+      - name: Format check backend
+        run: |
+          source .venv/bin/activate
+          black --check backend
+      - name: Type check backend
+        run: |
+          source .venv/bin/activate
+          mypy backend
+      - name: Test backend (fail fast, parallel, flakiness, duration, profile times)
+        run: |
+          source .venv/bin/activate
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            pytest backend/ tests/ --lf --maxfail=1 --disable-warnings -v --durations=10 -n 8 --reruns 2 --timeout=30
+          else
+            pytest backend/ tests/ --maxfail=1 --disable-warnings -v --durations=10 -n 8 --reruns 2 --timeout=30
+          fi
+      - name: Coverage (main only)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          source .venv/bin/activate
+          pip install pytest-cov
+          pytest --cov=backend --cov-report=xml
+      - name: Alembic migrations
+        run: |
+          source .venv/bin/activate
+          alembic upgrade head
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Cache Node dependencies
+        uses: actions/cache@v4
+        with:
+          path: frontend/node_modules
+          key: ${{ runner.os }}-node-20-${{ hashFiles('frontend/package-lock.json') }}-${{ hashFiles('frontend/package.json') }}
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm ci
+      - name: Lint frontend
+        run: |
+          cd frontend
+          npm run lint
+      - name: Test frontend (fail fast, parallel, flakiness, duration, profile times)
+        run: |
+          cd frontend
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            npx vitest run --changed --maxWorkers=16 --max-failures=1 --reporter=dot --retries=2 --testTimeout=60000
+          else
+            npx vitest run --maxWorkers=16 --max-failures=1 --reporter=dot --retries=2 --testTimeout=60000
+          fi
+
+  frontend-integration:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm ci
+      - name: Run slow integration and real API tests
+        run: |
+          cd frontend
+          npx vitest run src/__tests__/GridForm.integration.test.jsx src/App.integration.test.jsx src/__tests__/GridForm.realapi.test.jsx --maxWorkers=8
+      - name: Coverage (main only)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          cd frontend
+          npm run test -- --coverage
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm run build
+      - name: Archive production build
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-build
+          path: frontend/dist

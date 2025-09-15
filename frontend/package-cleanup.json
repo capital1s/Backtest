@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "cleanup": "bash ../scripts/cleanup.sh"
+  }
+}

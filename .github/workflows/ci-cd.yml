@@ -1,0 +1,74 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_DB: testdb
+          POSTGRES_USER: testuser
+          POSTGRES_PASSWORD: testpass
+        options: >-
+          --health-cmd "pg_isready -U testuser" --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm ci
+      - name: Run frontend tests
+        run: |
+          cd frontend
+          npm run test
+      - name: Install backend dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Run backend tests
+        run: |
+          pytest
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm run build
+      - name: Build Docker images
+        run: |
+          docker build -t backtest-frontend ./frontend
+          docker build -t backtest-backend .
+      - name: Run backend tests with coverage
+        run: |
+          pip install pytest pytest-cov
+          pytest --cov=backend --cov-report=xml
+      - name: Upload backend coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage
+          path: coverage.xml
+      - name: Run frontend tests with coverage
+        run: |
+          cd frontend
+          npm install
+          npm run test -- --coverage
+      - name: Upload frontend coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-coverage
+          path: frontend/coverage
+      # Add deployment steps here (e.g., push to registry, deploy to cloud)

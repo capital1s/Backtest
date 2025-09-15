@@ -1,0 +1,28 @@
+# .gitlab-ci.yml for Node.js 24.x frontend automation
+image: node:24
+
+stages:
+  - install
+  - test
+
+install_dependencies:
+  stage: install
+  script:
+    - npm ci --prefix frontend
+
+test_frontend:
+  stage: test
+  script:
+    - npm test --prefix frontend
+    run_safe_validation:
+      stage: test
+      script:
+        - bash ci_safe_full_validation.sh
+      artifacts:
+        when: always
+        paths:
+          - backend_test_report.xml
+          - frontend_test_report.json
+  only:
+    - merge_requests
+    - main

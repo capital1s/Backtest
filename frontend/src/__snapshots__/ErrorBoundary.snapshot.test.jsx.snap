@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ErrorBoundary > matches snapshot with children 1`] = `
+<DocumentFragment>
+  <div>
+    Safe Child
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ErrorBoundary > matches snapshot with error fallback 1`] = `
+<DocumentFragment>
+  <div
+    role="alert"
+    style="color: red; padding: 2rem;"
+  >
+    <h2>
+      Something went wrong.
+    </h2>
+    <pre>
+      Error: Test error
+    </pre>
+    <button
+      aria-label="Reset error boundary"
+    >
+      Try Again
+    </button>
+  </div>
+</DocumentFragment>
+`;

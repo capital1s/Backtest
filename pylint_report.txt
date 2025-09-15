@@ -1,0 +1,45 @@
+************* Module backend.conftest
+backend/conftest.py:12: [C0116(missing-function-docstring), pytest_configure] Missing function or method docstring
+backend/conftest.py:12: [W0613(unused-argument), pytest_configure] Unused argument 'config'
+backend/conftest.py:25: [C0116(missing-function-docstring), pytest_sessionstart] Missing function or method docstring
+************* Module backend.ibkr_client
+backend/ibkr_client.py:78: [C0301(line-too-long), ] Line too long (109/100)
+backend/ibkr_client.py:22: [E1111(assignment-from-no-return), IBKRClient.get_account_summary] Assigning result of a function call, where the function has no return
+backend/ibkr_client.py:29: [E1133(not-an-iterable), IBKRClient.get_account_summary] Non-iterable value summary is used in an iterating context
+backend/ibkr_client.py:94: [W0718(broad-exception-caught), IBKRClient.get_historical_data] Catching too general exception Exception
+************* Module backend.test_smoke
+backend/test_smoke.py:1: [C0114(missing-module-docstring), ] Missing module docstring
+backend/test_smoke.py:6: [C0415(import-outside-toplevel), TestSmoke.test_imports] Import outside toplevel (backend.backtest)
+backend/test_smoke.py:7: [C0415(import-outside-toplevel), TestSmoke.test_imports] Import outside toplevel (backend.grid_bot)
+backend/test_smoke.py:8: [C0415(import-outside-toplevel), TestSmoke.test_imports] Import outside toplevel (backend.ibkr_client)
+backend/test_smoke.py:9: [C0415(import-outside-toplevel), TestSmoke.test_imports] Import outside toplevel (backend.main)
+backend/test_smoke.py:10: [C0415(import-outside-toplevel), TestSmoke.test_imports] Import outside toplevel (backend.minute_chart)
+backend/test_smoke.py:6: [W0611(unused-import), TestSmoke.test_imports] Unused import backend.backtest
+************* Module backend.grid_bot
+backend/grid_bot.py:9: [R0902(too-many-instance-attributes), GridBot] Too many instance attributes (8/7)
+backend/grid_bot.py:16: [R0913(too-many-arguments), GridBot.__init__] Too many arguments (7/5)
+backend/grid_bot.py:16: [R0917(too-many-positional-arguments), GridBot.__init__] Too many positional arguments (7/5)
+************* Module backend.ib_client
+backend/ib_client.py:3: [W0105(pointless-string-statement), ] String statement has no effect
+backend/ib_client.py:7: [C0413(wrong-import-position), ] Import "from ibapi.client import EClient" should be placed at the top of the module
+backend/ib_client.py:8: [C0413(wrong-import-position), ] Import "from ibapi.contract import Contract" should be placed at the top of the module
+backend/ib_client.py:9: [C0413(wrong-import-position), ] Import "from ibapi.wrapper import EWrapper" should be placed at the top of the module
+************* Module backend.main
+backend/main.py:159: [C0301(line-too-long), ] Line too long (111/100)
+backend/main.py:59: [C0116(missing-function-docstring), websocket_market_data] Missing function or method docstring
+************* Module backend.backtest
+backend/backtest.py:397: [C0301(line-too-long), ] Line too long (106/100)
+backend/backtest.py:30: [R0913(too-many-arguments), BacktestEngine.__init__] Too many arguments (8/5)
+backend/backtest.py:30: [R0917(too-many-positional-arguments), BacktestEngine.__init__] Too many positional arguments (8/5)
+backend/backtest.py:51: [R0914(too-many-locals), BacktestEngine.run] Too many local variables (16/15)
+backend/backtest.py:131: [C0116(missing-function-docstring), BacktestEngine.request_historical_data_ibkr] Missing function or method docstring
+backend/backtest.py:131: [R0913(too-many-arguments), BacktestEngine.request_historical_data_ibkr] Too many arguments (8/5)
+backend/backtest.py:131: [R0917(too-many-positional-arguments), BacktestEngine.request_historical_data_ibkr] Too many positional arguments (8/5)
+backend/backtest.py:169: [R1705(no-else-return), BacktestEngine.request_historical_data_ibkr] Unnecessary "else" after "return", remove the "else" and de-indent the code inside it
+backend/backtest.py:204: [R1705(no-else-return), BacktestEngine.request_realtime_data_ibkr] Unnecessary "else" after "return", remove the "else" and de-indent the code inside it
+backend/backtest.py:226: [C0115(missing-class-docstring), IBApp] Missing class docstring
+backend/backtest.py:359: [R1705(no-else-return), IBApp.auto_connect] Unnecessary "else" after "return", remove the "else" and de-indent the code inside it
+
+------------------------------------------------------------------
+Your code has been rated at 9.10/10 (previous run: 9.10/10, +0.00)
+

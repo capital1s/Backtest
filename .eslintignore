@@ -1,0 +1,8 @@
+# Ignore build output and generated files
+frontend/dist/
+*.map
+node_modules/
+coverage/
+.env*
+*.log
+scripts/startup-timer.js

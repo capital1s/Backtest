@@ -1,0 +1,38 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "FastAPI & Docker Monitoring",
+    "panels": [
+      {
+        "type": "graph",
+        "title": "Avg Request Duration",
+        "targets": [
+          {
+            "expr": "request_duration_seconds_sum{job='fastapi-backend'} / request_duration_seconds_count{job='fastapi-backend'}",
+            "legendFormat": "Avg Duration"
+          }
+        ]
+      },
+      {
+        "type": "graph",
+        "title": "Request Count",
+        "targets": [
+          {
+            "expr": "fastapi_requests_total",
+            "format": "time_series"
+          }
+        ]
+      },
+      {
+        "type": "graph",
+        "title": "Container CPU Usage",
+        "targets": [
+          {
+            "expr": "container_cpu_usage_seconds_total",
+            "format": "time_series"
+          }
+        ]
+      }
+    ]
+  }
+}
