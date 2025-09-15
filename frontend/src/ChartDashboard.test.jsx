@@ -24,7 +24,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  global.fetch && (global.fetch = undefined);
+  
 });
 import ChartDashboard from "./ChartDashboard";
 
