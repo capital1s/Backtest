@@ -1,4 +1,6 @@
 # pylint: skip-file
+from fastapi import FastAPI, HTTPException, Query
+from functools import wraps
 import json
 import logging
 import os
@@ -21,7 +23,6 @@ if not TEST_MODE:
     limiter = Limiter(key_func=get_remote_address)
     app.state.limiter = limiter
     app.add_exception_handler(429, _rate_limit_exceeded_handler)
-import logging
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("backtest")
@@ -112,21 +113,6 @@ async def api_endpoint(
     """Mock endpoint for lint compliance test."""
     return {"result": "success", "params": [param1, param2, param3, param4, param5]}
 
-
-import json
-import logging
-import os
-import random
-import time
-from functools import wraps
-from typing import Optional
-
-from fastapi import FastAPI, HTTPException, Query, Request
-from fastapi.middleware.cors import CORSMiddleware
-from prometheus_fastapi_instrumentator import Instrumentator
-from pydantic import BaseModel
-from slowapi import Limiter, _rate_limit_exceeded_handler
-from slowapi.util import get_remote_address
 
 """
 Simple circuit breaker decorator for FastAPI endpoints.
@@ -295,20 +281,6 @@ logger.handlers = [handler]
 logger.info("Prometheus metrics endpoint exposed at /metrics")
 """Main FastAPI backend for grid trading and backtest API."""
 
-import json
-import logging
-import os
-import random
-import time
-from typing import Optional
-
-from fastapi import FastAPI, HTTPException, Query
-from fastapi.middleware.cors import CORSMiddleware
-from prometheus_fastapi_instrumentator import Instrumentator
-from pydantic import BaseModel
-from slowapi import Limiter, _rate_limit_exceeded_handler
-from slowapi.util import get_remote_address
-
 
 class Performance(BaseModel):
     """Performance metrics for backtest results."""
@@ -402,7 +374,8 @@ async def get_historical(
     )
     if not symbol:
         logger.warning("Missing required symbol param")
-        raise HTTPException(status_code=422, detail="Missing required symbol param")
+        raise HTTPException(
+            status_code=422, detail="Missing required symbol param")
     bars = [
         ChartBar(
             time="2025-09-12T09:30:00",
@@ -458,7 +431,8 @@ async def minute_chart(params: ChartParams) -> ChartResponse:
             volume=12000,
         ),
     ]
-    logger.info("Returning %d chart bars for ticker=%s", len(chart), params.ticker)
+    logger.info("Returning %d chart bars for ticker=%s",
+                len(chart), params.ticker)
     logger.info(
         "/minute_chart response time: %.3fs",
         time.time() - start_time,
@@ -515,7 +489,8 @@ async def run_backtest(params: GridParams) -> BacktestResponse:
         performance = Performance(total_return=0.05, max_drawdown=0.02)
         performance = performance.model_dump()
         held_shares = params.shares
-    logger.info("Returning %d trades for ticker=%s", len(trades), params.ticker)
+    logger.info("Returning %d trades for ticker=%s",
+                len(trades), params.ticker)
     logger.info(
         "/backtest response time: %.3fs",
         time.time() - start_time,
@@ -592,7 +567,8 @@ async def run_backtest_detailed(
         start_balance=10000, end_balance=10500, num_trades=len(trades)
     )
     logger.info(
-        "Returning %d trades and summary for ticker=%s", len(trades), params.ticker
+        "Returning %d trades and summary for ticker=%s", len(
+            trades), params.ticker
     )
     logger.info(
         "/backtest/detailed response time: %.3fs",

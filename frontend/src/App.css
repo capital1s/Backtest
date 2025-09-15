@@ -47,10 +47,12 @@
 body {
   background: var(--bg, #fff);
   color: var(--fg, #222);
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   --bg: #181a20;
   --fg: #e0e0e0;
 }
@@ -71,7 +73,7 @@ body {
   cursor: pointer;
 }
 
-[data-theme='dark'] .theme-switcher button {
+[data-theme="dark"] .theme-switcher button {
   background: #e0e0e0;
   color: #222;
 }

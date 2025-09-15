@@ -132,7 +132,8 @@ class BacktestEngine:
                     f"No historical data received, retrying ({attempt + 1}/{max_retries})..."
                 )
             except (ValueError, RuntimeError) as e:
-                print(f"Error requesting historical data (attempt {attempt + 1}): {e}")
+                print(
+                    f"Error requesting historical data (attempt {attempt + 1}): {e}")
                 time.sleep(2)
         print("Failed to retrieve historical data after retries.")
         return []
@@ -148,7 +149,8 @@ class BacktestEngine:
                     app_instance.reset_realtime_done()
                 else:
                     app_instance.realtime_done = False
-                app_instance.reqMktData(req_id, contract_instance, "", False, False, [])
+                app_instance.reqMktData(
+                    req_id, contract_instance, "", False, False, [])
                 timeout = 10
                 start = time.time()
                 while (
@@ -165,7 +167,8 @@ class BacktestEngine:
                     f"No real-time data received, retrying ({attempt + 1}/{max_retries})..."
                 )
             except (ValueError, RuntimeError) as e:
-                print(f"Error requesting real-time data (attempt {attempt + 1}): {e}")
+                print(
+                    f"Error requesting real-time data (attempt {attempt + 1}): {e}")
                 time.sleep(2)
         print("Failed to retrieve real-time data after retries.")
         return []

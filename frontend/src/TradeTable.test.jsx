@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/vitest';
+import "@testing-library/jest-dom/vitest";
 // @vitest-environment jsdom
 import React from "react";
 import { vi } from "vitest";
