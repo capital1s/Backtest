@@ -18,7 +18,10 @@ import { setupServer } from "msw/node";
 // Define a default handler for /backtest
 const server = setupServer(
   http.post(/.*\/backtest$/, async (req, res, ctx) => {
-    console.log("MSW handler: intercepted backtest POST (global)", req.url.href);
+    console.log(
+      "MSW handler: intercepted backtest POST (global)",
+      req.url.href,
+    );
     let reqBody = {};
     try {
       reqBody = await req.json();
@@ -40,11 +43,8 @@ const server = setupServer(
       },
     };
     console.log("MSW handler response (global):", response);
-    return res(
-      ctx.status(200),
-      ctx.json(response),
-    );
-  })
+    return res(ctx.status(200), ctx.json(response));
+  }),
 );
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());

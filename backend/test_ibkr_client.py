@@ -12,7 +12,8 @@ def test_ibkr_connect_disconnect(monkeypatch):
     """Test IBKRClient connect and disconnect logic with monkeypatch."""
     client = IBKRClient()
     # Mock connect to always set connected True
-    monkeypatch.setattr(client, "connect", lambda: setattr(client, "connected", True))
+    monkeypatch.setattr(client, "connect", lambda: setattr(
+        client, "connected", True))
     monkeypatch.setattr(
         client, "disconnect", lambda: setattr(client, "connected", False)
     )
