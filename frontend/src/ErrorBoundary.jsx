@@ -1,4 +1,3 @@
-
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -27,7 +26,9 @@ class ErrorBoundary extends React.Component {
         <div role="alert" style={{ color: "red", padding: "2rem" }}>
           <h2>Something went wrong.</h2>
           <pre>{this.state.error?.toString()}</pre>
-          <button onClick={this.handleReset} aria-label="Reset error boundary">Try Again</button>
+          <button onClick={this.handleReset} aria-label="Reset error boundary">
+            Try Again
+          </button>
         </div>
       );
     }

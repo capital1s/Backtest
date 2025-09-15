@@ -3,6 +3,7 @@
 This project is fully instrumented for load, stress, and robustness validation. See below for procedures and scripts:
 
 ## Backend
+
 - **Stress/Load Testing:**
   - Run Locust: `locust -f backend/locustfile.py --host=http://localhost:8000`
   - Run pytest-benchmark: `pytest backend/test_benchmark.py --benchmark-only`
@@ -16,6 +17,7 @@ This project is fully instrumented for load, stress, and robustness validation. 
   - Prometheus metrics at `/metrics`
 
 ## Frontend
+
 - **Stress/Load Testing:**
   - Use `faker.js` factories in `src/testUtils/factories.js` for large datasets
   - Run: `npx vitest run --maxWorkers=16 --coverage`
@@ -27,7 +29,9 @@ This project is fully instrumented for load, stress, and robustness validation. 
   - Run: `npm run cleanup` (see `frontend/package-cleanup.json`)
 
 ## CI/CD
+
 - All scripts and checks are integrated in `.github/workflows/ci.yml` for automated validation.
 
 ---
+
 For more details, see individual scripts and config files in `backend/` and `frontend/` folders.
