@@ -20,17 +20,24 @@ function App() {
   // Always provide a valid tickers array for ChartDashboard
   const tickers = ticker ? [ticker] : ["AAPL", "MSFT", "GOOG"];
 
-
   React.useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   return (
-    <ErrorBoundary fallback={<div role="alert" style={{ color: "red", padding: "2rem" }}>Something went wrong. Please refresh or contact support.</div>}>
+    <ErrorBoundary
+      fallback={
+        <div role="alert" style={{ color: "red", padding: "2rem" }}>
+          Something went wrong. Please refresh or contact support.
+        </div>
+      }
+    >
       <main style={{ padding: "2rem" }}>
         <div className="theme-switcher">
-          <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            aria-label="Toggle dark mode">
+          <button
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            aria-label="Toggle dark mode"
+          >
             {theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}
           </button>
         </div>
@@ -45,7 +52,11 @@ function App() {
           ticker={ticker}
         />
         <Suspense fallback={<div>Loading charts...</div>}>
-          <ChartDashboard ticker={tickerBlur ? ticker : ""} tickers={tickers} setTicker={setTicker} />
+          <ChartDashboard
+            ticker={tickerBlur ? ticker : ""}
+            tickers={tickers}
+            setTicker={setTicker}
+          />
           <TradeChart trades={trades} />
           <div style={{ display: "flex", gap: "2rem" }}>
             <TradeTable trades={trades} type="buy" />

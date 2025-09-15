@@ -1,7 +1,7 @@
 // Shared test utilities for frontend tests
 // Use this file to define expensive setup/teardown logic, global mocks, or reusable fixtures
 
-import { vi } from 'vitest';
+import { vi } from "vitest";
 
 // Example: Global fetch mock
 export const mockGlobalFetch = (mockImpl) => {
@@ -14,7 +14,7 @@ export const mockGlobalFetch = (mockImpl) => {
 };
 
 // Example: UserEvent setup helper
-import userEvent from '@testing-library/user-event';
+import userEvent from "@testing-library/user-event";
 export const setupUser = () => userEvent.setup();
 
 // Add more shared utilities as needed

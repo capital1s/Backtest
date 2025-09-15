@@ -16,7 +16,8 @@ client = TestClient(app)
 
 def test_realtime_success():
     """Test GET /api/realtime returns valid tick data."""
-    resp = client.get("/api/realtime", params={"symbol": "AAPL", "max_ticks": 5})
+    resp = client.get(
+        "/api/realtime", params={"symbol": "AAPL", "max_ticks": 5})
     assert resp.status_code == 200
     data = resp.json()
     assert data["result"] == "success"
@@ -34,7 +35,8 @@ def test_realtime_invalid_method():
 
 def test_login_success():
     """Test POST /api/login with valid credentials returns success and token."""
-    resp = client.post("/api/login", json={"username": "user", "password": "pass"})
+    resp = client.post(
+        "/api/login", json={"username": "user", "password": "pass"})
     assert resp.status_code == 200
     data = resp.json()
     assert data["result"] == "success"
@@ -43,7 +45,8 @@ def test_login_success():
 
 def test_login_invalid_credentials():
     """Test POST /api/login with invalid credentials returns error."""
-    resp = client.post("/api/login", json={"username": "bad", "password": "wrong"})
+    resp = client.post(
+        "/api/login", json={"username": "bad", "password": "wrong"})
     assert resp.status_code == 200
     data = resp.json()
     assert data["result"] == "error"
