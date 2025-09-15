@@ -13,7 +13,7 @@ describe("ErrorBoundary", () => {
     const { getByText } = render(
       <ErrorBoundary>
         <ProblemChild />
-      </ErrorBoundary>
+      </ErrorBoundary>,
     );
     expect(getByText(/Something went wrong/i)).toBeTruthy();
   });
@@ -22,7 +22,7 @@ describe("ErrorBoundary", () => {
     const { getByText } = render(
       <ErrorBoundary>
         <div>Safe Child</div>
-      </ErrorBoundary>
+      </ErrorBoundary>,
     );
     expect(getByText(/Safe Child/i)).toBeTruthy();
   });

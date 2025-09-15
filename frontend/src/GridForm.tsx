@@ -1,7 +1,12 @@
-import React, { useState, useRef, useCallback, ChangeEvent, FormEvent } from "react";
+import React, {
+  useState,
+  useRef,
+  useCallback,
+  ChangeEvent,
+  FormEvent,
+} from "react";
 import * as yup from "yup";
 import { API_BASE_URL } from "./apiConfig";
-
 
 export interface GridFormProps {
   setTrades: (trades: any) => void;
@@ -47,7 +52,14 @@ const schema = yup.object().shape({
   timeframe: yup.string().required("Timeframe is required"),
 });
 
-const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker, setTickerBlur, setPerformance, ticker }) => {
+const GridForm: React.FC<GridFormProps> = ({
+  setTrades,
+  setHeldShares,
+  setTicker,
+  setTickerBlur,
+  setPerformance,
+  ticker,
+}) => {
   const [form, setForm] = useState<FormState>({
     ticker: ticker || "",
     shares: "",
@@ -64,61 +76,69 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
   const gridDownRef = useRef<HTMLInputElement>(null);
   const gridIncrementRef = useRef<HTMLInputElement>(null);
 
-  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({
-      ...prev,
-      [name]: name === "timeframe" || name === "ticker" ? value : value,
-    }));
-  }, []);
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+      const { name, value } = e.target;
+      setForm((prev) => ({
+        ...prev,
+        [name]: name === "timeframe" || name === "ticker" ? value : value,
+      }));
+    },
+    [],
+  );
 
-  const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      await schema.validate(form, { abortEarly: false });
-    } catch (validationError: any) {
-      if (validationError.inner && validationError.inner.length > 0) {
-        setError(validationError.inner.map((err: any) => err.message).join("; "));
-      } else {
-        setError(validationError.message);
-      }
-      return;
-    }
-    const payload = {
-      ticker: form.ticker,
-      shares: Number(form.shares),
-      grid_up: Number(Number(form.grid_up).toFixed(3)),
-      grid_down: Number(Number(form.grid_down).toFixed(3)),
-      grid_increment: Number(Number(form.grid_increment).toFixed(3)),
-      timeframe: form.timeframe,
-      interval: "1 min",
-    };
-    setLoading(true);
-    try {
-      const res = await fetch(`${API_BASE_URL}/backtest`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) {
-        const text = await res.text();
-        setError(`API Error: ${res.status} - ${text}`);
-        setLoading(false);
+  const handleSubmit = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      try {
+        await schema.validate(form, { abortEarly: false });
+      } catch (validationError: any) {
+        if (validationError.inner && validationError.inner.length > 0) {
+          setError(
+            validationError.inner.map((err: any) => err.message).join("; "),
+          );
+        } else {
+          setError(validationError.message);
+        }
         return;
       }
-      const data = await res.json();
-      setError("");
-      if (data) {
-        setPerformance(data.performance ?? null);
-        setTrades(data.trades ?? []);
-        setHeldShares(data.heldShares ?? []);
+      const payload = {
+        ticker: form.ticker,
+        shares: Number(form.shares),
+        grid_up: Number(Number(form.grid_up).toFixed(3)),
+        grid_down: Number(Number(form.grid_down).toFixed(3)),
+        grid_increment: Number(Number(form.grid_increment).toFixed(3)),
+        timeframe: form.timeframe,
+        interval: "1 min",
+      };
+      setLoading(true);
+      try {
+        const res = await fetch(`${API_BASE_URL}/backtest`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) {
+          const text = await res.text();
+          setError(`API Error: ${res.status} - ${text}`);
+          setLoading(false);
+          return;
+        }
+        const data = await res.json();
+        setError("");
+        if (data) {
+          setPerformance(data.performance ?? null);
+          setTrades(data.trades ?? []);
+          setHeldShares(data.heldShares ?? []);
+        }
+      } catch (err: any) {
+        setError(`Network Error: ${err.message || err}`);
+      } finally {
+        setLoading(false);
       }
-    } catch (err: any) {
-      setError(`Network Error: ${err.message || err}`);
-    } finally {
-      setLoading(false);
-    }
-  }, [form]);
+    },
+    [form],
+  );
 
   return (
     <section aria-labelledby="grid-form-title">
@@ -126,16 +146,27 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
         Grid Trading Backtest Form
       </h2>
       {error && (
-        <div style={{ color: "red", marginBottom: "1rem" }} role="alert" aria-live="assertive">
+        <div
+          style={{ color: "red", marginBottom: "1rem" }}
+          role="alert"
+          aria-live="assertive"
+        >
           {error}
         </div>
       )}
-      <form onSubmit={handleSubmit} style={{ display: "flex", gap: "1rem", alignItems: "center" }} aria-describedby="grid-form-desc">
+      <form
+        onSubmit={handleSubmit}
+        style={{ display: "flex", gap: "1rem", alignItems: "center" }}
+        aria-describedby="grid-form-desc"
+      >
         <span id="grid-form-desc" style={{ display: "none" }}>
-          Enter grid trading parameters and run a backtest. All fields are required.
+          Enter grid trading parameters and run a backtest. All fields are
+          required.
         </span>
         <div role="group" aria-labelledby="ticker-label">
-          <label id="ticker-label" htmlFor="ticker-input">Ticker</label>
+          <label id="ticker-label" htmlFor="ticker-input">
+            Ticker
+          </label>
           <input
             ref={tickerRef}
             id="ticker-input"
@@ -151,7 +182,9 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
           />
         </div>
         <div role="group" aria-labelledby="shares-label">
-          <label id="shares-label" htmlFor="shares-input">Shares</label>
+          <label id="shares-label" htmlFor="shares-input">
+            Shares
+          </label>
           <input
             ref={sharesRef}
             id="shares-input"
@@ -168,7 +201,9 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
           />
         </div>
         <div role="group" aria-labelledby="grid-up-label">
-          <label id="grid-up-label" htmlFor="grid-up-input">Grid Up</label>
+          <label id="grid-up-label" htmlFor="grid-up-input">
+            Grid Up
+          </label>
           <input
             ref={gridUpRef}
             id="grid-up-input"
@@ -186,7 +221,9 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
           />
         </div>
         <div role="group" aria-labelledby="grid-down-label">
-          <label id="grid-down-label" htmlFor="grid-down-input">Grid Down</label>
+          <label id="grid-down-label" htmlFor="grid-down-input">
+            Grid Down
+          </label>
           <input
             ref={gridDownRef}
             id="grid-down-input"
@@ -204,7 +241,9 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
           />
         </div>
         <div role="group" aria-labelledby="grid-increment-label">
-          <label id="grid-increment-label" htmlFor="grid-increment-input">Grid Increment</label>
+          <label id="grid-increment-label" htmlFor="grid-increment-input">
+            Grid Increment
+          </label>
           <input
             ref={gridIncrementRef}
             id="grid-increment-input"
@@ -222,7 +261,9 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
           />
         </div>
         <div role="group" aria-labelledby="timeframe-label">
-          <label id="timeframe-label" htmlFor="timeframe-select">Timeframe</label>
+          <label id="timeframe-label" htmlFor="timeframe-select">
+            Timeframe
+          </label>
           <select
             id="timeframe-select"
             name="timeframe"
@@ -238,7 +279,12 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
             <option value="1 M">1 Month</option>
           </select>
         </div>
-        <button type="submit" disabled={loading} aria-busy={loading ? "true" : "false"} aria-label="Run backtest">
+        <button
+          type="submit"
+          disabled={loading}
+          aria-busy={loading ? "true" : "false"}
+          aria-label="Run backtest"
+        >
           {loading ? "Running..." : "Backtest"}
         </button>
       </form>
