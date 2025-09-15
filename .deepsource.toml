@@ -17,6 +17,10 @@ name = "javascript"
 
   [analyzers.meta]
   plugins = ["react"]
+  environment = [
+    "nodejs",
+    "vitest"
+  ]
 
 [[analyzers]]
 name = "java"
