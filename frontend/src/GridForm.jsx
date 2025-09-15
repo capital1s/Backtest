@@ -1,16 +1,20 @@
-
-
 import React, { useState, useRef } from "react";
 import { API_BASE_URL } from "./apiConfig";
 
-function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker }) {
+function GridForm({
+  setTrades,
+  setHeldShares,
+  setTicker,
+  setPerformance,
+  ticker,
+}) {
   const [form, setForm] = useState({
     ticker: ticker || "",
     shares: "",
     grid_up: "",
     grid_down: "",
     grid_increment: "",
-    timeframe: "1 D"
+    timeframe: "1 D",
   });
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
@@ -25,48 +29,60 @@ function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker 
     setForm((prev) => ({ ...prev, [name]: value }));
   };
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setErrorMessage(null); // Clear only error before submission
-  setIsLoading(true);
-  // Do NOT clear successMessage here; it should persist until a new success
+    e.preventDefault();
+    setErrorMessage(null); // Clear only error before submission
+    setIsLoading(true);
+    // Do NOT clear successMessage here; it should persist until a new success
     // Check for missing required fields
-    const requiredFields = ["ticker", "shares", "grid_up", "grid_down", "grid_increment", "timeframe"];
-    const missing = requiredFields.some(f => !form[f] || String(form[f]).trim() === "");
+    const requiredFields = [
+      "ticker",
+      "shares",
+      "grid_up",
+      "grid_down",
+      "grid_increment",
+      "timeframe",
+    ];
+    const missing = requiredFields.some(
+      (f) => !form[f] || String(form[f]).trim() === "",
+    );
     if (missing) {
-      setErrorMessage('Please fill in all fields.');
+      setErrorMessage("Please fill in all fields.");
       setIsLoading(false);
       return;
     }
     // Numeric validation
     if (isNaN(Number(form.shares)) || Number(form.shares) <= 0) {
-      setErrorMessage('Please fill in all fields.');
+      setErrorMessage("Please fill in all fields.");
       setIsLoading(false);
       return;
     }
-    if (isNaN(Number(form.grid_increment)) || Number(form.grid_increment) <= 0) {
-      setErrorMessage('Please fill in all fields.');
+    if (
+      isNaN(Number(form.grid_increment)) ||
+      Number(form.grid_increment) <= 0
+    ) {
+      setErrorMessage("Please fill in all fields.");
       setIsLoading(false);
       return;
     }
     if (isNaN(Number(form.grid_up)) || Number(form.grid_up) < 0) {
-      setErrorMessage('Please fill in all fields.');
+      setErrorMessage("Please fill in all fields.");
       setIsLoading(false);
       return;
     }
     if (isNaN(Number(form.grid_down)) || Number(form.grid_down) < 0) {
-      setErrorMessage('Please fill in all fields.');
+      setErrorMessage("Please fill in all fields.");
       setIsLoading(false);
       return;
     }
     try {
       const validTickers = ["AAPL", "MSFT", "GOOG"];
       if (!validTickers.includes(form.ticker)) {
-        setErrorMessage('Ticker: Invalid ticker selected.');
+        setErrorMessage("Ticker: Invalid ticker selected.");
         setIsLoading(false);
         return;
       }
       let fetchUrl = `${API_BASE_URL}/backtest`;
-      if (typeof window === 'undefined' && !fetchUrl.startsWith('http')) {
+      if (typeof window === "undefined" && !fetchUrl.startsWith("http")) {
         fetchUrl = `http://localhost${fetchUrl}`;
       }
       const requestBody = JSON.stringify(form);
@@ -82,7 +98,7 @@ function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker 
         // ignore JSON parse error
       }
       if (!response.ok) {
-        setErrorMessage(`Server: ${data.error || 'Server error!'}`);
+        setErrorMessage(`Server: ${data.error || "Server error!"}`);
         setIsLoading(false);
         // Do NOT clear successMessage here; it should persist after errors
         return;
@@ -90,11 +106,11 @@ function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker 
       // Clear error message on success
       setErrorMessage(null);
       setIsLoading(false);
-        setSuccessMessage('Backtest completed successfully');
-        if (window.successTimeout) clearTimeout(window.successTimeout);
-        window.successTimeout = setTimeout(() => {
-          setSuccessMessage("");
-        }, 10000);
+      setSuccessMessage("Backtest completed successfully");
+      if (window.successTimeout) clearTimeout(window.successTimeout);
+      window.successTimeout = setTimeout(() => {
+        setSuccessMessage("");
+      }, 10000);
       setTrades && setTrades(data.trades || []);
       setHeldShares && setHeldShares(data.heldShares || []);
       setPerformance && setPerformance(data.performance || {});
@@ -103,9 +119,9 @@ function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker 
         setSuccessMessage(null);
       }, 5000);
     } catch (err) {
-  setErrorMessage('Network Error: No response from server.');
-  setIsLoading(false);
-  // Do NOT clear successMessage here; it should persist after errors
+      setErrorMessage("Network Error: No response from server.");
+      setIsLoading(false);
+      // Do NOT clear successMessage here; it should persist after errors
     }
   };
   return (
@@ -124,7 +140,7 @@ function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker 
             aria-live="assertive"
             role="alert"
             className="status-error"
-            style={{ color: 'red', marginBottom: '0.5rem' }}
+            style={{ color: "red", marginBottom: "0.5rem" }}
           >
             {errorMessage || ""}
           </div>
@@ -132,32 +148,49 @@ function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker 
             aria-live="polite"
             role="status"
             className="status-success"
-            style={{ color: 'green', marginBottom: '0.5rem' }}
+            style={{ color: "green", marginBottom: "0.5rem" }}
           >
             {successMessage || ""}
           </div>
           {isLoading && (
-            <div aria-live="polite" role="status" style={{ color: "green", marginBottom: "1rem" }}>
+            <div
+              aria-live="polite"
+              role="status"
+              style={{ color: "green", marginBottom: "1rem" }}
+            >
               <span style={{ display: "flex", alignItems: "center" }}>
-                <span className="spinner" style={{
-                  width: "1.5rem",
-                  height: "1.5rem",
-                  border: "3px solid #ccc",
-                  borderTop: "3px solid #333",
-                  borderRadius: "50%",
-                  animation: "spin 1s linear infinite"
-                }} />
-                <span style={{ marginLeft: "0.5rem" }}>Running backtest...</span>
+                <span
+                  className="spinner"
+                  style={{
+                    width: "1.5rem",
+                    height: "1.5rem",
+                    border: "3px solid #ccc",
+                    borderTop: "3px solid #333",
+                    borderRadius: "50%",
+                    animation: "spin 1s linear infinite",
+                  }}
+                />
+                <span style={{ marginLeft: "0.5rem" }}>
+                  Running backtest...
+                </span>
               </span>
             </div>
           )}
         </div>
-        <form role="form" onSubmit={handleSubmit} style={{ display: "flex", gap: "1rem", alignItems: "center" }} aria-describedby="grid-form-desc">
+        <form
+          role="form"
+          onSubmit={handleSubmit}
+          style={{ display: "flex", gap: "1rem", alignItems: "center" }}
+          aria-describedby="grid-form-desc"
+        >
           <span id="grid-form-desc" style={{ display: "none" }}>
-            Enter grid trading parameters and run a backtest. All fields are required.
+            Enter grid trading parameters and run a backtest. All fields are
+            required.
           </span>
           <div role="group" aria-labelledby="ticker-label">
-            <label id="ticker-label" htmlFor="ticker-select">Ticker</label>
+            <label id="ticker-label" htmlFor="ticker-select">
+              Ticker
+            </label>
             <select
               id="ticker-select"
               name="ticker"
@@ -175,7 +208,9 @@ function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker 
             </select>
           </div>
           <div role="group" aria-labelledby="shares-label">
-            <label id="shares-label" htmlFor="shares-input">Shares</label>
+            <label id="shares-label" htmlFor="shares-input">
+              Shares
+            </label>
             <input
               ref={sharesRef}
               id="shares-input"
@@ -192,7 +227,9 @@ function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker 
             />
           </div>
           <div role="group" aria-labelledby="grid-up-label">
-            <label id="grid-up-label" htmlFor="grid-up-input">Grid Up</label>
+            <label id="grid-up-label" htmlFor="grid-up-input">
+              Grid Up
+            </label>
             <input
               ref={gridUpRef}
               id="grid-up-input"
@@ -210,7 +247,9 @@ function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker 
             />
           </div>
           <div role="group" aria-labelledby="grid-down-label">
-            <label id="grid-down-label" htmlFor="grid-down-input">Grid Down</label>
+            <label id="grid-down-label" htmlFor="grid-down-input">
+              Grid Down
+            </label>
             <input
               ref={gridDownRef}
               id="grid-down-input"
@@ -228,7 +267,9 @@ function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker 
             />
           </div>
           <div role="group" aria-labelledby="grid-increment-label">
-            <label id="grid-increment-label" htmlFor="grid-increment-input">Grid Increment</label>
+            <label id="grid-increment-label" htmlFor="grid-increment-input">
+              Grid Increment
+            </label>
             <input
               ref={gridIncrementRef}
               id="grid-increment-input"
@@ -242,11 +283,15 @@ function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker 
               min={0.001}
               aria-required="true"
               aria-label="Grid increment value"
-              aria-invalid={form.grid_increment === "" || Number(form.grid_increment) <= 0}
+              aria-invalid={
+                form.grid_increment === "" || Number(form.grid_increment) <= 0
+              }
             />
           </div>
           <div role="group" aria-labelledby="timeframe-label">
-            <label id="timeframe-label" htmlFor="timeframe-select">Timeframe</label>
+            <label id="timeframe-label" htmlFor="timeframe-select">
+              Timeframe
+            </label>
             <select
               id="timeframe-select"
               name="timeframe"
@@ -262,8 +307,13 @@ function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker 
               <option value="1 M">1 Month</option>
             </select>
           </div>
-        <button type="submit" disabled={isLoading} aria-busy={isLoading ? "true" : "false"} aria-label="Run backtest">
-          {isLoading ? "Running..." : "Backtest"}
+          <button
+            type="submit"
+            disabled={isLoading}
+            aria-busy={isLoading ? "true" : "false"}
+            aria-label="Run backtest"
+          >
+            {isLoading ? "Running..." : "Backtest"}
           </button>
         </form>
       </section>
@@ -272,6 +322,3 @@ function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker 
 }
 
 export default GridForm;
-
-
-
