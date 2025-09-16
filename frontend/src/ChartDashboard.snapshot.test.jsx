@@ -15,7 +15,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  global.fetch && (global.fetch = undefined);
+  
 });
 
 describe("ChartDashboard", () => {
