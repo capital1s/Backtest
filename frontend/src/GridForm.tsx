@@ -58,6 +58,7 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [status, setStatus] = useState("");
   const tickerRef = useRef<HTMLInputElement>(null);
   const sharesRef = useRef<HTMLInputElement>(null);
   const gridUpRef = useRef<HTMLInputElement>(null);
@@ -74,6 +75,7 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
 
   const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setStatus("");
     try {
       await schema.validate(form, { abortEarly: false });
     } catch (validationError: any) {
@@ -82,6 +84,7 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
       } else {
         setError(validationError.message);
       }
+      setStatus("");
       return;
     }
     const payload = {
@@ -103,11 +106,13 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
       if (!res.ok) {
         const text = await res.text();
         setError(`API Error: ${res.status} - ${text}`);
+        setStatus("");
         setLoading(false);
         return;
       }
       const data = await res.json();
       setError("");
+      setStatus("Backtest completed successfully");
       if (data) {
         setPerformance(data.performance ?? null);
         setTrades(data.trades ?? []);
@@ -115,6 +120,7 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
       }
     } catch (err: any) {
       setError(`Network Error: ${err.message || err}`);
+      setStatus("");
     } finally {
       setLoading(false);
     }
@@ -125,11 +131,15 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
       <h2 id="grid-form-title" style={{ display: "none" }}>
         Grid Trading Backtest Form
       </h2>
-      {error && (
-        <div style={{ color: "red", marginBottom: "1rem" }} role="alert" aria-live="assertive">
+      {/* Always render error and status nodes for accessibility and test compliance */}
+      <div style={{ minHeight: "1.5em" }}>
+        <div style={{ color: "red", marginBottom: "0.5rem" }} role="alert" aria-live="assertive">
           {error}
         </div>
-      )}
+        <div style={{ color: "green", marginBottom: "0.5rem" }} role="status" aria-live="polite">
+          {status}
+        </div>
+      </div>
       <form onSubmit={handleSubmit} style={{ display: "flex", gap: "1rem", alignItems: "center" }} aria-describedby="grid-form-desc">
         <span id="grid-form-desc" style={{ display: "none" }}>
           Enter grid trading parameters and run a backtest. All fields are required.
