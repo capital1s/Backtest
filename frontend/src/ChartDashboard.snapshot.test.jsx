@@ -7,21 +7,25 @@ import ChartDashboard from "./ChartDashboard";
 
 // Prevent network calls during tests
 beforeAll(() => {
-  global.fetch = vi.fn(() => Promise.resolve({
-    ok: true,
-    json: () => Promise.resolve({ chart: [] }),
-    text: () => Promise.resolve("")
-  }));
+  global.fetch = vi.fn(() =>
+    Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve({ chart: [] }),
+      text: () => Promise.resolve(""),
+    }),
+  );
 });
 
-afterAll(() => {
-  global.fetch && (global.fetch = undefined);
-});
+afterAll(() => {});
 
 describe("ChartDashboard", () => {
   it("matches snapshot", () => {
     const { asFragment } = render(
-      <ChartDashboard ticker="AAPL" setTicker={() => {}} tickers={["AAPL", "MSFT"]} />
+      <ChartDashboard
+        ticker="AAPL"
+        setTicker={() => {}}
+        tickers={["AAPL", "MSFT"]}
+      />,
     );
     expect(asFragment()).toMatchSnapshot();
   });
