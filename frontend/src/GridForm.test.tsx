@@ -5,12 +5,14 @@ import { beforeAll, afterAll, vi } from "vitest";
 import { render } from "@testing-library/react";
 // Prevent network calls during tests
 beforeAll(() => {
-  global.fetch = vi.fn(() => Promise.resolve({
-    ok: true,
-    status: 200,
-    json: () => Promise.resolve({}),
-    text: () => Promise.resolve("")
-  } as Response));
+  global.fetch = vi.fn(() =>
+    Promise.resolve({
+      ok: true,
+      status: 200,
+      json: () => Promise.resolve({}),
+      text: () => Promise.resolve(""),
+    } as Response),
+  );
 });
 
 afterAll(() => {
@@ -29,7 +31,7 @@ describe("GridForm", () => {
         setTickerBlur={() => {}}
         setPerformance={() => {}}
         ticker="AAPL"
-      />
+      />,
     );
     expect(asFragment()).toMatchSnapshot();
   });
