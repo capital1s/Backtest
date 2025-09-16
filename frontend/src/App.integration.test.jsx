@@ -186,12 +186,10 @@ describe("App integration", () => {
                 const statuses = screen.queryAllByRole("status");
                 const fallbackAlert = screen.queryByRole("alert");
                 expect(
-                    (statuses &&
-                        statuses.some((s) =>
+                    (statuses?.some((s) =>
                             /Backtest completed successfully/i.test(s.textContent),
                         )) ||
-                    (fallbackAlert &&
-                        fallbackAlert.textContent &&
+                    (fallbackAlert?.textContent &&
                         /error|please fill in all fields|no ticker selected/i.test(
                             fallbackAlert.textContent,
                         )),
