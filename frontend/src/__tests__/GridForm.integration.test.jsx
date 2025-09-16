@@ -404,7 +404,7 @@ describe('GridForm Integration - Multi-step and Edge Cases', () => {
       expect(foundStatus || foundAlert).toBe(true);
     }, { timeout: 5000 });
     // Error again
-    if (global.fetch && global.fetch.mock) {
+    if (global.fetch?.mock) {
       global.fetch.mockClear();
       global.fetch
         .mockResolvedValueOnce({ ok: false, status: 500, text: async () => 'Server error!' });
@@ -435,7 +435,7 @@ describe('GridForm Integration - Multi-step and Edge Cases', () => {
         }
         if (!foundStatus) {
           screen.debug();
-          if (global.fetch && global.fetch.mock) {
+          if (global.fetch?.mock) {
             // eslint-disable-next-line no-console
             console.log('Fetch mock calls (error):', global.fetch.mock.calls);
           }
@@ -456,7 +456,7 @@ describe('GridForm Integration - Multi-step and Edge Cases', () => {
         }
         if (!found) {
           screen.debug();
-          if (global.fetch && global.fetch.mock) {
+          if (global.fetch?.mock) {
             // eslint-disable-next-line no-console
             console.log('Fetch mock calls (error):', global.fetch.mock.calls);
           }
