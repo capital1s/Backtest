@@ -1,4 +1,3 @@
-# pylint: skip-file
 import os
 import sys
 from logging.config import fileConfig
@@ -7,11 +6,8 @@ from alembic import context
 from sqlalchemy import engine_from_config, pool
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-# from main import Base  # Import your SQLAlchemy Base (ignored as requested)
 
 config = context.config
-# fileConfig(config.config_file_name)  # Logger configuration is security sensitive and commented out
-# target_metadata = Base.metadata  # Ignored as requested
 
 
 def run_migrations_offline():
