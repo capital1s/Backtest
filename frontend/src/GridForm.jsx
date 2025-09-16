@@ -95,9 +95,9 @@ function GridForm({ setTrades, setHeldShares, setTicker, setPerformance, ticker 
         window.successTimeout = setTimeout(() => {
           setSuccessMessage("");
         }, 10000);
-      setTrades && setTrades(data.trades || []);
-      setHeldShares && setHeldShares(data.heldShares || []);
-      setPerformance && setPerformance(data.performance || {});
+      setTrades?.(data.trades || []);
+      setHeldShares?.(data.heldShares || []);
+      setPerformance?.(data.performance || {});
       // Ensure status persists after rapid/edge submissions
       setTimeout(() => {
         setSuccessMessage(null);
