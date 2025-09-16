@@ -14,7 +14,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  // @ts-ignore
+  // @ts-expect-error
   global.fetch = undefined;
 });
 import GridForm from "./GridForm";
