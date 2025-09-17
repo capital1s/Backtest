@@ -6,13 +6,18 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
+    "lint:check": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
     "test:run": "vitest run",
     "test:watch": "vitest --watch",
     "test:ui": "vitest --ui",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "test:performance": "vitest run --reporter=json --outputFile=../test-results.json && node ../scripts/test-performance-monitor.js",
+    "test:ci": "npm run lint:check && npm run test:run && npm run coverage",
+    "clean": "rm -rf dist node_modules/.vite",
+    "analyze": "npx vite-bundle-analyzer dist"
   },
   "dependencies": {
     "node-fetch": "^3.3.2",
@@ -20,7 +25,8 @@
     "react": "^19.1.1",
     "react-chartjs-2": "^5.3.0",
     "react-dom": "^19.1.1",
-    "whatwg-fetch": "^3.6.20"
+    "whatwg-fetch": "^3.6.20",
+    "yup": "^1.7.0"
   },
   "coverageThreshold": {
     "statements": 80,

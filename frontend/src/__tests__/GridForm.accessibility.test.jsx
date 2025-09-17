@@ -234,4 +234,40 @@ describe("GridForm Large Input", () => {
     // Should not show error for large valid values
     expect(screen.queryByRole("alert")).toBeNull();
   });
+
+  it("has no accessibility violations after error state", async () => {
+    const user = userEvent.setup();
+    const { container } = render(
+      <GridForm
+        {...mockProps}
+        ticker=""
+        errorMessage={""}
+        successMessage={""}
+        setErrorMessage={() => {}}
+        setSuccessMessage={() => {}}
+      />,
+    );
+
+    const submitButton = screen.getByRole("button", { name: /run backtest/i });
+    await user.click(submitButton);
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("has no accessibility violations after success state", async () => {
+    const { container } = render(
+      <GridForm
+        {...mockProps}
+        ticker="AAPL"
+        errorMessage={""}
+        successMessage={"Backtest completed successfully"}
+        setErrorMessage={() => {}}
+        setSuccessMessage={() => {}}
+      />,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
 });

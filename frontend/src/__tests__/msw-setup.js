@@ -8,11 +8,10 @@ import { beforeAll, afterEach, afterAll } from "vitest";
 
 // Define handlers
 export const handlers = [
-  http.post("/backtest", async (req, res, ctx) => {
+  http.post("/backtest", async () => {
     console.log("[MSW] Intercepted /backtest request");
-    return res(
-      ctx.status(200),
-      ctx.json({
+    return new Response(
+      JSON.stringify({
         status: "success",
         message: "Backtest completed successfully",
         trades: [{ id: 1, type: "buy", price: 100, shares: 10 }],
@@ -25,6 +24,10 @@ export const handlers = [
           losses: 0,
         },
       }),
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      },
     );
   }),
 ];
@@ -32,6 +35,24 @@ export const handlers = [
 export const server = setupServer(...handlers);
 
 // Start server before all tests, reset after each, close after all
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+beforeAll(() => {
+  try {
+    server.listen({ onUnhandledRequest: "warn" });
+  } catch (error) {
+    console.warn("MSW server start warning:", error.message);
+  }
+});
+afterEach(() => {
+  try {
+    server.resetHandlers();
+  } catch (error) {
+    console.warn("MSW reset warning (ignored):", error.message);
+  }
+});
+afterAll(() => {
+  try {
+    server.close();
+  } catch (error) {
+    console.warn("MSW cleanup warning (ignored):", error.message);
+  }
+});

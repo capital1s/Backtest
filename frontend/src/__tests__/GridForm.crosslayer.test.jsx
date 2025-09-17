@@ -1,5 +1,5 @@
 import React from "react";
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import "@testing-library/jest-dom";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -18,6 +18,16 @@ describe("GridForm Integration - Multi-step and Edge Cases", () => {
   beforeEach(() => {
     // Default mock setup - can be overridden by individual tests
     vi.clearAllMocks();
+
+    // Suppress console output for intentional test errors
+    vi.spyOn(console, "log").mockImplementation(() => {});
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    vi.spyOn(console, "warn").mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    // Restore console
+    vi.restoreAllMocks();
   });
 
   it("shows error when all fields are empty", async () => {

@@ -1,0 +1,720 @@
+{
+  "numTotalTestSuites": 32,
+  "numPassedTestSuites": 28,
+  "numFailedTestSuites": 4,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 56,
+  "numPassedTests": 45,
+  "numFailedTests": 11,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 1,
+    "filesUpdated": 0,
+    "matched": 4,
+    "total": 5,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 1,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1758130136747,
+  "success": false,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["App integration"],
+          "fullName": "App integration submits grid form and displays results",
+          "status": "passed",
+          "title": "submits grid form and displays results",
+          "duration": 104.746803,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1758130139070,
+      "endTime": 1758130139174.7468,
+      "status": "passed",
+      "message": "",
+      "name": "/Users/michaelpennell/Backtest/frontend/src/App.integration.test.jsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["App"],
+          "fullName": "App matches snapshot",
+          "status": "failed",
+          "title": "matches snapshot",
+          "duration": 156.21266300000025,
+          "failureMessages": [
+            "Error: Snapshot `App > matches snapshot 1` mismatched\n    at createMismatchError (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/snapshot/dist/index.js:2195:16)\n    at SnapshotClient.assert (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/snapshot/dist/index.js:2279:10)\n    at Proxy.<anonymous> (file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/vi.bdSIJ99Y.js:303:23)\n    at Proxy.methodWrapper (file:///Users/michaelpennell/Backtest/frontend/node_modules/chai/index.js:1686:25)\n    at /Users/michaelpennell/Backtest/frontend/src/App.test.jsx:78:26\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)"
+          ],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["App"],
+          "fullName": "App renders main components",
+          "status": "failed",
+          "title": "renders main components",
+          "duration": 136.82737300000008,
+          "failureMessages": [
+            "TestingLibraryElementError: Unable to find an element by: [data-testid=\"mock-chart-dashboard\"]\n\nIgnored nodes: comments, script, style\n\u001b[36m<body>\u001b[39m\n  \u001b[36m<div>\u001b[39m\n    \u001b[36m<main\u001b[39m\n      \u001b[33mstyle\u001b[39m=\u001b[32m\"padding: 2rem;\"\u001b[39m\n    \u001b[36m>\u001b[39m\n      \u001b[36m<div\u001b[39m\n        \u001b[33mclass\u001b[39m=\u001b[32m\"theme-switcher\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<button\u001b[39m\n          \u001b[33maria-label\u001b[39m=\u001b[32m\"Toggle dark mode\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0m🌙 Dark Mode\u001b[0m\n        \u001b[36m</button>\u001b[39m\n      \u001b[36m</div>\u001b[39m\n      \u001b[36m<h1>\u001b[39m\n        \u001b[0mGrid Trading Bot Dashboard\u001b[0m\n      \u001b[36m</h1>\u001b[39m\n      \u001b[36m<div\u001b[39m\n        \u001b[33mclass\u001b[39m=\u001b[32m\"status-container\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<div\u001b[39m\n          \u001b[33maria-live\u001b[39m=\u001b[32m\"assertive\"\u001b[39m\n          \u001b[33mclass\u001b[39m=\u001b[32m\"status-error\"\u001b[39m\n          \u001b[33mrole\u001b[39m=\u001b[32m\"alert\"\u001b[39m\n          \u001b[33mstyle\u001b[39m=\u001b[32m\"color: red; margin-bottom: 0.5rem;\"\u001b[39m\n        \u001b[36m/>\u001b[39m\n        \u001b[36m<div\u001b[39m\n          \u001b[33maria-live\u001b[39m=\u001b[32m\"polite\"\u001b[39m\n          \u001b[33mclass\u001b[39m=\u001b[32m\"status-success\"\u001b[39m\n          \u001b[33mrole\u001b[39m=\u001b[32m\"status\"\u001b[39m\n          \u001b[33mstyle\u001b[39m=\u001b[32m\"color: green; margin-bottom: 0.5rem;\"\u001b[39m\n        \u001b[36m/>\u001b[39m\n      \u001b[36m</div>\u001b[39m\n      \u001b[36m<div\u001b[39m\n        \u001b[33mdata-testid\u001b[39m=\u001b[32m\"mock-grid-form\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<button\u001b[39m\n          \u001b[33mdata-testid\u001b[39m=\u001b[32m\"trigger-error\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mTrigger Error\u001b[0m\n        \u001b[36m</button>\u001b[39m\n        \u001b[36m<button\u001b[39m\n          \u001b[33mdata-testid\u001b[39m=\u001b[32m\"trigger-success\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mTrigger Success\u001b[0m\n        \u001b[36m</button>\u001b[39m\n        \u001b[36m<button\u001b[39m\n          \u001b[33mdata-testid\u001b[39m=\u001b[32m\"trigger-performance\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mTrigger Performance\u001b[0m\n        \u001b[36m</button>\u001b[39m\n        \u001b[36m<button\u001b[39m\n          \u001b[33mdata-testid\u001b[39m=\u001b[32m\"trigger-data\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mTrigger Data\u001b[0m\n        \u001b[36m</button>\u001b[39m\n      \u001b[36m</div>\u001b[39m\n      \u001b[36m<div>\u001b[39m\n        \u001b[0mLoading charts...\u001b[0m\n      \u001b[36m</div>\u001b[39m\n      \u001b[36m<div\u001b[39m\n        \u001b[33maria-live\u001b[39m=\u001b[32m\"polite\"\u001b[39m\n        \u001b[33mdata-testid\u001b[39m=\u001b[32m\"hidden-error-success\"\u001b[39m\n        \u001b[33mrole\u001b[39m=\u001b[32m\"status\"\u001b[39m\n        \u001b[33mstyle\u001b[39m=\u001b[32m\"color: green; margin-bottom: 1rem;\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<span\u001b[39m\n          \u001b[33mstyle\u001b[39m=\u001b[32m\"display: none;\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0m[App.jsx] errorMessage: , successMessage: , performance: null\u001b[0m\n        \u001b[36m</span>\u001b[39m\n      \u001b[36m</div>\u001b[39m\n    \u001b[36m</main>\u001b[39m\n  \u001b[36m</div>\u001b[39m\n\u001b[36m</body>\u001b[39m\n    at Object.getElementError (/Users/michaelpennell/Backtest/frontend/node_modules/@testing-library/dom/dist/config.js:37:19)\n    at /Users/michaelpennell/Backtest/frontend/node_modules/@testing-library/dom/dist/query-helpers.js:76:38\n    at /Users/michaelpennell/Backtest/frontend/node_modules/@testing-library/dom/dist/query-helpers.js:52:17\n    at /Users/michaelpennell/Backtest/frontend/node_modules/@testing-library/dom/dist/query-helpers.js:95:19\n    at /Users/michaelpennell/Backtest/frontend/src/App.test.jsx:86:19\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)"
+          ],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["App"],
+          "fullName": "App handles error messages correctly",
+          "status": "failed",
+          "title": "handles error messages correctly",
+          "duration": 140.36298099999976,
+          "failureMessages": [
+            "TestingLibraryElementError: Found multiple elements with the text: Test error message\n\nHere are the matching elements:\n\nIgnored nodes: comments, script, style\n\u001b[36m<div\u001b[39m\n  \u001b[33maria-live\u001b[39m=\u001b[32m\"assertive\"\u001b[39m\n  \u001b[33mclass\u001b[39m=\u001b[32m\"status-error\"\u001b[39m\n  \u001b[33mrole\u001b[39m=\u001b[32m\"alert\"\u001b[39m\n  \u001b[33mstyle\u001b[39m=\u001b[32m\"color: red; margin-bottom: 0.5rem;\"\u001b[39m\n\u001b[36m>\u001b[39m\n  \u001b[0mTest error message\u001b[0m\n\u001b[36m</div>\u001b[39m\n\nIgnored nodes: comments, script, style\n\u001b[36m<span>\u001b[39m\n  \u001b[0mTest error message\u001b[0m\n\u001b[36m</span>\u001b[39m\n\n(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).\n\nIgnored nodes: comments, script, style\n\u001b[36m<body>\u001b[39m\n  \u001b[36m<div>\u001b[39m\n    \u001b[36m<main\u001b[39m\n      \u001b[33mstyle\u001b[39m=\u001b[32m\"padding: 2rem;\"\u001b[39m\n    \u001b[36m>\u001b[39m\n      \u001b[36m<div\u001b[39m\n        \u001b[33mclass\u001b[39m=\u001b[32m\"theme-switcher\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<button\u001b[39m\n          \u001b[33maria-label\u001b[39m=\u001b[32m\"Toggle dark mode\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0m🌙 Dark Mode\u001b[0m\n        \u001b[36m</button>\u001b[39m\n      \u001b[36m</div>\u001b[39m\n      \u001b[36m<h1>\u001b[39m\n        \u001b[0mGrid Trading Bot Dashboard\u001b[0m\n      \u001b[36m</h1>\u001b[39m\n      \u001b[36m<div\u001b[39m\n        \u001b[33mclass\u001b[39m=\u001b[32m\"status-container\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<div\u001b[39m\n          \u001b[33maria-live\u001b[39m=\u001b[32m\"assertive\"\u001b[39m\n          \u001b[33mclass\u001b[39m=\u001b[32m\"status-error\"\u001b[39m\n          \u001b[33mrole\u001b[39m=\u001b[32m\"alert\"\u001b[39m\n          \u001b[33mstyle\u001b[39m=\u001b[32m\"color: red; margin-bottom: 0.5rem;\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mTest error message\u001b[0m\n        \u001b[36m</div>\u001b[39m\n        \u001b[36m<div\u001b[39m\n          \u001b[33maria-live\u001b[39m=\u001b[32m\"polite\"\u001b[39m\n          \u001b[33mclass\u001b[39m=\u001b[32m\"status-success\"\u001b[39m\n          \u001b[33mrole\u001b[39m=\u001b[32m\"status\"\u001b[39m\n          \u001b[33mstyle\u001b[39m=\u001b[32m\"color: green; margin-bottom: 0.5rem;\"\u001b[39m\n        \u001b[36m/>\u001b[39m\n      \u001b[36m</div>\u001b[39m\n      \u001b[36m<div\u001b[39m\n        \u001b[33mdata-testid\u001b[39m=\u001b[32m\"mock-grid-form\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<button\u001b[39m\n          \u001b[33mdata-testid\u001b[39m=\u001b[32m\"trigger-error\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mTrigger Error\u001b[0m\n        \u001b[36m</button>\u001b[39m\n        \u001b[36m<button\u001b[39m\n          \u001b[33mdata-testid\u001b[39m=\u001b[32m\"trigger-success\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mTrigger Success\u001b[0m\n        \u001b[36m</button>\u001b[39m\n        \u001b[36m<button\u001b[39m\n          \u001b[33mdata-testid\u001b[39m=\u001b[32m\"trigger-performance\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mTrigger Performance\u001b[0m\n        \u001b[36m</button>\u001b[39m\n        \u001b[36m<button\u001b[39m\n          \u001b[33mdata-testid\u001b[39m=\u001b[32m\"trigger-data\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mTrigger Data\u001b[0m\n        \u001b[36m</button>\u001b[39m\n      \u001b[36m</div>\u001b[39m\n      \u001b[36m<div>\u001b[39m\n        \u001b[0mLoading charts...\u001b[0m\n      \u001b[36m</div>\u001b[39m\n      \u001b[36m<div\u001b[39m\n        \u001b[33maria-live\u001b[39m=\u001b[32m\"polite\"\u001b[39m\n        \u001b[33mdata-testid\u001b[39m=\u001b[32m\"hidden-error-success\"\u001b[39m\n        \u001b[33mrole\u001b[39m=\u001b[32m\"status\"\u001b[39m\n        \u001b[33mstyle\u001b[39m=\u001b[32m\"color: red; margin-bottom: 1rem;\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<span>\u001b[39m\n          \u001b[0mTest error message\u001b[0m\n        \u001b[36m</span>\u001b[39m\n        \u001b[36m<span\u001b[39m\n          \u001b[33mstyle\u001b[39m=\u001b[32m\"display: none;\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0m[App.jsx] errorMessage: Test error message, successMessage: , performance: null\u001b[0m\n        \u001b[36m</span>\u001b[39m\n      \u001b[36m</div>\u001b[39m\n    \u001b[36m</main>\u001b[39m\n  \u001b[36m</div>\u001b[39m\n\u001b[36m</body>\u001b[39m\n    at Object.getElementError (/Users/michaelpennell/Backtest/frontend/node_modules/@testing-library/dom/dist/config.js:37:19)\n    at getElementError (/Users/michaelpennell/Backtest/frontend/node_modules/@testing-library/dom/dist/query-helpers.js:20:35)\n    at getMultipleElementsFoundError (/Users/michaelpennell/Backtest/frontend/node_modules/@testing-library/dom/dist/query-helpers.js:23:10)\n    at /Users/michaelpennell/Backtest/frontend/node_modules/@testing-library/dom/dist/query-helpers.js:55:13\n    at /Users/michaelpennell/Backtest/frontend/node_modules/@testing-library/dom/dist/query-helpers.js:95:19\n    at /Users/michaelpennell/Backtest/frontend/src/App.test.jsx:95:19\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:752:20"
+          ],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["App"],
+          "fullName": "App handles success messages with auto-clear timeout",
+          "status": "failed",
+          "title": "handles success messages with auto-clear timeout",
+          "duration": 10003.862665,
+          "failureMessages": [
+            "Error: STACK_TRACE_ERROR\n    at task (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:638:27)\n    at Object.<anonymous> (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:662:16)\n    at Object.<anonymous> (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:458:28)\n    at chain (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:369:14)\n    at /Users/michaelpennell/Backtest/frontend/src/App.test.jsx:98:3\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:734:40\n    at runWithSuite (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1849:8)\n    at Object.collect (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:734:10)\n    at Object.collect (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:738:54)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at collectTests (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1179:25)\n    at startTests (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1817:17)\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:117:26\n    at withEnv (file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:84:3)\n    at run (file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:109:2)"
+          ],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["App"],
+          "fullName": "App displays performance metrics when available",
+          "status": "failed",
+          "title": "displays performance metrics when available",
+          "duration": 10002.661995,
+          "failureMessages": [
+            "Error: STACK_TRACE_ERROR\n    at task (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:638:27)\n    at Object.<anonymous> (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:662:16)\n    at Object.<anonymous> (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:458:28)\n    at chain (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:369:14)\n    at /Users/michaelpennell/Backtest/frontend/src/App.test.jsx:117:3\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:734:40\n    at runWithSuite (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1849:8)\n    at Object.collect (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:734:10)\n    at Object.collect (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:738:54)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at collectTests (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1179:25)\n    at startTests (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1817:17)\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:117:26\n    at withEnv (file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:84:3)\n    at run (file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:109:2)"
+          ],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["App"],
+          "fullName": "App shows default success message when performance exists but no explicit message",
+          "status": "failed",
+          "title": "shows default success message when performance exists but no explicit message",
+          "duration": 10002.508863,
+          "failureMessages": [
+            "Error: STACK_TRACE_ERROR\n    at task (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:638:27)\n    at Object.<anonymous> (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:662:16)\n    at Object.<anonymous> (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:458:28)\n    at chain (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:369:14)\n    at /Users/michaelpennell/Backtest/frontend/src/App.test.jsx:131:3\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:734:40\n    at runWithSuite (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1849:8)\n    at Object.collect (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:734:10)\n    at Object.collect (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:738:54)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at collectTests (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1179:25)\n    at startTests (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1817:17)\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:117:26\n    at withEnv (file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:84:3)\n    at run (file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:109:2)"
+          ],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["App"],
+          "fullName": "App passes data to ChartDashboard component",
+          "status": "failed",
+          "title": "passes data to ChartDashboard component",
+          "duration": 10002.582823999997,
+          "failureMessages": [
+            "Error: STACK_TRACE_ERROR\n    at task (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:638:27)\n    at Object.<anonymous> (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:662:16)\n    at Object.<anonymous> (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:458:28)\n    at chain (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:369:14)\n    at /Users/michaelpennell/Backtest/frontend/src/App.test.jsx:140:3\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:734:40\n    at runWithSuite (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1849:8)\n    at Object.collect (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:734:10)\n    at Object.collect (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:738:54)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at collectTests (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1179:25)\n    at startTests (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1817:17)\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:117:26\n    at withEnv (file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:84:3)\n    at run (file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:109:2)"
+          ],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["App"],
+          "fullName": "App success message clears error message",
+          "status": "failed",
+          "title": "success message clears error message",
+          "duration": 10001.026038999997,
+          "failureMessages": [
+            "Error: STACK_TRACE_ERROR\n    at task (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:638:27)\n    at Object.<anonymous> (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:662:16)\n    at Object.<anonymous> (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:458:28)\n    at chain (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:369:14)\n    at /Users/michaelpennell/Backtest/frontend/src/App.test.jsx:149:3\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:734:40\n    at runWithSuite (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1849:8)\n    at Object.collect (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:734:10)\n    at Object.collect (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:738:54)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at collectTests (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1179:25)\n    at startTests (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1817:17)\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:117:26\n    at withEnv (file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:84:3)\n    at run (file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:109:2)"
+          ],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["App"],
+          "fullName": "App clears existing timeout when new success message is set",
+          "status": "failed",
+          "title": "clears existing timeout when new success message is set",
+          "duration": 10003.169807000006,
+          "failureMessages": [
+            "Error: STACK_TRACE_ERROR\n    at task (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:638:27)\n    at Object.<anonymous> (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:662:16)\n    at Object.<anonymous> (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:458:28)\n    at chain (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:369:14)\n    at /Users/michaelpennell/Backtest/frontend/src/App.test.jsx:165:3\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:734:40\n    at runWithSuite (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1849:8)\n    at Object.collect (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:734:10)\n    at Object.collect (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:738:54)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at collectTests (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1179:25)\n    at startTests (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1817:17)\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:117:26\n    at withEnv (file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:84:3)\n    at run (file:///Users/michaelpennell/Backtest/frontend/node_modules/vitest/dist/chunks/runBaseTests.9Ij9_de-.js:109:2)"
+          ],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["App"],
+          "fullName": "App has proper ARIA roles and accessibility",
+          "status": "failed",
+          "title": "has proper ARIA roles and accessibility",
+          "duration": 23.054108000003907,
+          "failureMessages": [
+            "Error: \u001b[2mexpect(\u001b[22m\u001b[31melement\u001b[39m\u001b[2m).toHaveAttribute(\u001b[22m\u001b[32m\u001b[32m\"role\"\u001b[32m\u001b[39m\u001b[2m, \u001b[22m\u001b[32m\u001b[32m\"main\"\u001b[32m\u001b[39m\u001b[2m) // element.getAttribute(\"role\") === \"main\"\u001b[22m\n\nExpected the element to have attribute:\n\u001b[32m  role=\"main\"\u001b[39m\nReceived:\n\u001b[31m  null\u001b[39m\n    at Proxy.expectWrapper (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/expect/dist/index.js:1745:12)\n    at Proxy.<anonymous> (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/expect/dist/index.js:1029:14)\n    at Proxy.methodWrapper (file:///Users/michaelpennell/Backtest/frontend/node_modules/chai/index.js:1686:25)\n    at /Users/michaelpennell/Backtest/frontend/src/App.test.jsx:193:18\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)"
+          ],
+          "meta": {}
+        }
+      ],
+      "startTime": 1758130139056,
+      "endTime": 1758130199528.0542,
+      "status": "failed",
+      "message": "",
+      "name": "/Users/michaelpennell/Backtest/frontend/src/App.test.jsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["ChartDashboard"],
+          "fullName": "ChartDashboard matches snapshot",
+          "status": "passed",
+          "title": "matches snapshot",
+          "duration": 70.943982,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1758130138974,
+      "endTime": 1758130139044.944,
+      "status": "passed",
+      "message": "",
+      "name": "/Users/michaelpennell/Backtest/frontend/src/ChartDashboard.snapshot.test.jsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["ChartDashboard"],
+          "fullName": "ChartDashboard shows error if no ticker selected",
+          "status": "passed",
+          "title": "shows error if no ticker selected",
+          "duration": 180.33548899999982,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["ChartDashboard"],
+          "fullName": "ChartDashboard handles fetch error gracefully",
+          "status": "passed",
+          "title": "handles fetch error gracefully",
+          "duration": 112.5613900000003,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["ChartDashboard"],
+          "fullName": "ChartDashboard handles invalid JSON response",
+          "status": "passed",
+          "title": "handles invalid JSON response",
+          "duration": 157.05047999999988,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["ChartDashboard"],
+          "fullName": "ChartDashboard handles HTTP error responses",
+          "status": "passed",
+          "title": "handles HTTP error responses",
+          "duration": 111.88442599999962,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["ChartDashboard"],
+          "fullName": "ChartDashboard handles empty chart data",
+          "status": "failed",
+          "title": "handles empty chart data",
+          "duration": 117.38884499999995,
+          "failureMessages": [
+            "AssertionError: expected null to be truthy\n    at /Users/michaelpennell/Backtest/frontend/src/ChartDashboard.test.jsx:127:27\n    at file:///Users/michaelpennell/Backtest/frontend/node_modules/@vitest/runner/dist/chunk-hooks.js:752:20"
+          ],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["ChartDashboard"],
+          "fullName": "ChartDashboard changes frequency and triggers re-fetch",
+          "status": "passed",
+          "title": "changes frequency and triggers re-fetch",
+          "duration": 213.78797199999963,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["ChartDashboard"],
+          "fullName": "ChartDashboard has accessible labels for ticker and frequency",
+          "status": "passed",
+          "title": "has accessible labels for ticker and frequency",
+          "duration": 7.336936000000151,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["ChartDashboard"],
+          "fullName": "ChartDashboard renders chart with accessible canvas when data is present",
+          "status": "passed",
+          "title": "renders chart with accessible canvas when data is present",
+          "duration": 4.6140019999998,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1758130138977,
+      "endTime": 1758130139882.614,
+      "status": "failed",
+      "message": "",
+      "name": "/Users/michaelpennell/Backtest/frontend/src/ChartDashboard.test.jsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["ErrorBoundary"],
+          "fullName": "ErrorBoundary matches snapshot with children",
+          "status": "passed",
+          "title": "matches snapshot with children",
+          "duration": 36.09892500000001,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["ErrorBoundary"],
+          "fullName": "ErrorBoundary matches snapshot with error fallback",
+          "status": "passed",
+          "title": "matches snapshot with error fallback",
+          "duration": 59.79482700000017,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1758130138974,
+      "endTime": 1758130139069.795,
+      "status": "passed",
+      "message": "",
+      "name": "/Users/michaelpennell/Backtest/frontend/src/ErrorBoundary.snapshot.test.jsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["ErrorBoundary"],
+          "fullName": "ErrorBoundary renders fallback UI when child throws",
+          "status": "passed",
+          "title": "renders fallback UI when child throws",
+          "duration": 84.0343690000002,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["ErrorBoundary"],
+          "fullName": "ErrorBoundary renders children when no error",
+          "status": "passed",
+          "title": "renders children when no error",
+          "duration": 4.06579499999998,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1758130138974,
+      "endTime": 1758130139063.0657,
+      "status": "passed",
+      "message": "",
+      "name": "/Users/michaelpennell/Backtest/frontend/src/ErrorBoundary.test.jsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["GridForm"],
+          "fullName": "GridForm matches snapshot",
+          "status": "passed",
+          "title": "matches snapshot",
+          "duration": 100.75634000000014,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1758130138969,
+      "endTime": 1758130139069.7563,
+      "status": "passed",
+      "message": "",
+      "name": "/Users/michaelpennell/Backtest/frontend/src/GridForm.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["SharesHeld"],
+          "fullName": "SharesHeld renders no shares held message",
+          "status": "passed",
+          "title": "renders no shares held message",
+          "duration": 38.92973400000005,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["SharesHeld"],
+          "fullName": "SharesHeld renders held shares table",
+          "status": "passed",
+          "title": "renders held shares table",
+          "duration": 25.306929999999966,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1758130138972,
+      "endTime": 1758130139037.307,
+      "status": "passed",
+      "message": "",
+      "name": "/Users/michaelpennell/Backtest/frontend/src/SharesHeld.test.jsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["TradeChart"],
+          "fullName": "TradeChart renders no trades message when trades is empty",
+          "status": "passed",
+          "title": "renders no trades message when trades is empty",
+          "duration": 38.30347900000015,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["TradeChart"],
+          "fullName": "TradeChart renders no trades message when trades is undefined",
+          "status": "passed",
+          "title": "renders no trades message when trades is undefined",
+          "duration": 4.852841000000126,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["TradeChart"],
+          "fullName": "TradeChart renders chart title and trade data when trades are provided",
+          "status": "passed",
+          "title": "renders chart title and trade data when trades are provided",
+          "duration": 9.817070000000058,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1758130138979,
+      "endTime": 1758130139032.8171,
+      "status": "passed",
+      "message": "",
+      "name": "/Users/michaelpennell/Backtest/frontend/src/TradeChart.test.jsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["TradeTable"],
+          "fullName": "TradeTable renders no trades message",
+          "status": "passed",
+          "title": "renders no trades message",
+          "duration": 39.784022999999934,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["TradeTable"],
+          "fullName": "TradeTable renders trades table",
+          "status": "passed",
+          "title": "renders trades table",
+          "duration": 36.59220099999993,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1758130138976,
+      "endTime": 1758130139051.5923,
+      "status": "passed",
+      "message": "",
+      "name": "/Users/michaelpennell/Backtest/frontend/src/TradeTable.test.jsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["GridForm Accessibility (axe)"],
+          "fullName": "GridForm Accessibility (axe) has no accessibility violations on initial render",
+          "status": "passed",
+          "title": "has no accessibility violations on initial render",
+          "duration": 512.7987360000002,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["GridForm Accessibility (axe)"],
+          "fullName": "GridForm Accessibility (axe) has no accessibility violations after error",
+          "status": "passed",
+          "title": "has no accessibility violations after error",
+          "duration": 180.64938299999994,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["GridForm Accessibility (axe)"],
+          "fullName": "GridForm Accessibility (axe) has no accessibility violations after success",
+          "status": "passed",
+          "title": "has no accessibility violations after success",
+          "duration": 146.72173999999995,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1758130139168,
+      "endTime": 1758130140008.7217,
+      "status": "passed",
+      "message": "",
+      "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.accessibility.axe.test.jsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["GridForm Accessibility"],
+          "fullName": "GridForm Accessibility has no accessibility violations",
+          "status": "passed",
+          "title": "has no accessibility violations",
+          "duration": 506.9066130000001,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["GridForm Accessibility"],
+          "fullName": "GridForm Accessibility allows keyboard navigation and submit",
+          "status": "passed",
+          "title": "allows keyboard navigation and submit",
+          "duration": 199.06689499999993,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["GridForm Boundary Values"],
+          "fullName": "GridForm Boundary Values shows error for missing ticker selection",
+          "status": "passed",
+          "title": "shows error for missing ticker selection",
+          "duration": 168.23770100000002,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["GridForm Boundary Values"],
+          "fullName": "GridForm Boundary Values accepts min and max numeric values",
+          "status": "passed",
+          "title": "accepts min and max numeric values",
+          "duration": 90.53416900000002,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": ["GridForm Large Input"],
+          "fullName": "GridForm Large Input handles very large numbers",
+          "status": "passed",
+          "title": "handles very large numbers",
+          "duration": 77.72878700000001,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1758130139178,
+      "endTime": 1758130140223.7288,
+      "status": "passed",
+      "message": "",
+      "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.accessibility.test.jsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "GridForm Integration - Multi-step and Edge Cases"
+          ],
+          "fullName": "GridForm Integration - Multi-step and Edge Cases shows error when all fields are empty",
+          "status": "passed",
+          "title": "shows error when all fields are empty",
+          "duration": 235.2573339999999,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "GridForm Integration - Multi-step and Edge Cases"
+          ],
+          "fullName": "GridForm Integration - Multi-step and Edge Cases shows error when all fields are invalid",
+          "status": "passed",
+          "title": "shows error when all fields are invalid",
+          "duration": 435.1358049999999,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "GridForm Integration - Multi-step and Edge Cases"
+          ],
+          "fullName": "GridForm Integration - Multi-step and Edge Cases handles duplicate rapid submissions (stress test)",
+          "status": "passed",
+          "title": "handles duplicate rapid submissions (stress test)",
+          "duration": 264.03307799999993,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "GridForm Integration - Multi-step and Edge Cases"
+          ],
+          "fullName": "GridForm Integration - Multi-step and Edge Cases tests all combinations of valid/invalid fields",
+          "status": "passed",
+          "title": "tests all combinations of valid/invalid fields",
+          "duration": 186.67983099999992,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "GridForm Integration - Multi-step and Edge Cases"
+          ],
+          "fullName": "GridForm Integration - Multi-step and Edge Cases handles concurrent submissions and race conditions",
+          "status": "passed",
+          "title": "handles concurrent submissions and race conditions",
+          "duration": 92.45800300000019,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "GridForm Integration - Multi-step and Edge Cases"
+          ],
+          "fullName": "GridForm Integration - Multi-step and Edge Cases resets form and state after success",
+          "status": "passed",
+          "title": "resets form and state after success",
+          "duration": 70.38874399999986,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "GridForm Integration - Multi-step and Edge Cases"
+          ],
+          "fullName": "GridForm Integration - Multi-step and Edge Cases simulates multi-user rapid input and error recovery",
+          "status": "passed",
+          "title": "simulates multi-user rapid input and error recovery",
+          "duration": 123.20320500000025,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "GridForm Integration - Multi-step and Edge Cases"
+          ],
+          "fullName": "GridForm Integration - Multi-step and Edge Cases handles boundary numeric values",
+          "status": "passed",
+          "title": "handles boundary numeric values",
+          "duration": 50.14534099999992,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "GridForm Integration - Multi-step and Edge Cases"
+          ],
+          "fullName": "GridForm Integration - Multi-step and Edge Cases handles large input values",
+          "status": "passed",
+          "title": "handles large input values",
+          "duration": 53.49051199999985,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "GridForm Integration - Multi-step and Edge Cases"
+          ],
+          "fullName": "GridForm Integration - Multi-step and Edge Cases handles keyboard navigation and accessibility",
+          "status": "passed",
+          "title": "handles keyboard navigation and accessibility",
+          "duration": 124.86358500000006,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "GridForm Integration - Multi-step and Edge Cases"
+          ],
+          "fullName": "GridForm Integration - Multi-step and Edge Cases handles API timeout and error",
+          "status": "passed",
+          "title": "handles API timeout and error",
+          "duration": 162.45308099999966,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "GridForm Integration - Multi-step and Edge Cases"
+          ],
+          "fullName": "GridForm Integration - Multi-step and Edge Cases handles sequential valid and invalid submissions",
+          "status": "passed",
+          "title": "handles sequential valid and invalid submissions",
+          "duration": 118.39046000000008,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "GridForm Integration - Multi-step and Edge Cases"
+          ],
+          "fullName": "GridForm Integration - Multi-step and Edge Cases shows error then success then error in rapid sequence",
+          "status": "passed",
+          "title": "shows error then success then error in rapid sequence",
+          "duration": 87.95848799999976,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "GridForm Integration - Multi-step and Edge Cases"
+          ],
+          "fullName": "GridForm Integration - Multi-step and Edge Cases handles rapid field changes and submit",
+          "status": "passed",
+          "title": "handles rapid field changes and submit",
+          "duration": 310.1261480000003,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1758130139047,
+      "endTime": 1758130141362.1262,
+      "status": "passed",
+      "message": "",
+      "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.crosslayer.test.jsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["GridForm integration"],
+          "fullName": "GridForm integration shows error when required fields are missing",
+          "status": "passed",
+          "title": "shows error when required fields are missing",
+          "duration": 381.5742240000002,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1758130139050,
+      "endTime": 1758130139431.5742,
+      "status": "passed",
+      "message": "",
+      "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.integration.test.jsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["GridForm Real API Integration"],
+          "fullName": "GridForm Real API Integration submits form and receives real API response or error",
+          "status": "passed",
+          "title": "submits form and receives real API response or error",
+          "duration": 429.84859400000005,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1758130138968,
+      "endTime": 1758130139397.8486,
+      "status": "passed",
+      "message": "",
+      "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.realapi.test.jsx"
+    }
+  ]
+}

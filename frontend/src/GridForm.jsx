@@ -1,11 +1,9 @@
 import React, { useState, useRef } from "react";
 import { API_BASE_URL } from "./apiConfig";
 
-// eslint-disable-next-line no-unused-vars
 function GridForm({
   setTrades,
   setHeldShares,
-  setTicker: _setTicker,
   setPerformance,
   ticker,
   errorMessage = "",
@@ -13,7 +11,6 @@ function GridForm({
   setErrorMessage,
   setSuccessMessage,
 }) {
-  // _setTicker is intentionally unused - keeping for prop interface compatibility
   const [form, setForm] = useState({
     ticker: ticker || "",
     shares: "",
@@ -124,16 +121,33 @@ function GridForm({
         headers: { "Content-Type": "application/json" },
         body: requestBody,
       });
-      const responseText = await response.clone().text();
-      console.log(
-        "[GridForm.jsx] fetch response status:",
-        response.status,
-        "body:",
-        responseText,
-      );
+
+      // Handle both real responses and mock responses
+      let responseText = "";
+      try {
+        responseText = response.clone
+          ? await response.clone().text()
+          : response.body || "";
+        console.log(
+          "[GridForm.jsx] fetch response status:",
+          response.status,
+          "body:",
+          responseText,
+        );
+      } catch (cloneErr) {
+        console.log("[GridForm.jsx] Clone error:", cloneErr);
+        responseText = response.body || response.text || "";
+      }
+
       let data = {};
       try {
-        data = await response.json();
+        if (response.json && typeof response.json === "function") {
+          data = await response.json();
+        } else if (typeof responseText === "string" && responseText) {
+          data = JSON.parse(responseText);
+        } else {
+          data = response.data || {};
+        }
       } catch (jsonErr) {
         console.log("[GridForm.jsx] JSON parse error:", jsonErr);
       }

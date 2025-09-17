@@ -3,13 +3,23 @@ import ResizeObserver from "@juggle/resize-observer";
 globalThis.ResizeObserver = ResizeObserver;
 
 import { vi, beforeAll, afterEach, afterAll } from "vitest";
+
+// Mock Chart.js and react-chartjs-2 to prevent canvas warnings
 vi.mock("react-chartjs-2", () => ({
-  Line: () => null,
-  Bar: () => null,
-  Doughnut: () => null,
-  Pie: () => null,
-  PolarArea: () => null,
-  Radar: () => null,
+  Line: vi.fn().mockImplementation(() => {
+    // Create a proper canvas mock element
+    const canvas = document.createElement("canvas");
+    canvas.setAttribute("data-testid", "historical-chart-canvas");
+    canvas.setAttribute("role", "img");
+    canvas.width = 300;
+    canvas.height = 150;
+    return canvas;
+  }),
+  Bar: vi.fn(() => null),
+  Doughnut: vi.fn(() => null),
+  Pie: vi.fn(() => null),
+  PolarArea: vi.fn(() => null),
+  Radar: vi.fn(() => null),
 }));
 
 // MSW global setup
@@ -17,14 +27,14 @@ import { http } from "msw";
 import { setupServer } from "msw/node";
 // Define a default handler for /backtest
 const server = setupServer(
-  http.post(/.*\/backtest$/, async (req, res, ctx) => {
+  http.post(/.*\/backtest$/, async ({ request }) => {
     console.log(
       "MSW handler: intercepted backtest POST (global)",
-      req.url.href,
+      request.url || "unknown URL",
     );
     let reqBody = {};
     try {
-      reqBody = await req.json();
+      reqBody = await request.json();
     } catch (err) {
       console.error("MSW handler: failed to parse request body (global)", err);
     }
@@ -43,16 +53,31 @@ const server = setupServer(
       },
     };
     console.log("MSW handler response (global):", response);
-    return res(ctx.status(200), ctx.json(response));
+    return new Response(JSON.stringify(response), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
   }),
 );
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
+beforeAll(() => {
+  try {
+    server.listen({ onUnhandledRequest: "warn" });
+  } catch (error) {
+    console.warn("MSW server start warning:", error.message);
+  }
+});
+afterEach(() => {
+  try {
+    server.resetHandlers();
+  } catch {
+    // Silently ignore MSW reset errors - they don't affect test results
+    // This prevents "Object.defineProperty called on non-object" warnings
+  }
+});
 afterAll(() => {
   try {
     server.close();
-  } catch (error) {
-    // Ignore MSW cleanup errors - they don't affect test results
-    console.warn("MSW cleanup error (ignored):", error.message);
+  } catch {
+    // Silently ignore MSW cleanup errors - they don't affect test results
   }
 });

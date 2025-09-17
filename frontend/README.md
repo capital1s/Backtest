@@ -57,7 +57,7 @@ Please ensure all new code includes tests and follows the established code style
 
 ## TypeScript Migration
 
-All major components are being migrated to TypeScript for improved reliability and maintainability. See `src/GridForm.tsx` for a fully typed example.
+All major components have TypeScript interfaces defined for improved reliability and maintainability. The codebase uses JSX for components with PropTypes for runtime type checking.
 
 ## Advanced Usage
 

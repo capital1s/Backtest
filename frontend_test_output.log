@@ -1,9 +1,0 @@
-
-> grid-trading-bot-ui@1.0.0 test
-> react-scripts test
-
-We detected setupFilesAfterEnv in your package.json.
-
-Remove it from Jest configuration, and put the initialization code in src/setupTests.js.
-This file will be loaded automatically.
-

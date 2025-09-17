@@ -48,7 +48,7 @@ function App() {
         </div>
       }
     >
-      <main style={{ padding: "2rem" }}>
+      <main role="main" style={{ padding: "2rem" }}>
         <div className="theme-switcher">
           <button
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}

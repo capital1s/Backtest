@@ -1,0 +1,176 @@
+{
+  "runs": [
+    {
+      "timestamp": "2025-09-17T17:23:36.729Z",
+      "totalDuration": 0,
+      "testFiles": [
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/App.integration.test.jsx",
+          "numTests": 1,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/App.test.jsx",
+          "numTests": 10,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/ChartDashboard.snapshot.test.jsx",
+          "numTests": 1,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/ChartDashboard.test.jsx",
+          "numTests": 3,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/ErrorBoundary.snapshot.test.jsx",
+          "numTests": 2,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/ErrorBoundary.test.jsx",
+          "numTests": 2,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/GridForm.test.tsx",
+          "numTests": 1,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/SharesHeld.test.jsx",
+          "numTests": 2,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/TradeChart.test.jsx",
+          "numTests": 3,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/TradeTable.test.jsx",
+          "numTests": 2,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.accessibility.axe.test.jsx",
+          "numTests": 3,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.accessibility.test.jsx",
+          "numTests": 5,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.crosslayer.test.jsx",
+          "numTests": 14,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.fast.test.jsx",
+          "numTests": 5,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.integration.test.jsx",
+          "numTests": 1,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.realapi.test.jsx",
+          "numTests": 1,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.stress.test.jsx",
+          "numTests": 3,
+          "avgTestDuration": null
+        }
+      ]
+    },
+    {
+      "timestamp": "2025-09-17T17:30:17.394Z",
+      "totalDuration": 0,
+      "testFiles": [
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/App.integration.test.jsx",
+          "numTests": 1,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/App.test.jsx",
+          "numTests": 10,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/ChartDashboard.snapshot.test.jsx",
+          "numTests": 1,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/ChartDashboard.test.jsx",
+          "numTests": 8,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/ErrorBoundary.snapshot.test.jsx",
+          "numTests": 2,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/ErrorBoundary.test.jsx",
+          "numTests": 2,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/GridForm.test.tsx",
+          "numTests": 1,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/SharesHeld.test.jsx",
+          "numTests": 2,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/TradeChart.test.jsx",
+          "numTests": 3,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/TradeTable.test.jsx",
+          "numTests": 2,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.accessibility.axe.test.jsx",
+          "numTests": 3,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.accessibility.test.jsx",
+          "numTests": 5,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.crosslayer.test.jsx",
+          "numTests": 14,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.integration.test.jsx",
+          "numTests": 1,
+          "avgTestDuration": null
+        },
+        {
+          "name": "/Users/michaelpennell/Backtest/frontend/src/__tests__/GridForm.realapi.test.jsx",
+          "numTests": 1,
+          "avgTestDuration": null
+        }
+      ]
+    }
+  ]
+}
