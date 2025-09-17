@@ -7,11 +7,13 @@ import ChartDashboard from "./ChartDashboard";
 
 // Prevent network calls during tests
 beforeAll(() => {
-  global.fetch = vi.fn(() => Promise.resolve({
-    ok: true,
-    json: () => Promise.resolve({ chart: [] }),
-    text: () => Promise.resolve("")
-  }));
+  global.fetch = vi.fn(() =>
+    Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve({ chart: [] }),
+      text: () => Promise.resolve(""),
+    }),
+  );
 });
 
 afterAll(() => {
@@ -23,11 +25,15 @@ describe("ChartDashboard", () => {
     let asFragment;
     await act(async () => {
       const renderResult = render(
-        <ChartDashboard ticker="AAPL" setTicker={() => {}} tickers={["AAPL", "MSFT"]} />
+        <ChartDashboard
+          ticker="AAPL"
+          setTicker={() => {}}
+          tickers={["AAPL", "MSFT"]}
+        />,
       );
       asFragment = renderResult.asFragment;
       // Wait for any async state updates
-      await new Promise(resolve => setTimeout(resolve, 0));
+      await new Promise((resolve) => setTimeout(resolve, 0));
     });
     expect(asFragment()).toMatchSnapshot();
   });

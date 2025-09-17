@@ -4,8 +4,6 @@
   "reportAttributeAccessIssue": false,
   "reportUntypedFunctionDecorator": false,
   "reportUnknownMemberType": false,
-  "exclude": [
-    "**/migrations/**"
-  ],
+  "exclude": ["**/migrations/**"],
   "pyrightVersion": "1.1.0"
 }

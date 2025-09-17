@@ -1,1 +1,584 @@
-{"result":[{"scriptId":"1224","url":"file:///Users/michaelpennell/Backtest/frontend/src/__tests__/setup.js","functions":[{"functionName":"","ranges":[{"startOffset":0,"endOffset":1138,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":13,"endOffset":1138,"count":1}],"isBlockCoverage":true}],"startOffset":209},{"scriptId":"1396","url":"file:///Users/michaelpennell/Backtest/frontend/src/GridForm.test.jsx","functions":[{"functionName":"","ranges":[{"startOffset":0,"endOffset":41402,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":13,"endOffset":41402,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":532,"endOffset":670,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":1388,"endOffset":15336,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":1470,"endOffset":2798,"count":1}],"isBlockCoverage":true},{"functionName":"setTrades","ranges":[{"startOffset":1631,"endOffset":1650,"count":0}],"isBlockCoverage":false},{"functionName":"setHeldShares","ranges":[{"startOffset":1677,"endOffset":1696,"count":0}],"isBlockCoverage":false},{"functionName":"setTicker","ranges":[{"startOffset":1719,"endOffset":1738,"count":0}],"isBlockCoverage":false},{"functionName":"setTickerBlur","ranges":[{"startOffset":1765,"endOffset":1784,"count":0}],"isBlockCoverage":false},{"functionName":"setPerformance","ranges":[{"startOffset":1812,"endOffset":1831,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":2880,"endOffset":4248,"count":1}],"isBlockCoverage":true},{"functionName":"setTrades","ranges":[{"startOffset":3041,"endOffset":3060,"count":0}],"isBlockCoverage":false},{"functionName":"setHeldShares","ranges":[{"startOffset":3087,"endOffset":3106,"count":0}],"isBlockCoverage":false},{"functionName":"setTicker","ranges":[{"startOffset":3129,"endOffset":3148,"count":0}],"isBlockCoverage":false},{"functionName":"setTickerBlur","ranges":[{"startOffset":3175,"endOffset":3194,"count":0}],"isBlockCoverage":false},{"functionName":"setPerformance","ranges":[{"startOffset":3222,"endOffset":3241,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":4326,"endOffset":6047,"count":1}],"isBlockCoverage":true},{"functionName":"setTrades","ranges":[{"startOffset":4487,"endOffset":4506,"count":0}],"isBlockCoverage":false},{"functionName":"setHeldShares","ranges":[{"startOffset":4533,"endOffset":4552,"count":0}],"isBlockCoverage":false},{"functionName":"setTicker","ranges":[{"startOffset":4575,"endOffset":4594,"count":0}],"isBlockCoverage":false},{"functionName":"setTickerBlur","ranges":[{"startOffset":4621,"endOffset":4640,"count":0}],"isBlockCoverage":false},{"functionName":"setPerformance","ranges":[{"startOffset":4668,"endOffset":4687,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":6129,"endOffset":7504,"count":1}],"isBlockCoverage":true},{"functionName":"setTrades","ranges":[{"startOffset":6290,"endOffset":6309,"count":0}],"isBlockCoverage":false},{"functionName":"setHeldShares","ranges":[{"startOffset":6336,"endOffset":6355,"count":0}],"isBlockCoverage":false},{"functionName":"setTicker","ranges":[{"startOffset":6378,"endOffset":6397,"count":0}],"isBlockCoverage":false},{"functionName":"setTickerBlur","ranges":[{"startOffset":6424,"endOffset":6443,"count":0}],"isBlockCoverage":false},{"functionName":"setPerformance","ranges":[{"startOffset":6471,"endOffset":6490,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":7545,"endOffset":7587,"count":10}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":7658,"endOffset":8440,"count":1}],"isBlockCoverage":true},{"functionName":"setTrades","ranges":[{"startOffset":7819,"endOffset":7838,"count":0}],"isBlockCoverage":false},{"functionName":"setHeldShares","ranges":[{"startOffset":7865,"endOffset":7884,"count":0}],"isBlockCoverage":false},{"functionName":"setTicker","ranges":[{"startOffset":7907,"endOffset":7926,"count":0}],"isBlockCoverage":false},{"functionName":"setTickerBlur","ranges":[{"startOffset":7953,"endOffset":7972,"count":0}],"isBlockCoverage":false},{"functionName":"setPerformance","ranges":[{"startOffset":8000,"endOffset":8019,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":8185,"endOffset":8216,"count":3}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":8501,"endOffset":10273,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":8562,"endOffset":8687,"count":1}],"isBlockCoverage":true},{"functionName":"text","ranges":[{"startOffset":8634,"endOffset":8680,"count":1}],"isBlockCoverage":true},{"functionName":"setTrades","ranges":[{"startOffset":8865,"endOffset":8884,"count":0}],"isBlockCoverage":false},{"functionName":"setHeldShares","ranges":[{"startOffset":8911,"endOffset":8930,"count":0}],"isBlockCoverage":false},{"functionName":"setTicker","ranges":[{"startOffset":8953,"endOffset":8972,"count":0}],"isBlockCoverage":false},{"functionName":"setTickerBlur","ranges":[{"startOffset":8999,"endOffset":9018,"count":0}],"isBlockCoverage":false},{"functionName":"setPerformance","ranges":[{"startOffset":9046,"endOffset":9065,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":10002,"endOffset":10067,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":10338,"endOffset":12031,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":10399,"endOffset":10446,"count":1}],"isBlockCoverage":true},{"functionName":"setTrades","ranges":[{"startOffset":10624,"endOffset":10643,"count":0}],"isBlockCoverage":false},{"functionName":"setHeldShares","ranges":[{"startOffset":10670,"endOffset":10689,"count":0}],"isBlockCoverage":false},{"functionName":"setTicker","ranges":[{"startOffset":10712,"endOffset":10731,"count":0}],"isBlockCoverage":false},{"functionName":"setTickerBlur","ranges":[{"startOffset":10758,"endOffset":10777,"count":0}],"isBlockCoverage":false},{"functionName":"setPerformance","ranges":[{"startOffset":10805,"endOffset":10824,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":11761,"endOffset":11826,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":12106,"endOffset":12782,"count":1}],"isBlockCoverage":true},{"functionName":"setTrades","ranges":[{"startOffset":12267,"endOffset":12286,"count":0}],"isBlockCoverage":false},{"functionName":"setHeldShares","ranges":[{"startOffset":12313,"endOffset":12332,"count":0}],"isBlockCoverage":false},{"functionName":"setTicker","ranges":[{"startOffset":12355,"endOffset":12374,"count":0}],"isBlockCoverage":false},{"functionName":"setTickerBlur","ranges":[{"startOffset":12401,"endOffset":12420,"count":0}],"isBlockCoverage":false},{"functionName":"setPerformance","ranges":[{"startOffset":12448,"endOffset":12467,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":12865,"endOffset":13958,"count":1}],"isBlockCoverage":true},{"functionName":"setTrades","ranges":[{"startOffset":13026,"endOffset":13045,"count":0}],"isBlockCoverage":false},{"functionName":"setHeldShares","ranges":[{"startOffset":13072,"endOffset":13091,"count":0}],"isBlockCoverage":false},{"functionName":"setTicker","ranges":[{"startOffset":13114,"endOffset":13133,"count":0}],"isBlockCoverage":false},{"functionName":"setTickerBlur","ranges":[{"startOffset":13160,"endOffset":13179,"count":1}],"isBlockCoverage":true},{"functionName":"setPerformance","ranges":[{"startOffset":13207,"endOffset":13226,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":13833,"endOffset":13952,"count":6}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":14041,"endOffset":15332,"count":1}],"isBlockCoverage":true},{"functionName":"setTrades","ranges":[{"startOffset":14202,"endOffset":14221,"count":0}],"isBlockCoverage":false},{"functionName":"setHeldShares","ranges":[{"startOffset":14248,"endOffset":14267,"count":0}],"isBlockCoverage":false},{"functionName":"setTicker","ranges":[{"startOffset":14290,"endOffset":14309,"count":0}],"isBlockCoverage":false},{"functionName":"setTickerBlur","ranges":[{"startOffset":14336,"endOffset":14355,"count":0}],"isBlockCoverage":false},{"functionName":"setPerformance","ranges":[{"startOffset":14383,"endOffset":14402,"count":0}],"isBlockCoverage":false}],"startOffset":209},{"scriptId":"1542","url":"file:///Users/michaelpennell/Backtest/frontend/src/GridForm.jsx","functions":[{"functionName":"","ranges":[{"startOffset":0,"endOffset":39246,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":13,"endOffset":39246,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":245,"endOffset":287,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":325,"endOffset":386,"count":10},{"startOffset":376,"endOffset":384,"count":0}],"isBlockCoverage":true},{"functionName":"GridForm","ranges":[{"startOffset":689,"endOffset":13044,"count":52},{"startOffset":871,"endOffset":876,"count":4},{"startOffset":6964,"endOffset":7557,"count":3},{"startOffset":7565,"endOffset":7733,"count":9},{"startOffset":7743,"endOffset":7913,"count":0},{"startOffset":12951,"endOffset":12959,"count":3},{"startOffset":12960,"endOffset":12969,"count":49},{"startOffset":13011,"endOffset":13025,"count":3},{"startOffset":13026,"endOffset":13038,"count":49}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":1543,"endOffset":1628,"count":17},{"startOffset":1566,"endOffset":1624,"count":7}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":1701,"endOffset":1820,"count":31}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":1760,"endOffset":1814,"count":31}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":2008,"endOffset":6438,"count":9},{"startOffset":2078,"endOffset":2085,"count":0},{"startOffset":2192,"endOffset":2207,"count":7},{"startOffset":2208,"endOffset":2224,"count":7},{"startOffset":2225,"endOffset":2243,"count":7},{"startOffset":2244,"endOffset":2267,"count":7},{"startOffset":2268,"endOffset":2286,"count":7},{"startOffset":2288,"endOffset":2865,"count":2},{"startOffset":2323,"endOffset":2330,"count":0},{"startOffset":2448,"endOffset":2786,"count":0},{"startOffset":2865,"endOffset":3102,"count":7},{"startOffset":3104,"endOffset":3351,"count":2},{"startOffset":3139,"endOffset":3146,"count":0},{"startOffset":3351,"endOffset":3394,"count":5},{"startOffset":3396,"endOffset":3643,"count":0},{"startOffset":3643,"endOffset":3690,"count":5},{"startOffset":3692,"endOffset":3945,"count":0},{"startOffset":3945,"endOffset":4003,"count":5},{"startOffset":4005,"endOffset":4274,"count":0},{"startOffset":4274,"endOffset":4316,"count":5},{"startOffset":4316,"endOffset":4458,"count":2},{"startOffset":4351,"endOffset":4358,"count":0},{"startOffset":4458,"endOffset":4782,"count":3},{"startOffset":4782,"endOffset":4789,"count":0},{"startOffset":4789,"endOffset":5032,"count":3},{"startOffset":5032,"endOffset":5774,"count":1},{"startOffset":5202,"endOffset":5206,"count":0},{"startOffset":5218,"endOffset":5306,"count":0},{"startOffset":5340,"endOffset":5424,"count":0},{"startOffset":5454,"endOffset":5535,"count":0},{"startOffset":5688,"endOffset":5695,"count":0},{"startOffset":5774,"endOffset":5961,"count":0},{"startOffset":6000,"endOffset":6005,"count":0},{"startOffset":6046,"endOffset":6053,"count":0},{"startOffset":6062,"endOffset":6352,"count":1},{"startOffset":6150,"endOffset":6155,"count":0},{"startOffset":6202,"endOffset":6276,"count":0},{"startOffset":6311,"endOffset":6318,"count":0},{"startOffset":6352,"endOffset":6353,"count":1},{"startOffset":6353,"endOffset":6434,"count":2},{"startOffset":6396,"endOffset":6403,"count":0}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":2825,"endOffset":2840,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":3311,"endOffset":3326,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":3603,"endOffset":3618,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":3905,"endOffset":3920,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":4234,"endOffset":4249,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":6487,"endOffset":6675,"count":10}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":6539,"endOffset":6670,"count":10},{"startOffset":6613,"endOffset":6664,"count":3}],"isBlockCoverage":true},{"functionName":"onBlur","ranges":[{"startOffset":8846,"endOffset":8884,"count":1}],"isBlockCoverage":true},{"functionName":"useSpinnerStyle","ranges":[{"startOffset":13045,"endOffset":13513,"count":10}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":13112,"endOffset":13505,"count":10},{"startOffset":13215,"endOffset":13501,"count":1}],"isBlockCoverage":true},{"functionName":"GridFormWrapper","ranges":[{"startOffset":13514,"endOffset":13664,"count":10}],"isBlockCoverage":true}],"startOffset":209},{"scriptId":"1543","url":"file:///Users/michaelpennell/Backtest/frontend/src/apiConfig.js","functions":[{"functionName":"","ranges":[{"startOffset":0,"endOffset":1795,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":13,"endOffset":1795,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":249,"endOffset":295,"count":3},{"startOffset":285,"endOffset":293,"count":0}],"isBlockCoverage":true}],"startOffset":209}]}
+{
+  "result": [
+    {
+      "scriptId": "1224",
+      "url": "file:///Users/michaelpennell/Backtest/frontend/src/__tests__/setup.js",
+      "functions": [
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 0, "endOffset": 1138, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 13, "endOffset": 1138, "count": 1 }],
+          "isBlockCoverage": true
+        }
+      ],
+      "startOffset": 209
+    },
+    {
+      "scriptId": "1396",
+      "url": "file:///Users/michaelpennell/Backtest/frontend/src/GridForm.test.jsx",
+      "functions": [
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 0, "endOffset": 41402, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 13, "endOffset": 41402, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 532, "endOffset": 670, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 1388, "endOffset": 15336, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 1470, "endOffset": 2798, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "setTrades",
+          "ranges": [{ "startOffset": 1631, "endOffset": 1650, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setHeldShares",
+          "ranges": [{ "startOffset": 1677, "endOffset": 1696, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTicker",
+          "ranges": [{ "startOffset": 1719, "endOffset": 1738, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTickerBlur",
+          "ranges": [{ "startOffset": 1765, "endOffset": 1784, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setPerformance",
+          "ranges": [{ "startOffset": 1812, "endOffset": 1831, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 2880, "endOffset": 4248, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "setTrades",
+          "ranges": [{ "startOffset": 3041, "endOffset": 3060, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setHeldShares",
+          "ranges": [{ "startOffset": 3087, "endOffset": 3106, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTicker",
+          "ranges": [{ "startOffset": 3129, "endOffset": 3148, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTickerBlur",
+          "ranges": [{ "startOffset": 3175, "endOffset": 3194, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setPerformance",
+          "ranges": [{ "startOffset": 3222, "endOffset": 3241, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 4326, "endOffset": 6047, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "setTrades",
+          "ranges": [{ "startOffset": 4487, "endOffset": 4506, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setHeldShares",
+          "ranges": [{ "startOffset": 4533, "endOffset": 4552, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTicker",
+          "ranges": [{ "startOffset": 4575, "endOffset": 4594, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTickerBlur",
+          "ranges": [{ "startOffset": 4621, "endOffset": 4640, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setPerformance",
+          "ranges": [{ "startOffset": 4668, "endOffset": 4687, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 6129, "endOffset": 7504, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "setTrades",
+          "ranges": [{ "startOffset": 6290, "endOffset": 6309, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setHeldShares",
+          "ranges": [{ "startOffset": 6336, "endOffset": 6355, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTicker",
+          "ranges": [{ "startOffset": 6378, "endOffset": 6397, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTickerBlur",
+          "ranges": [{ "startOffset": 6424, "endOffset": 6443, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setPerformance",
+          "ranges": [{ "startOffset": 6471, "endOffset": 6490, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 7545, "endOffset": 7587, "count": 10 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 7658, "endOffset": 8440, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "setTrades",
+          "ranges": [{ "startOffset": 7819, "endOffset": 7838, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setHeldShares",
+          "ranges": [{ "startOffset": 7865, "endOffset": 7884, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTicker",
+          "ranges": [{ "startOffset": 7907, "endOffset": 7926, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTickerBlur",
+          "ranges": [{ "startOffset": 7953, "endOffset": 7972, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setPerformance",
+          "ranges": [{ "startOffset": 8000, "endOffset": 8019, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 8185, "endOffset": 8216, "count": 3 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 8501, "endOffset": 10273, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 8562, "endOffset": 8687, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "text",
+          "ranges": [{ "startOffset": 8634, "endOffset": 8680, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "setTrades",
+          "ranges": [{ "startOffset": 8865, "endOffset": 8884, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setHeldShares",
+          "ranges": [{ "startOffset": 8911, "endOffset": 8930, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTicker",
+          "ranges": [{ "startOffset": 8953, "endOffset": 8972, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTickerBlur",
+          "ranges": [{ "startOffset": 8999, "endOffset": 9018, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setPerformance",
+          "ranges": [{ "startOffset": 9046, "endOffset": 9065, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 10002, "endOffset": 10067, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 10338, "endOffset": 12031, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 10399, "endOffset": 10446, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "setTrades",
+          "ranges": [{ "startOffset": 10624, "endOffset": 10643, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setHeldShares",
+          "ranges": [{ "startOffset": 10670, "endOffset": 10689, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTicker",
+          "ranges": [{ "startOffset": 10712, "endOffset": 10731, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTickerBlur",
+          "ranges": [{ "startOffset": 10758, "endOffset": 10777, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setPerformance",
+          "ranges": [{ "startOffset": 10805, "endOffset": 10824, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 11761, "endOffset": 11826, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 12106, "endOffset": 12782, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "setTrades",
+          "ranges": [{ "startOffset": 12267, "endOffset": 12286, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setHeldShares",
+          "ranges": [{ "startOffset": 12313, "endOffset": 12332, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTicker",
+          "ranges": [{ "startOffset": 12355, "endOffset": 12374, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTickerBlur",
+          "ranges": [{ "startOffset": 12401, "endOffset": 12420, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setPerformance",
+          "ranges": [{ "startOffset": 12448, "endOffset": 12467, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 12865, "endOffset": 13958, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "setTrades",
+          "ranges": [{ "startOffset": 13026, "endOffset": 13045, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setHeldShares",
+          "ranges": [{ "startOffset": 13072, "endOffset": 13091, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTicker",
+          "ranges": [{ "startOffset": 13114, "endOffset": 13133, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTickerBlur",
+          "ranges": [{ "startOffset": 13160, "endOffset": 13179, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "setPerformance",
+          "ranges": [{ "startOffset": 13207, "endOffset": 13226, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 13833, "endOffset": 13952, "count": 6 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 14041, "endOffset": 15332, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "setTrades",
+          "ranges": [{ "startOffset": 14202, "endOffset": 14221, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setHeldShares",
+          "ranges": [{ "startOffset": 14248, "endOffset": 14267, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTicker",
+          "ranges": [{ "startOffset": 14290, "endOffset": 14309, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setTickerBlur",
+          "ranges": [{ "startOffset": 14336, "endOffset": 14355, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "setPerformance",
+          "ranges": [{ "startOffset": 14383, "endOffset": 14402, "count": 0 }],
+          "isBlockCoverage": false
+        }
+      ],
+      "startOffset": 209
+    },
+    {
+      "scriptId": "1542",
+      "url": "file:///Users/michaelpennell/Backtest/frontend/src/GridForm.jsx",
+      "functions": [
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 0, "endOffset": 39246, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 13, "endOffset": 39246, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 245, "endOffset": 287, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [
+            { "startOffset": 325, "endOffset": 386, "count": 10 },
+            { "startOffset": 376, "endOffset": 384, "count": 0 }
+          ],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "GridForm",
+          "ranges": [
+            { "startOffset": 689, "endOffset": 13044, "count": 52 },
+            { "startOffset": 871, "endOffset": 876, "count": 4 },
+            { "startOffset": 6964, "endOffset": 7557, "count": 3 },
+            { "startOffset": 7565, "endOffset": 7733, "count": 9 },
+            { "startOffset": 7743, "endOffset": 7913, "count": 0 },
+            { "startOffset": 12951, "endOffset": 12959, "count": 3 },
+            { "startOffset": 12960, "endOffset": 12969, "count": 49 },
+            { "startOffset": 13011, "endOffset": 13025, "count": 3 },
+            { "startOffset": 13026, "endOffset": 13038, "count": 49 }
+          ],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [
+            { "startOffset": 1543, "endOffset": 1628, "count": 17 },
+            { "startOffset": 1566, "endOffset": 1624, "count": 7 }
+          ],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 1701, "endOffset": 1820, "count": 31 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 1760, "endOffset": 1814, "count": 31 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [
+            { "startOffset": 2008, "endOffset": 6438, "count": 9 },
+            { "startOffset": 2078, "endOffset": 2085, "count": 0 },
+            { "startOffset": 2192, "endOffset": 2207, "count": 7 },
+            { "startOffset": 2208, "endOffset": 2224, "count": 7 },
+            { "startOffset": 2225, "endOffset": 2243, "count": 7 },
+            { "startOffset": 2244, "endOffset": 2267, "count": 7 },
+            { "startOffset": 2268, "endOffset": 2286, "count": 7 },
+            { "startOffset": 2288, "endOffset": 2865, "count": 2 },
+            { "startOffset": 2323, "endOffset": 2330, "count": 0 },
+            { "startOffset": 2448, "endOffset": 2786, "count": 0 },
+            { "startOffset": 2865, "endOffset": 3102, "count": 7 },
+            { "startOffset": 3104, "endOffset": 3351, "count": 2 },
+            { "startOffset": 3139, "endOffset": 3146, "count": 0 },
+            { "startOffset": 3351, "endOffset": 3394, "count": 5 },
+            { "startOffset": 3396, "endOffset": 3643, "count": 0 },
+            { "startOffset": 3643, "endOffset": 3690, "count": 5 },
+            { "startOffset": 3692, "endOffset": 3945, "count": 0 },
+            { "startOffset": 3945, "endOffset": 4003, "count": 5 },
+            { "startOffset": 4005, "endOffset": 4274, "count": 0 },
+            { "startOffset": 4274, "endOffset": 4316, "count": 5 },
+            { "startOffset": 4316, "endOffset": 4458, "count": 2 },
+            { "startOffset": 4351, "endOffset": 4358, "count": 0 },
+            { "startOffset": 4458, "endOffset": 4782, "count": 3 },
+            { "startOffset": 4782, "endOffset": 4789, "count": 0 },
+            { "startOffset": 4789, "endOffset": 5032, "count": 3 },
+            { "startOffset": 5032, "endOffset": 5774, "count": 1 },
+            { "startOffset": 5202, "endOffset": 5206, "count": 0 },
+            { "startOffset": 5218, "endOffset": 5306, "count": 0 },
+            { "startOffset": 5340, "endOffset": 5424, "count": 0 },
+            { "startOffset": 5454, "endOffset": 5535, "count": 0 },
+            { "startOffset": 5688, "endOffset": 5695, "count": 0 },
+            { "startOffset": 5774, "endOffset": 5961, "count": 0 },
+            { "startOffset": 6000, "endOffset": 6005, "count": 0 },
+            { "startOffset": 6046, "endOffset": 6053, "count": 0 },
+            { "startOffset": 6062, "endOffset": 6352, "count": 1 },
+            { "startOffset": 6150, "endOffset": 6155, "count": 0 },
+            { "startOffset": 6202, "endOffset": 6276, "count": 0 },
+            { "startOffset": 6311, "endOffset": 6318, "count": 0 },
+            { "startOffset": 6352, "endOffset": 6353, "count": 1 },
+            { "startOffset": 6353, "endOffset": 6434, "count": 2 },
+            { "startOffset": 6396, "endOffset": 6403, "count": 0 }
+          ],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 2825, "endOffset": 2840, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 3311, "endOffset": 3326, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 3603, "endOffset": 3618, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 3905, "endOffset": 3920, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 4234, "endOffset": 4249, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 6487, "endOffset": 6675, "count": 10 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [
+            { "startOffset": 6539, "endOffset": 6670, "count": 10 },
+            { "startOffset": 6613, "endOffset": 6664, "count": 3 }
+          ],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "onBlur",
+          "ranges": [{ "startOffset": 8846, "endOffset": 8884, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "useSpinnerStyle",
+          "ranges": [{ "startOffset": 13045, "endOffset": 13513, "count": 10 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [
+            { "startOffset": 13112, "endOffset": 13505, "count": 10 },
+            { "startOffset": 13215, "endOffset": 13501, "count": 1 }
+          ],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "GridFormWrapper",
+          "ranges": [{ "startOffset": 13514, "endOffset": 13664, "count": 10 }],
+          "isBlockCoverage": true
+        }
+      ],
+      "startOffset": 209
+    },
+    {
+      "scriptId": "1543",
+      "url": "file:///Users/michaelpennell/Backtest/frontend/src/apiConfig.js",
+      "functions": [
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 0, "endOffset": 1795, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 13, "endOffset": 1795, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [
+            { "startOffset": 249, "endOffset": 295, "count": 3 },
+            { "startOffset": 285, "endOffset": 293, "count": 0 }
+          ],
+          "isBlockCoverage": true
+        }
+      ],
+      "startOffset": 209
+    }
+  ]
+}

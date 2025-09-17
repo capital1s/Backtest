@@ -1,20 +1,20 @@
 // Polyfill fetch for jsdom/Vitest
-console.log('[MSW-SETUP] msw-setup.js loaded (top-level)');
-import 'whatwg-fetch';
-import { setupServer } from 'msw/node';
-import { http } from 'msw';
-import { beforeAll, afterEach, afterAll } from 'vitest';
+console.log("[MSW-SETUP] msw-setup.js loaded (top-level)");
+import "whatwg-fetch";
+import { setupServer } from "msw/node";
+import { http } from "msw";
+import { beforeAll, afterEach, afterAll } from "vitest";
 
 export const handlers = [
-  http.post('/backtest', async (req, res, ctx) => {
-    console.log('[MSW-SETUP] /backtest handler triggered');
+  http.post("/backtest", async (req, res, ctx) => {
+    console.log("[MSW-SETUP] /backtest handler triggered");
     return res(
       ctx.status(200),
       ctx.json({
-        status: 'success',
-        message: 'Backtest completed successfully',
-        trades: [{ id: 1, type: 'buy', price: 100, shares: 10 }],
-        heldShares: [{ ticker: 'AAPL', shares: 10 }],
+        status: "success",
+        message: "Backtest completed successfully",
+        trades: [{ id: 1, type: "buy", price: 100, shares: 10 }],
+        heldShares: [{ ticker: "AAPL", shares: 10 }],
         performance: {
           total_trades: 1,
           pnl: 50,
@@ -22,9 +22,9 @@ export const handlers = [
           wins: 1,
           losses: 0,
         },
-      })
+      }),
     );
-  })
+  }),
 ];
 
 export const server = setupServer(...handlers);

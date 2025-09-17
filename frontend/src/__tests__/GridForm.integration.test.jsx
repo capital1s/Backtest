@@ -11,12 +11,12 @@ function getMockProps() {
   };
 }
 
-describe('GridForm integration', () => {
-  it('shows error when required fields are missing', async () => {
+describe("GridForm integration", () => {
+  it("shows error when required fields are missing", async () => {
     const mockProps = getMockProps();
     const Wrapper = () => {
-      const [errorMessage, setErrorMessage] = React.useState('');
-      const [successMessage, setSuccessMessage] = React.useState('');
+      const [errorMessage, setErrorMessage] = React.useState("");
+      const [successMessage, setSuccessMessage] = React.useState("");
       return (
         <GridForm
           {...mockProps}
@@ -28,18 +28,32 @@ describe('GridForm integration', () => {
       );
     };
     render(<Wrapper />);
-    fireEvent.change(screen.getByRole("combobox", { name: /ticker/i }), { target: { value: "AAPL" } });
-    fireEvent.change(screen.getByLabelText(/number of shares/i), { target: { value: "" } });
-    fireEvent.change(screen.getByLabelText(/grid up value/i), { target: { value: "" } });
-    fireEvent.change(screen.getByLabelText(/grid down value/i), { target: { value: "" } });
-    fireEvent.change(screen.getByLabelText(/grid increment value/i), { target: { value: "" } });
-    fireEvent.change(screen.getByLabelText(/backtest timeframe/i), { target: { value: "" } });
+    fireEvent.change(screen.getByRole("combobox", { name: /ticker/i }), {
+      target: { value: "AAPL" },
+    });
+    fireEvent.change(screen.getByLabelText(/number of shares/i), {
+      target: { value: "" },
+    });
+    fireEvent.change(screen.getByLabelText(/grid up value/i), {
+      target: { value: "" },
+    });
+    fireEvent.change(screen.getByLabelText(/grid down value/i), {
+      target: { value: "" },
+    });
+    fireEvent.change(screen.getByLabelText(/grid increment value/i), {
+      target: { value: "" },
+    });
+    fireEvent.change(screen.getByLabelText(/backtest timeframe/i), {
+      target: { value: "" },
+    });
     fireEvent.submit(screen.getByRole("form"));
     await waitFor(() => {
       const alerts = screen.queryAllByRole("alert");
       const statuses = screen.queryAllByRole("status");
       expect(alerts.length + statuses.length).toBeGreaterThan(0);
-      const found = [...alerts, ...statuses].some(node => /please fill in all fields|invalid|error/i.test(node.textContent));
+      const found = [...alerts, ...statuses].some((node) =>
+        /please fill in all fields|invalid|error/i.test(node.textContent),
+      );
       expect(found).toBe(true);
     });
   });

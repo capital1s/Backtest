@@ -1,378 +1,314 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "Test Historical Data Chart Rendering",
-			"type": "shell",
-			"command": "npm test --prefix frontend",
-			"args": [],
-			"isBackground": false,
-			"problemMatcher": [
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Test Historical Data Chart Rendering",
-			"type": "shell",
-			"command": "npm test --prefix frontend",
-			"args": [],
-			"isBackground": false,
-			"problemMatcher": [
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Install react-scripts for frontend tests",
-			"type": "shell",
-			"command": "npm install react-scripts --prefix frontend",
-			"args": [],
-			"isBackground": false,
-			"problemMatcher": [
-				"$eslint-stylish"
-			],
-			"group": "build"
-		},
-		{
-			"label": "Run frontend tests after installing react-scripts",
-			"type": "shell",
-			"command": "npm test --prefix frontend",
-			"args": [],
-			"isBackground": false,
-			"problemMatcher": [
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Run frontend tests after fixing App.test.js",
-			"type": "shell",
-			"command": "npm test --prefix frontend",
-			"args": [],
-			"isBackground": false,
-			"problemMatcher": [
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Run frontend tests after syncing React versions",
-			"type": "shell",
-			"command": "npm test --prefix frontend",
-			"args": [],
-			"isBackground": false,
-			"problemMatcher": [
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Run frontend tests after clean install",
-			"type": "shell",
-			"command": "npm test --prefix frontend",
-			"args": [],
-			"isBackground": false,
-			"problemMatcher": [
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Run frontend tests after full reinstall and react-scripts install",
-			"type": "shell",
-			"command": "npm test --prefix frontend",
-			"args": [],
-			"isBackground": false,
-			"problemMatcher": [
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Run frontend tests after installing @testing-library/react",
-			"type": "shell",
-			"command": "npm test --prefix frontend",
-			"args": [],
-			"isBackground": false,
-			"problemMatcher": [
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Run frontend tests after fixing MarketDataTicker definition",
-			"type": "shell",
-			"command": "npm test --prefix frontend",
-			"args": [],
-			"isBackground": false,
-			"problemMatcher": [
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-			{
-				"label": "Automated Full Test Suite",
-				"type": "shell",
-				"command": ".venv/bin/pytest backend/test_*.py && PYTHONPATH=. .venv/bin/pytest tests/test_backtest.py && npx vitest run frontend/src/__tests__/GridForm.test.jsx && npx vitest run frontend/src/GridForm.test.tsx && npx vitest run frontend/src/__tests__/GridForm.accessibility.test.jsx && npx vitest run frontend/src/__tests__/GridForm.realapi.test.jsx && npx vitest run frontend/src/__tests__/GridForm.crosslayer.test.jsx",
-				"isBackground": false,
-				"problemMatcher": [
-					"$python",
-					"$eslint-stylish"
-				],
-				"group": "test"
-			},
-		{
-			"label": "Automated Backend Test with Server Start",
-			"type": "shell",
-			"command": "PIDS=$(lsof -nP -iTCP:8001 -sTCP:LISTEN -t); UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$PIDS\" ]; then kill -TERM $PIDS; sleep 2; PIDS=$(lsof -nP -iTCP:8001 -sTCP:LISTEN -t); if [ -n \"$PIDS\" ]; then kill -9 $PIDS; fi; fi; if [ -n \"$UVICORN_PIDS\" ]; then kill -TERM $UVICORN_PIDS; sleep 2; UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$UVICORN_PIDS\" ]; then kill -9 $UVICORN_PIDS; fi; fi; nohup .venv/bin/uvicorn backend.main:app --reload --port 8001 & sleep 5; .venv/bin/pytest backend/test_historical.py",
-			"isBackground": false,
-			"problemMatcher": [
-				"$python"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Automated Dashboard Display Test",
-			"type": "shell",
-			"command": "npm run build --prefix frontend && npm test --prefix frontend -- --watchAll=false && curl -s http://localhost:8000/docs && curl -s http://localhost:8000/minute_chart && curl -s http://localhost:8000/ibkr/historical?symbol=AAPL&duration=1%20D&bar_size=1%20min",
-			"problemMatcher": [
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Automated Backend and Dashboard Test",
-			"type": "shell",
-			"command": "PIDS=$(lsof -nP -iTCP:8001 -sTCP:LISTEN -t); UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$PIDS\" ]; then kill -TERM $PIDS; sleep 2; PIDS=$(lsof -nP -iTCP:8001 -sTCP:LISTEN -t); if [ -n \"$PIDS\" ]; then kill -9 $PIDS; fi; fi; if [ -n \"$UVICORN_PIDS\" ]; then kill -TERM $UVICORN_PIDS; sleep 2; UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$UVICORN_PIDS\" ]; then kill -9 $UVICORN_PIDS; fi; fi; nohup .venv/bin/uvicorn backend.main:app --reload --port 8001 & sleep 5; .venv/bin/pytest backend/test_historical.py && npm run build --prefix frontend && npm test --prefix frontend -- --watchAll=false && curl -s http://localhost:8001/docs && curl -s \"http://localhost:8001/ibkr/historical?symbol=AAPL&duration=1%20D&bar_size=1%20min\"",
-			"problemMatcher": [
-				"$python",
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Automated Backend and Dashboard Test (with wait)",
-			"type": "shell",
-			"command": "PIDS=$(lsof -nP -iTCP:8001 -sTCP:LISTEN -t); UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$PIDS\" ]; then kill -TERM $PIDS; sleep 2; PIDS=$(lsof -nP -iTCP:8001 -sTCP:LISTEN -t); if [ -n \"$PIDS\" ]; then kill -9 $PIDS; fi; fi; if [ -n \"$UVICORN_PIDS\" ]; then kill -TERM $UVICORN_PIDS; sleep 2; UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$UVICORN_PIDS\" ]; then kill -9 $UVICORN_PIDS; fi; fi; nohup .venv/bin/uvicorn backend.main:app --reload --port 8001 > uvicorn.log 2>&1 & sleep 15; .venv/bin/pytest backend/test_historical.py && npm run build --prefix frontend && npm test --prefix frontend -- --watchAll=false && curl -s http://localhost:8001/docs && curl -s \"http://localhost:8001/ibkr/historical?symbol=AAPL&duration=1%20D&bar_size=1%20min\"",
-			"problemMatcher": [
-				"$python",
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Start Backend Server (FastAPI)",
-			"type": "shell",
-			"command": "cd backend && ../.venv/bin/pip install -r requirements.txt && ../.venv/bin/uvicorn backend.main:app --reload --port 8001",
-			"isBackground": false,
-			"problemMatcher": [
-				"$python"
-			],
-			"group": "build"
-		},
-		{
-			"label": "Automated Localhost Full Validation",
-			"type": "shell",
-			"command": "pkill -f uvicorn; pkill -f react-scripts; .venv/bin/uvicorn backend.main:app --reload --port 8001 & npm start --prefix frontend & sleep 15; curl -s http://localhost:8001/docs && curl -s http://localhost:8001/minute_chart && curl -s \"http://localhost:8001/ibkr/historical?symbol=AAPL&duration=1%20D&bar_size=1%20min\"",
-			"isBackground": false,
-			"problemMatcher": [
-				"$python",
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Automated Dashboard Display Test with API",
-			"type": "shell",
-			"command": "pkill -f uvicorn; pkill -f react-scripts; .venv/bin/uvicorn backend.main:app --reload --port 8001 & npm run build --prefix frontend && npm test --prefix frontend -- --watchAll=false && sleep 15; curl -s http://localhost:8001/docs && curl -s http://localhost:8001/minute_chart && curl -s \"http://localhost:8001/ibkr/historical?symbol=AAPL&duration=1%20D&bar_size=1%20min\"",
-			"isBackground": false,
-			"problemMatcher": [
-				"$python",
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Test FastAPI endpoints with curl",
-			"type": "shell",
-			"command": "source ../.venv/bin/activate && uvicorn backend.main:app --host 0.0.0.0 --port 8001",
-			"args": [],
-			"isBackground": true,
-			"problemMatcher": [],
-			"group": "test"
-		},
-		{
-			"label": "Start FastAPI server with correct venv path",
-			"type": "shell",
-			"command": "source .venv/bin/activate && uvicorn backend.main:app --host 0.0.0.0 --port 8001",
-			"args": [],
-			"isBackground": true,
-			"problemMatcher": [],
-			"group": "test"
-		},
-		{
-			"label": "Start FastAPI server with correct venv path",
-			"type": "shell",
-			"command": "source .venv/bin/activate && uvicorn backend.main:app --host 0.0.0.0 --port 8001",
-			"args": [],
-			"isBackground": true,
-			"problemMatcher": [],
-			"group": "test"
-		},
-		{
-			"label": "Start FastAPI server with correct venv path",
-			"type": "shell",
-			"command": "source .venv/bin/activate && uvicorn backend.main:app --host 0.0.0.0 --port 8001",
-			"args": [],
-			"isBackground": true,
-			"problemMatcher": [],
-			"group": "test"
-		},
-		{
-			"label": "Start FastAPI server after fixing imports",
-			"type": "shell",
-			"command": "source .venv/bin/activate && uvicorn backend.main:app --host 0.0.0.0 --port 8001",
-			"args": [],
-			"isBackground": true,
-			"problemMatcher": [],
-			"group": "test"
-		},
-		{
-			"label": "Automated Backend Test with Server Start",
-			"type": "shell",
-			"command": "PIDS=$(lsof -nP -iTCP:8001 -sTCP:LISTEN -t); UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$PIDS\" ]; then kill -TERM $PIDS; sleep 2; PIDS=$(lsof -nP -iTCP:8001 -sTCP:LISTEN -t); if [ -n \"$PIDS\" ]; then kill -9 $PIDS; fi; fi; if [ -n \"$UVICORN_PIDS\" ]; then kill -TERM $UVICORN_PIDS; sleep 2; UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$UVICORN_PIDS\" ]; then kill -9 $UVICORN_PIDS; fi; fi; nohup .venv/bin/uvicorn backend.main:app --reload --port 8001 & sleep 5; .venv/bin/pytest backend/test_historical.py",
-			"isBackground": false,
-			"problemMatcher": [
-				"$python"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Automated Backend Test with Server Start",
-			"type": "shell",
-			"command": "PIDS=$(lsof -nP -iTCP:8000 -sTCP:LISTEN -t); UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$PIDS\" ]; then kill -TERM $PIDS; sleep 2; PIDS=$(lsof -nP -iTCP:8000 -sTCP:LISTEN -t); if [ -n \"$PIDS\" ]; then kill -9 $PIDS; fi; fi; if [ -n \"$UVICORN_PIDS\" ]; then kill -TERM $UVICORN_PIDS; sleep 2; UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$UVICORN_PIDS\" ]; then kill -9 $UVICORN_PIDS; fi; fi; nohup .venv/bin/uvicorn backend.main:app --reload --port 8000 & sleep 5; .venv/bin/pytest backend/test_historical.py",
-			"isBackground": false,
-			"problemMatcher": [
-				"$python"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Automated Backend Test with Server Start (async fix)",
-			"type": "shell",
-			"command": "PIDS=$(lsof -nP -iTCP:8000 -sTCP:LISTEN -t); UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$PIDS\" ]; then kill -TERM $PIDS; sleep 2; PIDS=$(lsof -nP -iTCP:8000 -sTCP:LISTEN -t); if [ -n \"$PIDS\" ]; then kill -9 $PIDS; fi; fi; if [ -n \"$UVICORN_PIDS\" ]; then kill -TERM $UVICORN_PIDS; sleep 2; UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$UVICORN_PIDS\" ]; then kill -9 $UVICORN_PIDS; fi; fi; nohup .venv/bin/uvicorn backend.main:app --reload --port 8000 & sleep 5; .venv/bin/pytest backend/test_historical.py",
-			"isBackground": false,
-			"problemMatcher": [
-				"$python"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Automated Backend Test with Fast IBKR Connection Check",
-			"type": "shell",
-			"command": "PIDS=$(lsof -nP -iTCP:8000 -sTCP:LISTEN -t); UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$PIDS\" ]; then kill -TERM $PIDS; sleep 2; PIDS=$(lsof -nP -iTCP:8000 -sTCP:LISTEN -t); if [ -n \"$PIDS\" ]; then kill -9 $PIDS; fi; fi; if [ -n \"$UVICORN_PIDS\" ]; then kill -TERM $UVICORN_PIDS; sleep 2; UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$UVICORN_PIDS\" ]; then kill -9 $UVICORN_PIDS; fi; fi; nohup .venv/bin/uvicorn backend.main:app --reload --port 8000 & sleep 5; .venv/bin/pytest backend/test_historical.py",
-			"isBackground": false,
-			"problemMatcher": [
-				"$python"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Automated Backend Test with JSON Response for /ibkr/historical",
-			"type": "shell",
-			"command": "PIDS=$(lsof -nP -iTCP:8000 -sTCP:LISTEN -t); UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$PIDS\" ]; then kill -TERM $PIDS; sleep 2; PIDS=$(lsof -nP -iTCP:8000 -sTCP:LISTEN -t); if [ -n \"$PIDS\" ]; then kill -9 $PIDS; fi; fi; if [ -n \"$UVICORN_PIDS\" ]; then kill -TERM $UVICORN_PIDS; sleep 2; UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$UVICORN_PIDS\" ]; then kill -9 $UVICORN_PIDS; fi; fi; nohup .venv/bin/uvicorn backend.main:app --reload --port 8000 & sleep 5; .venv/bin/pytest backend/test_historical.py",
-			"isBackground": false,
-			"problemMatcher": [
-				"$python"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Run backend tests with TEST_MODE=1 (mock IBKR)",
-			"type": "shell",
-			"command": "TEST_MODE=1 pytest backend/test_historical.py",
-			"isBackground": false,
-			"problemMatcher": [
-				"$python"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Start FastAPI server with TEST_MODE=1 for test run",
-			"type": "shell",
-			"command": "TEST_MODE=1 .venv/bin/uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000",
-			"isBackground": true,
-			"problemMatcher": [],
-			"group": "test"
-		},
-		{
-			"label": "Start FastAPI server (TEST_MODE=1, port 8001)",
-			"type": "shell",
-			"command": "TEST_MODE=1 .venv/bin/uvicorn backend.main:app --reload --host 0.0.0.0 --port 8001",
-			"args": [],
-			"isBackground": true,
-			"problemMatcher": [],
-			"group": "build"
-		},
-		{
-			"label": "Run backend tests with pytest",
-			"type": "shell",
-			"command": ".venv/bin/pytest --maxfail=1 --disable-warnings backend",
-			"isBackground": false,
-			"problemMatcher": [
-				"$python"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Run backend tests with pytest",
-			"type": "shell",
-			"command": "pytest --maxfail=1 --disable-warnings backend",
-			"isBackground": false,
-			"problemMatcher": [
-				"$python"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Test backend and frontend on localhost",
-			"type": "shell",
-			"command": "npm test && pytest",
-			"isBackground": false,
-			"problemMatcher": [
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Automated local test suite",
-			"type": "shell",
-			"command": "npm test && pytest",
-			"isBackground": false,
-			"problemMatcher": [
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Run All Integration Tests",
-			"type": "shell",
-			"command": "pytest backend/test_*.py && PYTHONPATH=. pytest tests/test_backtest.py && npx vitest run frontend/src/__tests__/GridForm.test.jsx && npx vitest run frontend/src/GridForm.test.tsx && npx vitest run frontend/src/__tests__/GridForm.accessibility.test.jsx && npx vitest run frontend/src/__tests__/GridForm.realapi.test.jsx && npx vitest run frontend/src/__tests__/GridForm.integration.test.jsx",
-			"isBackground": false,
-			"problemMatcher": [
-				"$python",
-				"$eslint-stylish"
-			],
-			"group": "test"
-		},
-		{
-			"label": "Integration Test with API Call",
-			"type": "shell",
-			"command": "pytest && npx vitest run && curl -s http://localhost:8001/backtest -X POST -H 'Content-Type: application/json' -d '{\"ticker\":\"AAPL\",\"shares\":10,\"grid_up\":1,\"grid_down\":1,\"grid_increment\":0.1,\"timeframe\":\"1 D\",\"interval\":\"1 min\"}'",
-			"isBackground": false,
-			"problemMatcher": [],
-			"group": "test"
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Test Historical Data Chart Rendering",
+      "type": "shell",
+      "command": "npm test --prefix frontend",
+      "args": [],
+      "isBackground": false,
+      "problemMatcher": ["$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Test Historical Data Chart Rendering",
+      "type": "shell",
+      "command": "npm test --prefix frontend",
+      "args": [],
+      "isBackground": false,
+      "problemMatcher": ["$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Install react-scripts for frontend tests",
+      "type": "shell",
+      "command": "npm install react-scripts --prefix frontend",
+      "args": [],
+      "isBackground": false,
+      "problemMatcher": ["$eslint-stylish"],
+      "group": "build"
+    },
+    {
+      "label": "Run frontend tests after installing react-scripts",
+      "type": "shell",
+      "command": "npm test --prefix frontend",
+      "args": [],
+      "isBackground": false,
+      "problemMatcher": ["$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Run frontend tests after fixing App.test.js",
+      "type": "shell",
+      "command": "npm test --prefix frontend",
+      "args": [],
+      "isBackground": false,
+      "problemMatcher": ["$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Run frontend tests after syncing React versions",
+      "type": "shell",
+      "command": "npm test --prefix frontend",
+      "args": [],
+      "isBackground": false,
+      "problemMatcher": ["$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Run frontend tests after clean install",
+      "type": "shell",
+      "command": "npm test --prefix frontend",
+      "args": [],
+      "isBackground": false,
+      "problemMatcher": ["$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Run frontend tests after full reinstall and react-scripts install",
+      "type": "shell",
+      "command": "npm test --prefix frontend",
+      "args": [],
+      "isBackground": false,
+      "problemMatcher": ["$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Run frontend tests after installing @testing-library/react",
+      "type": "shell",
+      "command": "npm test --prefix frontend",
+      "args": [],
+      "isBackground": false,
+      "problemMatcher": ["$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Run frontend tests after fixing MarketDataTicker definition",
+      "type": "shell",
+      "command": "npm test --prefix frontend",
+      "args": [],
+      "isBackground": false,
+      "problemMatcher": ["$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Automated Full Test Suite",
+      "type": "shell",
+      "command": ".venv/bin/pytest backend/test_*.py && PYTHONPATH=. .venv/bin/pytest tests/test_backtest.py && npx vitest run frontend/src/__tests__/GridForm.test.jsx && npx vitest run frontend/src/GridForm.test.tsx && npx vitest run frontend/src/__tests__/GridForm.accessibility.test.jsx && npx vitest run frontend/src/__tests__/GridForm.realapi.test.jsx && npx vitest run frontend/src/__tests__/GridForm.crosslayer.test.jsx",
+      "isBackground": false,
+      "problemMatcher": ["$python", "$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Automated Backend Test with Server Start",
+      "type": "shell",
+      "command": "PIDS=$(lsof -nP -iTCP:8001 -sTCP:LISTEN -t); UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$PIDS\" ]; then kill -TERM $PIDS; sleep 2; PIDS=$(lsof -nP -iTCP:8001 -sTCP:LISTEN -t); if [ -n \"$PIDS\" ]; then kill -9 $PIDS; fi; fi; if [ -n \"$UVICORN_PIDS\" ]; then kill -TERM $UVICORN_PIDS; sleep 2; UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$UVICORN_PIDS\" ]; then kill -9 $UVICORN_PIDS; fi; fi; nohup .venv/bin/uvicorn backend.main:app --reload --port 8001 & sleep 5; .venv/bin/pytest backend/test_historical.py",
+      "isBackground": false,
+      "problemMatcher": ["$python"],
+      "group": "test"
+    },
+    {
+      "label": "Automated Dashboard Display Test",
+      "type": "shell",
+      "command": "npm run build --prefix frontend && npm test --prefix frontend -- --watchAll=false && curl -s http://localhost:8000/docs && curl -s http://localhost:8000/minute_chart && curl -s http://localhost:8000/ibkr/historical?symbol=AAPL&duration=1%20D&bar_size=1%20min",
+      "problemMatcher": ["$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Automated Backend and Dashboard Test",
+      "type": "shell",
+      "command": "PIDS=$(lsof -nP -iTCP:8001 -sTCP:LISTEN -t); UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$PIDS\" ]; then kill -TERM $PIDS; sleep 2; PIDS=$(lsof -nP -iTCP:8001 -sTCP:LISTEN -t); if [ -n \"$PIDS\" ]; then kill -9 $PIDS; fi; fi; if [ -n \"$UVICORN_PIDS\" ]; then kill -TERM $UVICORN_PIDS; sleep 2; UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$UVICORN_PIDS\" ]; then kill -9 $UVICORN_PIDS; fi; fi; nohup .venv/bin/uvicorn backend.main:app --reload --port 8001 & sleep 5; .venv/bin/pytest backend/test_historical.py && npm run build --prefix frontend && npm test --prefix frontend -- --watchAll=false && curl -s http://localhost:8001/docs && curl -s \"http://localhost:8001/ibkr/historical?symbol=AAPL&duration=1%20D&bar_size=1%20min\"",
+      "problemMatcher": ["$python", "$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Automated Backend and Dashboard Test (with wait)",
+      "type": "shell",
+      "command": "PIDS=$(lsof -nP -iTCP:8001 -sTCP:LISTEN -t); UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$PIDS\" ]; then kill -TERM $PIDS; sleep 2; PIDS=$(lsof -nP -iTCP:8001 -sTCP:LISTEN -t); if [ -n \"$PIDS\" ]; then kill -9 $PIDS; fi; fi; if [ -n \"$UVICORN_PIDS\" ]; then kill -TERM $UVICORN_PIDS; sleep 2; UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$UVICORN_PIDS\" ]; then kill -9 $UVICORN_PIDS; fi; fi; nohup .venv/bin/uvicorn backend.main:app --reload --port 8001 > uvicorn.log 2>&1 & sleep 15; .venv/bin/pytest backend/test_historical.py && npm run build --prefix frontend && npm test --prefix frontend -- --watchAll=false && curl -s http://localhost:8001/docs && curl -s \"http://localhost:8001/ibkr/historical?symbol=AAPL&duration=1%20D&bar_size=1%20min\"",
+      "problemMatcher": ["$python", "$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Start Backend Server (FastAPI)",
+      "type": "shell",
+      "command": "cd backend && ../.venv/bin/pip install -r requirements.txt && ../.venv/bin/uvicorn backend.main:app --reload --port 8001",
+      "isBackground": false,
+      "problemMatcher": ["$python"],
+      "group": "build"
+    },
+    {
+      "label": "Automated Localhost Full Validation",
+      "type": "shell",
+      "command": "pkill -f uvicorn; pkill -f react-scripts; .venv/bin/uvicorn backend.main:app --reload --port 8001 & npm start --prefix frontend & sleep 15; curl -s http://localhost:8001/docs && curl -s http://localhost:8001/minute_chart && curl -s \"http://localhost:8001/ibkr/historical?symbol=AAPL&duration=1%20D&bar_size=1%20min\"",
+      "isBackground": false,
+      "problemMatcher": ["$python", "$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Automated Dashboard Display Test with API",
+      "type": "shell",
+      "command": "pkill -f uvicorn; pkill -f react-scripts; .venv/bin/uvicorn backend.main:app --reload --port 8001 & npm run build --prefix frontend && npm test --prefix frontend -- --watchAll=false && sleep 15; curl -s http://localhost:8001/docs && curl -s http://localhost:8001/minute_chart && curl -s \"http://localhost:8001/ibkr/historical?symbol=AAPL&duration=1%20D&bar_size=1%20min\"",
+      "isBackground": false,
+      "problemMatcher": ["$python", "$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Test FastAPI endpoints with curl",
+      "type": "shell",
+      "command": "source ../.venv/bin/activate && uvicorn backend.main:app --host 0.0.0.0 --port 8001",
+      "args": [],
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Start FastAPI server with correct venv path",
+      "type": "shell",
+      "command": "source .venv/bin/activate && uvicorn backend.main:app --host 0.0.0.0 --port 8001",
+      "args": [],
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Start FastAPI server with correct venv path",
+      "type": "shell",
+      "command": "source .venv/bin/activate && uvicorn backend.main:app --host 0.0.0.0 --port 8001",
+      "args": [],
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Start FastAPI server with correct venv path",
+      "type": "shell",
+      "command": "source .venv/bin/activate && uvicorn backend.main:app --host 0.0.0.0 --port 8001",
+      "args": [],
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Start FastAPI server after fixing imports",
+      "type": "shell",
+      "command": "source .venv/bin/activate && uvicorn backend.main:app --host 0.0.0.0 --port 8001",
+      "args": [],
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Automated Backend Test with Server Start",
+      "type": "shell",
+      "command": "PIDS=$(lsof -nP -iTCP:8001 -sTCP:LISTEN -t); UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$PIDS\" ]; then kill -TERM $PIDS; sleep 2; PIDS=$(lsof -nP -iTCP:8001 -sTCP:LISTEN -t); if [ -n \"$PIDS\" ]; then kill -9 $PIDS; fi; fi; if [ -n \"$UVICORN_PIDS\" ]; then kill -TERM $UVICORN_PIDS; sleep 2; UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$UVICORN_PIDS\" ]; then kill -9 $UVICORN_PIDS; fi; fi; nohup .venv/bin/uvicorn backend.main:app --reload --port 8001 & sleep 5; .venv/bin/pytest backend/test_historical.py",
+      "isBackground": false,
+      "problemMatcher": ["$python"],
+      "group": "test"
+    },
+    {
+      "label": "Automated Backend Test with Server Start",
+      "type": "shell",
+      "command": "PIDS=$(lsof -nP -iTCP:8000 -sTCP:LISTEN -t); UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$PIDS\" ]; then kill -TERM $PIDS; sleep 2; PIDS=$(lsof -nP -iTCP:8000 -sTCP:LISTEN -t); if [ -n \"$PIDS\" ]; then kill -9 $PIDS; fi; fi; if [ -n \"$UVICORN_PIDS\" ]; then kill -TERM $UVICORN_PIDS; sleep 2; UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$UVICORN_PIDS\" ]; then kill -9 $UVICORN_PIDS; fi; fi; nohup .venv/bin/uvicorn backend.main:app --reload --port 8000 & sleep 5; .venv/bin/pytest backend/test_historical.py",
+      "isBackground": false,
+      "problemMatcher": ["$python"],
+      "group": "test"
+    },
+    {
+      "label": "Automated Backend Test with Server Start (async fix)",
+      "type": "shell",
+      "command": "PIDS=$(lsof -nP -iTCP:8000 -sTCP:LISTEN -t); UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$PIDS\" ]; then kill -TERM $PIDS; sleep 2; PIDS=$(lsof -nP -iTCP:8000 -sTCP:LISTEN -t); if [ -n \"$PIDS\" ]; then kill -9 $PIDS; fi; fi; if [ -n \"$UVICORN_PIDS\" ]; then kill -TERM $UVICORN_PIDS; sleep 2; UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$UVICORN_PIDS\" ]; then kill -9 $UVICORN_PIDS; fi; fi; nohup .venv/bin/uvicorn backend.main:app --reload --port 8000 & sleep 5; .venv/bin/pytest backend/test_historical.py",
+      "isBackground": false,
+      "problemMatcher": ["$python"],
+      "group": "test"
+    },
+    {
+      "label": "Automated Backend Test with Fast IBKR Connection Check",
+      "type": "shell",
+      "command": "PIDS=$(lsof -nP -iTCP:8000 -sTCP:LISTEN -t); UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$PIDS\" ]; then kill -TERM $PIDS; sleep 2; PIDS=$(lsof -nP -iTCP:8000 -sTCP:LISTEN -t); if [ -n \"$PIDS\" ]; then kill -9 $PIDS; fi; fi; if [ -n \"$UVICORN_PIDS\" ]; then kill -TERM $UVICORN_PIDS; sleep 2; UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$UVICORN_PIDS\" ]; then kill -9 $UVICORN_PIDS; fi; fi; nohup .venv/bin/uvicorn backend.main:app --reload --port 8000 & sleep 5; .venv/bin/pytest backend/test_historical.py",
+      "isBackground": false,
+      "problemMatcher": ["$python"],
+      "group": "test"
+    },
+    {
+      "label": "Automated Backend Test with JSON Response for /ibkr/historical",
+      "type": "shell",
+      "command": "PIDS=$(lsof -nP -iTCP:8000 -sTCP:LISTEN -t); UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$PIDS\" ]; then kill -TERM $PIDS; sleep 2; PIDS=$(lsof -nP -iTCP:8000 -sTCP:LISTEN -t); if [ -n \"$PIDS\" ]; then kill -9 $PIDS; fi; fi; if [ -n \"$UVICORN_PIDS\" ]; then kill -TERM $UVICORN_PIDS; sleep 2; UVICORN_PIDS=$(pgrep -f uvicorn); if [ -n \"$UVICORN_PIDS\" ]; then kill -9 $UVICORN_PIDS; fi; fi; nohup .venv/bin/uvicorn backend.main:app --reload --port 8000 & sleep 5; .venv/bin/pytest backend/test_historical.py",
+      "isBackground": false,
+      "problemMatcher": ["$python"],
+      "group": "test"
+    },
+    {
+      "label": "Run backend tests with TEST_MODE=1 (mock IBKR)",
+      "type": "shell",
+      "command": "TEST_MODE=1 pytest backend/test_historical.py",
+      "isBackground": false,
+      "problemMatcher": ["$python"],
+      "group": "test"
+    },
+    {
+      "label": "Start FastAPI server with TEST_MODE=1 for test run",
+      "type": "shell",
+      "command": "TEST_MODE=1 .venv/bin/uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000",
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Start FastAPI server (TEST_MODE=1, port 8001)",
+      "type": "shell",
+      "command": "TEST_MODE=1 .venv/bin/uvicorn backend.main:app --reload --host 0.0.0.0 --port 8001",
+      "args": [],
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Run backend tests with pytest",
+      "type": "shell",
+      "command": ".venv/bin/pytest --maxfail=1 --disable-warnings backend",
+      "isBackground": false,
+      "problemMatcher": ["$python"],
+      "group": "test"
+    },
+    {
+      "label": "Run backend tests with pytest",
+      "type": "shell",
+      "command": "pytest --maxfail=1 --disable-warnings backend",
+      "isBackground": false,
+      "problemMatcher": ["$python"],
+      "group": "test"
+    },
+    {
+      "label": "Test backend and frontend on localhost",
+      "type": "shell",
+      "command": "npm test && pytest",
+      "isBackground": false,
+      "problemMatcher": ["$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Automated local test suite",
+      "type": "shell",
+      "command": "npm test && pytest",
+      "isBackground": false,
+      "problemMatcher": ["$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Run All Integration Tests",
+      "type": "shell",
+      "command": "pytest backend/test_*.py && PYTHONPATH=. pytest tests/test_backtest.py && npx vitest run frontend/src/__tests__/GridForm.test.jsx && npx vitest run frontend/src/GridForm.test.tsx && npx vitest run frontend/src/__tests__/GridForm.accessibility.test.jsx && npx vitest run frontend/src/__tests__/GridForm.realapi.test.jsx && npx vitest run frontend/src/__tests__/GridForm.integration.test.jsx",
+      "isBackground": false,
+      "problemMatcher": ["$python", "$eslint-stylish"],
+      "group": "test"
+    },
+    {
+      "label": "Integration Test with API Call",
+      "type": "shell",
+      "command": "pytest && npx vitest run && curl -s http://localhost:8001/backtest -X POST -H 'Content-Type: application/json' -d '{\"ticker\":\"AAPL\",\"shares\":10,\"grid_up\":1,\"grid_down\":1,\"grid_increment\":0.1,\"timeframe\":\"1 D\",\"interval\":\"1 min\"}'",
+      "isBackground": false,
+      "problemMatcher": [],
+      "group": "test"
+    }
+  ]
 }

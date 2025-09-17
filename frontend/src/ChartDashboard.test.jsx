@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/vitest';
+import "@testing-library/jest-dom/vitest";
 // @vitest-environment jsdom
 import React from "react";
 import { vi } from "vitest";
@@ -16,11 +16,13 @@ import { render, screen, act } from "@testing-library/react";
 import { beforeAll, afterAll } from "vitest";
 // Prevent network calls during tests
 beforeAll(() => {
-  globalThis.fetch = vi.fn(() => Promise.resolve({
-    ok: true,
-    json: () => Promise.resolve({ chart: [] }),
-    text: () => Promise.resolve("")
-  }));
+  globalThis.fetch = vi.fn(() =>
+    Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve({ chart: [] }),
+      text: () => Promise.resolve(""),
+    }),
+  );
 });
 
 afterAll(() => {
@@ -33,12 +35,12 @@ describe("ChartDashboard", () => {
     await act(async () => {
       render(<ChartDashboard ticker="" setTicker={() => {}} tickers={[]} />);
       // Wait for any async state updates
-      await new Promise(resolve => setTimeout(resolve, 0));
+      await new Promise((resolve) => setTimeout(resolve, 0));
     });
     expect(screen.getByText(/No ticker selected/i)).to.exist;
     // Error message should have role="alert" for accessibility
     const alert = screen.getByRole("alert");
-  expect(alert).toBeTruthy();
+    expect(alert).toBeTruthy();
     // Only check aria-live if present
     const ariaLive = alert.getAttribute("aria-live");
     if (ariaLive !== null) {
@@ -48,24 +50,36 @@ describe("ChartDashboard", () => {
 
   it("has accessible labels for ticker and frequency", async () => {
     await act(async () => {
-      render(<ChartDashboard ticker="AAPL" setTicker={() => {}} tickers={["AAPL", "MSFT"]} />);
+      render(
+        <ChartDashboard
+          ticker="AAPL"
+          setTicker={() => {}}
+          tickers={["AAPL", "MSFT"]}
+        />,
+      );
       // Wait for any async state updates
-      await new Promise(resolve => setTimeout(resolve, 0));
+      await new Promise((resolve) => setTimeout(resolve, 0));
     });
-  // Ticker select should have accessible label
-  const tickerLabels = screen.getAllByLabelText(/Ticker/i);
-  expect(tickerLabels.length).to.be.greaterThan(0);
-  // Frequency select should have accessible label
-  const freqLabels = screen.getAllByLabelText(/Frequency/i);
-  expect(freqLabels.length).to.be.greaterThan(0);
+    // Ticker select should have accessible label
+    const tickerLabels = screen.getAllByLabelText(/Ticker/i);
+    expect(tickerLabels.length).to.be.greaterThan(0);
+    // Frequency select should have accessible label
+    const freqLabels = screen.getAllByLabelText(/Frequency/i);
+    expect(freqLabels.length).to.be.greaterThan(0);
   });
 
   it("renders chart with accessible canvas when data is present", async () => {
     // Chart is mocked, but we can check for test id
     await act(async () => {
-      render(<ChartDashboard ticker="AAPL" setTicker={() => {}} tickers={["AAPL"]} />);
+      render(
+        <ChartDashboard
+          ticker="AAPL"
+          setTicker={() => {}}
+          tickers={["AAPL"]}
+        />,
+      );
       // Wait for any async state updates
-      await new Promise(resolve => setTimeout(resolve, 0));
+      await new Promise((resolve) => setTimeout(resolve, 0));
     });
     // Should render chart canvas with test id
     const chartCanvas = screen.queryByTestId("historical-chart-canvas");

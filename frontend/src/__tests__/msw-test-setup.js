@@ -1,20 +1,22 @@
-console.log('[MSW-DEBUG] /frontend/src/__tests__/msw-test-setup.js TOP-LEVEL EXECUTED');
+console.log(
+  "[MSW-DEBUG] /frontend/src/__tests__/msw-test-setup.js TOP-LEVEL EXECUTED",
+);
 // MSW setup for Vitest: loaded via vite.config.js setupFilesAfterEnv
-import 'whatwg-fetch';
-import { setupServer } from 'msw/node';
-import { http } from 'msw';
-import { beforeAll, afterEach, afterAll } from 'vitest';
+import "whatwg-fetch";
+import { setupServer } from "msw/node";
+import { http } from "msw";
+import { beforeAll, afterEach, afterAll } from "vitest";
 
 const handlers = [
-  http.post('/backtest', async (req, res, ctx) => {
-    console.log('[MSW-SETUP] /backtest handler triggered (setup file)');
+  http.post("/backtest", async (req, res, ctx) => {
+    console.log("[MSW-SETUP] /backtest handler triggered (setup file)");
     return res(
       ctx.status(200),
       ctx.json({
-        status: 'success',
-        message: 'Backtest completed successfully',
-        trades: [{ id: 1, type: 'buy', price: 100, shares: 10 }],
-        heldShares: [{ ticker: 'AAPL', shares: 10 }],
+        status: "success",
+        message: "Backtest completed successfully",
+        trades: [{ id: 1, type: "buy", price: 100, shares: 10 }],
+        heldShares: [{ ticker: "AAPL", shares: 10 }],
         performance: {
           total_trades: 1,
           pnl: 50,
@@ -22,13 +24,13 @@ const handlers = [
           wins: 1,
           losses: 0,
         },
-      })
+      }),
     );
-  })
+  }),
 ];
 const server = setupServer(...handlers);
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
-console.log('[MSW-SETUP] msw-test-setup.js loaded (setupFilesAfterEnv)');
+console.log("[MSW-SETUP] msw-test-setup.js loaded (setupFilesAfterEnv)");

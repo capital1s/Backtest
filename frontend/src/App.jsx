@@ -20,7 +20,6 @@ function App() {
   // Always provide a valid tickers array for ChartDashboard
   const tickers = ticker ? [ticker] : ["AAPL", "MSFT", "GOOG"];
 
-
   React.useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
@@ -42,11 +41,19 @@ function App() {
   };
 
   return (
-    <ErrorBoundary fallback={<div role="alert" style={{ color: "red", padding: "2rem" }}>Something went wrong. Please refresh or contact support.</div>}>
+    <ErrorBoundary
+      fallback={
+        <div role="alert" style={{ color: "red", padding: "2rem" }}>
+          Something went wrong. Please refresh or contact support.
+        </div>
+      }
+    >
       <main style={{ padding: "2rem" }}>
         <div className="theme-switcher">
-          <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            aria-label="Toggle dark mode">
+          <button
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            aria-label="Toggle dark mode"
+          >
             {theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}
           </button>
         </div>
@@ -70,18 +77,22 @@ function App() {
             {successMessage}
           </div>
         </div>
-            <GridForm
-              setTrades={setTrades}
-              setHeldShares={setHeldShares}
-              setPerformance={setPerformance}
-              setErrorMessage={setErrorMessage}
-              setSuccessMessage={showSuccess}
-              ticker={ticker}
-              errorMessage={errorMessage}
-              successMessage={successMessage}
-            />
+        <GridForm
+          setTrades={setTrades}
+          setHeldShares={setHeldShares}
+          setPerformance={setPerformance}
+          setErrorMessage={setErrorMessage}
+          setSuccessMessage={showSuccess}
+          ticker={ticker}
+          errorMessage={errorMessage}
+          successMessage={successMessage}
+        />
         <Suspense fallback={<div>Loading charts...</div>}>
-          <ChartDashboard ticker={_tickerBlur ? ticker : ""} tickers={tickers} setTicker={setTicker} />
+          <ChartDashboard
+            ticker={_tickerBlur ? ticker : ""}
+            tickers={tickers}
+            setTicker={setTicker}
+          />
           <TradeChart trades={trades} />
           <div style={{ display: "flex", gap: "2rem" }}>
             <TradeTable trades={trades} type="buy" />
@@ -93,7 +104,10 @@ function App() {
           aria-live="polite"
           role="status"
           data-testid="hidden-error-success"
-          style={{ color: errorMessage ? "red" : "green", marginBottom: "1rem" }}
+          style={{
+            color: errorMessage ? "red" : "green",
+            marginBottom: "1rem",
+          }}
         >
           {errorMessage && <span>{errorMessage}</span>}
           {successMessage && <span>{successMessage}</span>}
@@ -101,7 +115,9 @@ function App() {
             <span>Backtest completed successfully!</span>
           )}
           <span style={{ display: "none" }}>
-            {`[App.jsx] errorMessage: ${errorMessage}, successMessage: ${successMessage}, performance: ${JSON.stringify(performance)}`}
+            {`[App.jsx] errorMessage: ${errorMessage}, successMessage: ${successMessage}, performance: ${JSON.stringify(
+              performance,
+            )}`}
           </span>
         </div>
         {performance && (

@@ -1,1 +1,228 @@
-{"result":[{"scriptId":"1224","url":"file:///Users/michaelpennell/Backtest/frontend/src/__tests__/setup.js","functions":[{"functionName":"","ranges":[{"startOffset":0,"endOffset":1138,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":13,"endOffset":1138,"count":1}],"isBlockCoverage":true}],"startOffset":209},{"scriptId":"1396","url":"file:///Users/michaelpennell/Backtest/frontend/src/App.test.jsx","functions":[{"functionName":"","ranges":[{"startOffset":0,"endOffset":2141,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":13,"endOffset":2141,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":788,"endOffset":1095,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":847,"endOffset":1091,"count":0}],"isBlockCoverage":false}],"startOffset":209},{"scriptId":"1542","url":"file:///Users/michaelpennell/Backtest/frontend/src/App.jsx","functions":[{"functionName":"","ranges":[{"startOffset":0,"endOffset":12033,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":13,"endOffset":12033,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":244,"endOffset":305,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":1092,"endOffset":1161,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":1214,"endOffset":1279,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":1332,"endOffset":1397,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":1450,"endOffset":1515,"count":0}],"isBlockCoverage":false},{"functionName":"App","ranges":[{"startOffset":1519,"endOffset":5200,"count":0}],"isBlockCoverage":false}],"startOffset":209},{"scriptId":"1543","url":"file:///Users/michaelpennell/Backtest/frontend/src/App.css","functions":[{"functionName":"","ranges":[{"startOffset":0,"endOffset":470,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":13,"endOffset":470,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":244,"endOffset":305,"count":0}],"isBlockCoverage":false}],"startOffset":209},{"scriptId":"1544","url":"file:///Users/michaelpennell/Backtest/frontend/src/GridForm.jsx","functions":[{"functionName":"","ranges":[{"startOffset":0,"endOffset":39246,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":13,"endOffset":39246,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":245,"endOffset":287,"count":0}],"isBlockCoverage":false},{"functionName":"","ranges":[{"startOffset":325,"endOffset":386,"count":0}],"isBlockCoverage":false},{"functionName":"GridForm","ranges":[{"startOffset":689,"endOffset":13044,"count":0}],"isBlockCoverage":false},{"functionName":"useSpinnerStyle","ranges":[{"startOffset":13045,"endOffset":13513,"count":0}],"isBlockCoverage":false},{"functionName":"GridFormWrapper","ranges":[{"startOffset":13514,"endOffset":13664,"count":0}],"isBlockCoverage":false}],"startOffset":209},{"scriptId":"1545","url":"file:///Users/michaelpennell/Backtest/frontend/src/apiConfig.js","functions":[{"functionName":"","ranges":[{"startOffset":0,"endOffset":1795,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":13,"endOffset":1795,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":249,"endOffset":295,"count":0}],"isBlockCoverage":false}],"startOffset":209},{"scriptId":"1546","url":"file:///Users/michaelpennell/Backtest/frontend/src/ErrorBoundary.jsx","functions":[{"functionName":"","ranges":[{"startOffset":0,"endOffset":4250,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":13,"endOffset":4250,"count":1}],"isBlockCoverage":true},{"functionName":"","ranges":[{"startOffset":244,"endOffset":305,"count":0}],"isBlockCoverage":false},{"functionName":"ErrorBoundary","ranges":[{"startOffset":636,"endOffset":729,"count":0}],"isBlockCoverage":false},{"functionName":"getDerivedStateFromError","ranges":[{"startOffset":739,"endOffset":814,"count":0}],"isBlockCoverage":false},{"functionName":"componentDidCatch","ranges":[{"startOffset":817,"endOffset":858,"count":0}],"isBlockCoverage":false},{"functionName":"<instance_members_initializer>","ranges":[{"startOffset":861,"endOffset":939,"count":0}],"isBlockCoverage":true},{"functionName":"render","ranges":[{"startOffset":943,"endOffset":1524,"count":0}],"isBlockCoverage":false}],"startOffset":209}]}
+{
+  "result": [
+    {
+      "scriptId": "1224",
+      "url": "file:///Users/michaelpennell/Backtest/frontend/src/__tests__/setup.js",
+      "functions": [
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 0, "endOffset": 1138, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 13, "endOffset": 1138, "count": 1 }],
+          "isBlockCoverage": true
+        }
+      ],
+      "startOffset": 209
+    },
+    {
+      "scriptId": "1396",
+      "url": "file:///Users/michaelpennell/Backtest/frontend/src/App.test.jsx",
+      "functions": [
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 0, "endOffset": 2141, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 13, "endOffset": 2141, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 788, "endOffset": 1095, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 847, "endOffset": 1091, "count": 0 }],
+          "isBlockCoverage": false
+        }
+      ],
+      "startOffset": 209
+    },
+    {
+      "scriptId": "1542",
+      "url": "file:///Users/michaelpennell/Backtest/frontend/src/App.jsx",
+      "functions": [
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 0, "endOffset": 12033, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 13, "endOffset": 12033, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 244, "endOffset": 305, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 1092, "endOffset": 1161, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 1214, "endOffset": 1279, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 1332, "endOffset": 1397, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 1450, "endOffset": 1515, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "App",
+          "ranges": [{ "startOffset": 1519, "endOffset": 5200, "count": 0 }],
+          "isBlockCoverage": false
+        }
+      ],
+      "startOffset": 209
+    },
+    {
+      "scriptId": "1543",
+      "url": "file:///Users/michaelpennell/Backtest/frontend/src/App.css",
+      "functions": [
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 0, "endOffset": 470, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 13, "endOffset": 470, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 244, "endOffset": 305, "count": 0 }],
+          "isBlockCoverage": false
+        }
+      ],
+      "startOffset": 209
+    },
+    {
+      "scriptId": "1544",
+      "url": "file:///Users/michaelpennell/Backtest/frontend/src/GridForm.jsx",
+      "functions": [
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 0, "endOffset": 39246, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 13, "endOffset": 39246, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 245, "endOffset": 287, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 325, "endOffset": 386, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "GridForm",
+          "ranges": [{ "startOffset": 689, "endOffset": 13044, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "useSpinnerStyle",
+          "ranges": [{ "startOffset": 13045, "endOffset": 13513, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "GridFormWrapper",
+          "ranges": [{ "startOffset": 13514, "endOffset": 13664, "count": 0 }],
+          "isBlockCoverage": false
+        }
+      ],
+      "startOffset": 209
+    },
+    {
+      "scriptId": "1545",
+      "url": "file:///Users/michaelpennell/Backtest/frontend/src/apiConfig.js",
+      "functions": [
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 0, "endOffset": 1795, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 13, "endOffset": 1795, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 249, "endOffset": 295, "count": 0 }],
+          "isBlockCoverage": false
+        }
+      ],
+      "startOffset": 209
+    },
+    {
+      "scriptId": "1546",
+      "url": "file:///Users/michaelpennell/Backtest/frontend/src/ErrorBoundary.jsx",
+      "functions": [
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 0, "endOffset": 4250, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 13, "endOffset": 4250, "count": 1 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [{ "startOffset": 244, "endOffset": 305, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "ErrorBoundary",
+          "ranges": [{ "startOffset": 636, "endOffset": 729, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "getDerivedStateFromError",
+          "ranges": [{ "startOffset": 739, "endOffset": 814, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "componentDidCatch",
+          "ranges": [{ "startOffset": 817, "endOffset": 858, "count": 0 }],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "<instance_members_initializer>",
+          "ranges": [{ "startOffset": 861, "endOffset": 939, "count": 0 }],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "render",
+          "ranges": [{ "startOffset": 943, "endOffset": 1524, "count": 0 }],
+          "isBlockCoverage": false
+        }
+      ],
+      "startOffset": 209
+    }
+  ]
+}

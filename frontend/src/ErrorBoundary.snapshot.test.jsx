@@ -9,17 +9,19 @@ describe("ErrorBoundary", () => {
     const { asFragment } = render(
       <ErrorBoundary>
         <div>Safe Child</div>
-      </ErrorBoundary>
+      </ErrorBoundary>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
 
   it("matches snapshot with error fallback", () => {
-    const ProblemChild = () => { throw new Error("Test error"); };
+    const ProblemChild = () => {
+      throw new Error("Test error");
+    };
     const { asFragment } = render(
       <ErrorBoundary>
         <ProblemChild />
-      </ErrorBoundary>
+      </ErrorBoundary>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
