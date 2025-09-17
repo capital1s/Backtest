@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import GridForm from '../GridForm';
 
-const realApiUrl = process.env.API_BASE_URL || 'http://localhost:8000';
+const _REAL_API_URL = globalThis.process?.env?.API_BASE_URL || 'http://localhost:8000';
 
 const mockProps = {
   setTrades: vi.fn(),
@@ -14,19 +14,31 @@ const mockProps = {
   ticker: ''
 };
 
-// Patch global.fetch for Node.js if not present
+// Patch globalThis.fetch for Node.js if not present
 try {
-  if (typeof global.fetch === 'undefined') {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    global.fetch = require('node-fetch');
+  if (typeof globalThis.fetch === 'undefined') {
+    const { default: fetch } = await import('node-fetch');
+    globalThis.fetch = fetch;
   }
-} catch (e) {
+} catch {
   // Ignore if already set or not available
 }
 
 describe('GridForm Real API Integration', () => {
   it('submits form and receives real API response or error', async () => {
-    render(<GridForm {...mockProps} />);
+  const _errorMessage = '';
+  const _successMessage = '';
+  const setErrorMessage = () => { /* no-op for testing */ };
+  const setSuccessMessage = () => { /* no-op for testing */ };
+  render(
+    <GridForm
+      {...mockProps}
+      errorMessage={''}
+      successMessage={''}
+      setErrorMessage={setErrorMessage}
+      setSuccessMessage={setSuccessMessage}
+    />
+  );
   fireEvent.change(screen.getByRole('combobox', { name: /ticker/i }), { target: { value: 'AAPL' } });
     fireEvent.change(screen.getByLabelText(/number of shares/i), { target: { value: '10' } });
     fireEvent.change(screen.getByLabelText(/grid up value/i), { target: { value: '1.0' } });

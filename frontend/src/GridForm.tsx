@@ -10,6 +10,10 @@ export interface GridFormProps {
   setTickerBlur: (blur: boolean) => void;
   setPerformance: (perf: any) => void;
   ticker: string;
+  errorMessage?: string;
+  successMessage?: string;
+  setErrorMessage?: (msg: string) => void;
+  setSuccessMessage?: (msg: string) => void;
 }
 
 interface FormState {
@@ -47,7 +51,18 @@ const schema = yup.object().shape({
   timeframe: yup.string().required("Timeframe is required"),
 });
 
-const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker, setTickerBlur, setPerformance, ticker }) => {
+const GridForm: React.FC<GridFormProps> = ({
+  setTrades,
+  setHeldShares,
+  setTicker,
+  setTickerBlur,
+  setPerformance,
+  ticker,
+  errorMessage = '',
+  successMessage = '',
+  setErrorMessage,
+  setSuccessMessage
+}) => {
   const [form, setForm] = useState<FormState>({
     ticker: ticker || "",
     shares: "",
@@ -57,8 +72,8 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
     timeframe: "1 D",
   });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [status, setStatus] = useState("");
+  // Internal message state only used if props not provided
+  const [message, setMessage] = useState<{ type: "error" | "success" | ""; text: string }>({ type: "", text: "" });
   const tickerRef = useRef<HTMLInputElement>(null);
   const sharesRef = useRef<HTMLInputElement>(null);
   const gridUpRef = useRef<HTMLInputElement>(null);
@@ -75,18 +90,18 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
 
   const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus("");
+    let validationFailed = false;
     try {
       await schema.validate(form, { abortEarly: false });
     } catch (validationError: any) {
-      if (validationError.inner && validationError.inner.length > 0) {
-        setError(validationError.inner.map((err: any) => err.message).join("; "));
-      } else {
-        setError(validationError.message);
-      }
-      setStatus("");
-      return;
+      validationFailed = true;
+      const errorText = validationError.inner && validationError.inner.length > 0
+        ? validationError.inner.map((err: any) => err.message).join("; ")
+        : validationError.message || "Please fill in all fields";
+      if (setErrorMessage) setErrorMessage(errorText);
+      else setMessage({ type: "error", text: errorText });
     }
+    if (validationFailed) return;
     const payload = {
       ticker: form.ticker,
       shares: Number(form.shares),
@@ -105,44 +120,59 @@ const GridForm: React.FC<GridFormProps> = ({ setTrades, setHeldShares, setTicker
       });
       if (!res.ok) {
         const text = await res.text();
-        setError(`API Error: ${res.status} - ${text}`);
-        setStatus("");
+        if (setErrorMessage) setErrorMessage(`API Error: ${res.status} - ${text}`);
+        else setMessage({ type: "error", text: `API Error: ${res.status} - ${text}` });
         setLoading(false);
         return;
       }
       const data = await res.json();
-      setError("");
-      setStatus("Backtest completed successfully");
+      if (setSuccessMessage) setSuccessMessage("Backtest completed successfully");
+      else setMessage({ type: "success", text: "Backtest completed successfully" });
       if (data) {
         setPerformance(data.performance ?? null);
         setTrades(data.trades ?? []);
         setHeldShares(data.heldShares ?? []);
       }
     } catch (err: any) {
-      setError(`Network Error: ${err.message || err}`);
-      setStatus("");
+      if (setErrorMessage) setErrorMessage(`Network Error: ${err.message || err}`);
+      else setMessage({ type: "error", text: `Network Error: ${err.message || err}` });
     } finally {
       setLoading(false);
     }
-  }, [form]);
+  }, [form, setErrorMessage, setSuccessMessage, setPerformance, setTrades, setHeldShares]);
 
   return (
     <section aria-labelledby="grid-form-title">
       <h2 id="grid-form-title" style={{ display: "none" }}>
         Grid Trading Backtest Form
       </h2>
-      {/* Always render error and status nodes for accessibility and test compliance */}
-      <div style={{ minHeight: "1.5em" }}>
-        <div style={{ color: "red", marginBottom: "0.5rem" }} role="alert" aria-live="assertive">
-          {error}
-        </div>
-        <div style={{ color: "green", marginBottom: "0.5rem" }} role="status" aria-live="polite">
-          {status}
-        </div>
+      {/* Only one visible alert/status node for accessibility and test compliance */}
+      <div className="status-container">
+        {(errorMessage || message.type === "error") && (errorMessage || message.text) ? (
+          <div
+            className="status-error"
+            style={{ color: "red", marginBottom: "0.5rem" }}
+            role="alert"
+            aria-live="assertive"
+            data-testid="error-node"
+          >
+            {errorMessage || message.text}
+          </div>
+        ) : (successMessage || message.type === "success") && (successMessage || message.text) ? (
+          <div
+            className="status-success"
+            style={{ color: "green", marginBottom: "0.5rem" }}
+            role="status"
+            aria-live="polite"
+            data-testid="success-node"
+          >
+            {successMessage || message.text}
+          </div>
+        ) : null}
       </div>
       <form onSubmit={handleSubmit} style={{ display: "flex", gap: "1rem", alignItems: "center" }} aria-describedby="grid-form-desc">
         <span id="grid-form-desc" style={{ display: "none" }}>
-          Enter grid trading parameters and run a backtest. All fields are required.
+          Grid trading backtest form. All fields must be completed before submitting.
         </span>
         <div role="group" aria-labelledby="ticker-label">
           <label id="ticker-label" htmlFor="ticker-input">Ticker</label>

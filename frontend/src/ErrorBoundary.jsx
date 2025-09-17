@@ -12,6 +12,7 @@ class ErrorBoundary extends React.Component {
     return { hasError: true, error };
   }
 
+  // eslint-disable-next-line no-unused-vars
   componentDidCatch(error, errorInfo) {
     // You can log errorInfo to an error reporting service here
     // console.error(error, errorInfo);

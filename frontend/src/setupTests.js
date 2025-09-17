@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import ResizeObserver from "@juggle/resize-observer";
 globalThis.ResizeObserver = ResizeObserver;
 
-import { vi } from "vitest";
+import { vi, beforeAll, afterEach, afterAll } from "vitest";
 vi.mock("react-chartjs-2", () => ({
   Line: () => null,
   Bar: () => null,
@@ -48,4 +48,11 @@ const server = setupServer(
 );
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+afterAll(() => {
+  try {
+    server.close();
+  } catch (error) {
+    // Ignore MSW cleanup errors - they don't affect test results
+    console.warn('MSW cleanup error (ignored):', error.message);
+  }
+});

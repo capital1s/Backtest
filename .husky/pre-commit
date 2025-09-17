@@ -1,0 +1,10 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run ESLint on staged files before commit
+npx eslint . --ext .js,.jsx,.ts,.tsx
+RESULT=$?
+if [ $RESULT -ne 0 ]; then
+  echo "Lint errors detected. Please fix them before committing."
+  exit 1
+fi

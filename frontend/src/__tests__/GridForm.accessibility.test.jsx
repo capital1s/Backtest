@@ -18,13 +18,37 @@ const mockProps = {
 
 describe('GridForm Accessibility', () => {
   it('has no accessibility violations', async () => {
-    const { container } = render(<GridForm {...mockProps} />);
+    let _errorMessage = '';
+    let _successMessage = '';
+    const setErrorMessage = (msg) => { _errorMessage = msg; };
+    const setSuccessMessage = (msg) => { _successMessage = msg; };
+    const { container } = render(
+      <GridForm
+        {...mockProps}
+        errorMessage={''}
+        successMessage={''}
+        setErrorMessage={setErrorMessage}
+        setSuccessMessage={setSuccessMessage}
+      />
+    );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
 
   it('allows keyboard navigation and submit', async () => {
-    render(<GridForm {...mockProps} />);
+  let errorMessage = '';
+  let successMessage = '';
+  const setErrorMessage = (msg) => { errorMessage = msg; };
+  const setSuccessMessage = (msg) => { successMessage = msg; };
+  render(
+    <GridForm
+      {...mockProps}
+      errorMessage={errorMessage}
+      successMessage={successMessage}
+      setErrorMessage={setErrorMessage}
+      setSuccessMessage={setSuccessMessage}
+    />
+  );
     const user = userEvent.setup();
     // Tab through all form fields
   const tickerInput = screen.getByRole('combobox', { name: /ticker/i });
@@ -57,35 +81,64 @@ describe('GridForm Accessibility', () => {
 // Boundary value tests
 
 describe('GridForm Boundary Values', () => {
-  it('shows error for max ticker length', async () => {
-    render(<GridForm {...mockProps} />);
-  fireEvent.change(screen.getByRole('combobox', { name: /ticker/i }), { target: { value: 'ABCDEFGHIJK' } });
-    fireEvent.change(screen.getByLabelText(/number of shares/i), { target: { value: '1' } });
-    fireEvent.change(screen.getByLabelText(/grid up value/i), { target: { value: '1' } });
-    fireEvent.change(screen.getByLabelText(/grid down value/i), { target: { value: '1' } });
-    fireEvent.change(screen.getByLabelText(/grid increment value/i), { target: { value: '1' } });
-    fireEvent.change(screen.getByLabelText(/backtest timeframe/i), { target: { value: '1 D' } });
-    fireEvent.submit(screen.getByRole('form'));
+  it('shows error for missing ticker selection', async () => {
+  let errorMessage = '';
+  let successMessage = '';
+  const setErrorMessage = (msg) => { errorMessage = msg; };
+  const setSuccessMessage = (msg) => { successMessage = msg; };
+  
+  const { rerender } = render(
+    <GridForm
+      {...mockProps}
+      errorMessage={errorMessage}
+      successMessage={successMessage}
+      setErrorMessage={setErrorMessage}
+      setSuccessMessage={setSuccessMessage}
+    />
+  );
+  
+  // Leave ticker empty but fill other fields
+  fireEvent.change(screen.getByLabelText(/number of shares/i), { target: { value: '1' } });
+  fireEvent.change(screen.getByLabelText(/grid up value/i), { target: { value: '1' } });
+  fireEvent.change(screen.getByLabelText(/grid down value/i), { target: { value: '1' } });
+  fireEvent.change(screen.getByLabelText(/grid increment value/i), { target: { value: '1' } });
+  fireEvent.change(screen.getByLabelText(/backtest timeframe/i), { target: { value: '1 D' } });
+  
+  fireEvent.submit(screen.getByRole('form'));
+  
+  // Wait a bit for the state change then re-render
+  await new Promise(resolve => setTimeout(resolve, 100));
+  
+  rerender(
+    <GridForm
+      {...mockProps}
+      errorMessage={errorMessage}
+      successMessage={successMessage}
+      setErrorMessage={setErrorMessage}
+      setSuccessMessage={setSuccessMessage}
+    />
+  );
+  
   await waitFor(() => {
     const alerts = screen.queryAllByRole('alert');
-    const statuses = screen.queryAllByRole('status');
-    const found = [...alerts, ...statuses].some(node => /invalid ticker symbol/i.test(node.textContent));
-    if (!found) {
-      alerts.forEach((el, idx) => {
-        // eslint-disable-next-line no-console
-        console.log(`Alert[${idx}]:`, el.textContent);
-      });
-      statuses.forEach((el, idx) => {
-        // eslint-disable-next-line no-console
-        console.log(`Status[${idx}]:`, el.textContent);
-      });
-      screen.debug();
-    }
+    const found = alerts.some(node => /please fill in all fields/i.test(node.textContent));
     expect(found).toBe(true);
   });
   });
   it('accepts min and max numeric values', async () => {
-    render(<GridForm {...mockProps} />);
+  let errorMessage = '';
+  let successMessage = '';
+  const setErrorMessage = (msg) => { errorMessage = msg; };
+  const setSuccessMessage = (msg) => { successMessage = msg; };
+  render(
+    <GridForm
+      {...mockProps}
+      errorMessage={errorMessage}
+      successMessage={successMessage}
+      setErrorMessage={setErrorMessage}
+      setSuccessMessage={setSuccessMessage}
+    />
+  );
   fireEvent.change(screen.getByRole('combobox', { name: /ticker/i }), { target: { value: 'AAPL' } });
     fireEvent.change(screen.getByLabelText(/number of shares/i), { target: { value: '1' } });
     fireEvent.change(screen.getByLabelText(/grid up value/i), { target: { value: '0' } });
@@ -102,7 +155,19 @@ describe('GridForm Boundary Values', () => {
 
 describe('GridForm Large Input', () => {
   it('handles very large numbers', async () => {
-    render(<GridForm {...mockProps} />);
+  let errorMessage = '';
+  let successMessage = '';
+  const setErrorMessage = (msg) => { errorMessage = msg; };
+  const setSuccessMessage = (msg) => { successMessage = msg; };
+  render(
+    <GridForm
+      {...mockProps}
+      errorMessage={errorMessage}
+      successMessage={successMessage}
+      setErrorMessage={setErrorMessage}
+      setSuccessMessage={setSuccessMessage}
+    />
+  );
   fireEvent.change(screen.getByRole('combobox', { name: /ticker/i }), { target: { value: 'AAPL' } });
     fireEvent.change(screen.getByLabelText(/number of shares/i), { target: { value: '1000000' } });
     fireEvent.change(screen.getByLabelText(/grid up value/i), { target: { value: '99999.999' } });

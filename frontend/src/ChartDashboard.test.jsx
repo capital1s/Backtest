@@ -12,11 +12,11 @@ vi.mock("react-chartjs-2", () => ({
 }));
 
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import { beforeAll, afterAll } from "vitest";
 // Prevent network calls during tests
 beforeAll(() => {
-  global.fetch = vi.fn(() => Promise.resolve({
+  globalThis.fetch = vi.fn(() => Promise.resolve({
     ok: true,
     json: () => Promise.resolve({ chart: [] }),
     text: () => Promise.resolve("")
@@ -24,13 +24,17 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  global.fetch && (global.fetch = undefined);
+  globalThis.fetch && (globalThis.fetch = undefined);
 });
 import ChartDashboard from "./ChartDashboard";
 
 describe("ChartDashboard", () => {
-  it("shows error if no ticker selected", () => {
-    render(<ChartDashboard ticker="" setTicker={() => {}} tickers={[]} />);
+  it("shows error if no ticker selected", async () => {
+    await act(async () => {
+      render(<ChartDashboard ticker="" setTicker={() => {}} tickers={[]} />);
+      // Wait for any async state updates
+      await new Promise(resolve => setTimeout(resolve, 0));
+    });
     expect(screen.getByText(/No ticker selected/i)).to.exist;
     // Error message should have role="alert" for accessibility
     const alert = screen.getByRole("alert");
@@ -42,8 +46,12 @@ describe("ChartDashboard", () => {
     }
   });
 
-  it("has accessible labels for ticker and frequency", () => {
-    render(<ChartDashboard ticker="AAPL" setTicker={() => {}} tickers={["AAPL", "MSFT"]} />);
+  it("has accessible labels for ticker and frequency", async () => {
+    await act(async () => {
+      render(<ChartDashboard ticker="AAPL" setTicker={() => {}} tickers={["AAPL", "MSFT"]} />);
+      // Wait for any async state updates
+      await new Promise(resolve => setTimeout(resolve, 0));
+    });
   // Ticker select should have accessible label
   const tickerLabels = screen.getAllByLabelText(/Ticker/i);
   expect(tickerLabels.length).to.be.greaterThan(0);
@@ -52,9 +60,13 @@ describe("ChartDashboard", () => {
   expect(freqLabels.length).to.be.greaterThan(0);
   });
 
-  it("renders chart with accessible canvas when data is present", () => {
+  it("renders chart with accessible canvas when data is present", async () => {
     // Chart is mocked, but we can check for test id
-    render(<ChartDashboard ticker="AAPL" setTicker={() => {}} tickers={["AAPL"]} />);
+    await act(async () => {
+      render(<ChartDashboard ticker="AAPL" setTicker={() => {}} tickers={["AAPL"]} />);
+      // Wait for any async state updates
+      await new Promise(resolve => setTimeout(resolve, 0));
+    });
     // Should render chart canvas with test id
     const chartCanvas = screen.queryByTestId("historical-chart-canvas");
     // Chart only renders if not loading and not error, so this may be null in mock

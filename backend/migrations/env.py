@@ -1,11 +1,17 @@
+# pyright: basic
+# This file uses Alembic's dynamically created context object
+# Type checking is disabled for this migration environment file
+# mypy: ignore-errors
+# pylint: skip-file
 import os
 import sys
 
-from alembic import context
+from alembic import context  # type: ignore[import,attr-defined]
 from sqlalchemy import engine_from_config, pool
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
+# Alembic context attributes are dynamically added at runtime
 config = context.config
 
 
@@ -19,8 +25,9 @@ def run_migrations_offline():
 
 
 def run_migrations_online():
+    config_section = config.get_section(config.config_ini_section) or {}
     connectable = engine_from_config(
-        config.get_section(config.config_ini_section),
+        config_section,
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
     )

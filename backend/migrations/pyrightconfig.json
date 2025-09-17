@@ -1,0 +1,10 @@
+{
+  "typeCheckingMode": "off",
+  "reportMissingModuleSource": false,
+  "reportAttributeAccessIssue": false,
+  "reportUnknownMemberType": false,
+  "reportGeneralTypeIssues": false,
+  "include": [
+    "migrations/"
+  ]
+}

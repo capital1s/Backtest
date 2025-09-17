@@ -2,7 +2,7 @@
 import React from "react";
 import { describe, it, expect, vi } from "vitest";
 import { beforeAll, afterAll } from "vitest";
-import { render } from "@testing-library/react";
+import { render, act } from "@testing-library/react";
 import ChartDashboard from "./ChartDashboard";
 
 // Prevent network calls during tests
@@ -19,10 +19,16 @@ afterAll(() => {
 });
 
 describe("ChartDashboard", () => {
-  it("matches snapshot", () => {
-    const { asFragment } = render(
-      <ChartDashboard ticker="AAPL" setTicker={() => {}} tickers={["AAPL", "MSFT"]} />
-    );
+  it("matches snapshot", async () => {
+    let asFragment;
+    await act(async () => {
+      const renderResult = render(
+        <ChartDashboard ticker="AAPL" setTicker={() => {}} tickers={["AAPL", "MSFT"]} />
+      );
+      asFragment = renderResult.asFragment;
+      // Wait for any async state updates
+      await new Promise(resolve => setTimeout(resolve, 0));
+    });
     expect(asFragment()).toMatchSnapshot();
   });
 });

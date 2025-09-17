@@ -6,13 +6,6 @@ exports[`GridForm > matches snapshot 1`] = `
     <section
       aria-labelledby="grid-form-title"
     >
-      <div
-        data-testid="hidden-error-success"
-        style="display: none;"
-      >
-        <span />
-        <span />
-      </div>
       <h2
         id="grid-form-title"
         style="display: none;"

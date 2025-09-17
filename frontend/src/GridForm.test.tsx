@@ -29,6 +29,8 @@ describe("GridForm", () => {
         setTickerBlur={() => {}}
         setPerformance={() => {}}
         ticker="AAPL"
+        errorMessage={''}
+        successMessage={''}
       />
     );
     expect(asFragment()).toMatchSnapshot();

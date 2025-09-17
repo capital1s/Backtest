@@ -3,9 +3,6 @@
 exports[`ChartDashboard > matches snapshot 1`] = `
 <DocumentFragment>
   <div>
-    <div>
-      Loading chart data...
-    </div>
     <label>
       Ticker:
       <select>
@@ -46,6 +43,12 @@ exports[`ChartDashboard > matches snapshot 1`] = `
         </option>
       </select>
     </label>
+    <canvas
+      data-testid="historical-chart-canvas"
+      height="150"
+      role="img"
+      width="300"
+    />
   </div>
 </DocumentFragment>
 `;

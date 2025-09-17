@@ -321,7 +321,7 @@
 			"command": ".venv/bin/pytest --maxfail=1 --disable-warnings backend",
 			"isBackground": false,
 			"problemMatcher": [
-				"$pytest"
+				"$python"
 			],
 			"group": "test"
 		},
@@ -331,7 +331,7 @@
 			"command": "pytest --maxfail=1 --disable-warnings backend",
 			"isBackground": false,
 			"problemMatcher": [
-				"$pytest"
+				"$python"
 			],
 			"group": "test"
 		},
@@ -367,20 +367,12 @@
 			"group": "test"
 		},
 		{
-			"label": "Improved Integration Test with Interface",
+			"label": "Integration Test with API Call",
 			"type": "shell",
-			"command": "pytest && npx vitest run && curl -s http://localhost:8001/backtest -X POST -H 'Content-Type: application/json' -d '{"ticker":"AAPL","shares":10,"grid_up":1,"grid_down":1,"grid_increment":0.1,"timeframe":"1 D","interval":"1 min"}'",
+			"command": "pytest && npx vitest run && curl -s http://localhost:8001/backtest -X POST -H 'Content-Type: application/json' -d '{\"ticker\":\"AAPL\",\"shares\":10,\"grid_up\":1,\"grid_down\":1,\"grid_increment\":0.1,\"timeframe\":\"1 D\",\"interval\":\"1 min\"}'",
 			"isBackground": false,
-		"problemMatcher": ["$python", "$eslint-stylish"],
+			"problemMatcher": [],
 			"group": "test"
 		}
-			{
-				"label": "Improved Integration Test with Interface",
-				"type": "shell",
-			"command": "pytest && npx vitest run && curl -s http://localhost:8001/backtest -X POST -H 'Content-Type: application/json' -d '{\"ticker\":\"AAPL\",\"shares\":10,\"grid_up\":1,\"grid_down\":1,\"grid_increment\":0.1,\"timeframe\":\"1 D\",\"interval\":\"1 min\"}'",
-				"isBackground": false,
-				"problemMatcher": ["$pytest", "$vitest"],
-				"group": "test"
-			}
-		]
+	]
 }

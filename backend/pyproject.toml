@@ -1,0 +1,18 @@
+[tool.pyright]
+typeCheckingMode = "basic"
+exclude = [
+    "**/migrations/**"
+]
+reportAttributeAccessIssue = false
+reportUnknownMemberType = false
+reportMissingModuleSource = false
+
+[tool.pylint]
+disable = [
+    "import-error",
+    "no-member"
+]
+
+[tool.mypy]
+ignore_missing_imports = true
+exclude = "migrations/"

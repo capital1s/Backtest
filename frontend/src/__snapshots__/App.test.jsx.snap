@@ -17,17 +17,26 @@ exports[`App > matches snapshot 1`] = `
     <h1>
       Grid Trading Bot Dashboard
     </h1>
+    <div
+      class="status-container"
+    >
+      <div
+        aria-live="assertive"
+        class="status-error"
+        role="alert"
+        style="color: red; margin-bottom: 0.5rem;"
+      />
+      <div
+        aria-live="polite"
+        class="status-success"
+        role="status"
+        style="color: green; margin-bottom: 0.5rem;"
+      />
+    </div>
     <div>
       <section
         aria-labelledby="grid-form-title"
       >
-        <div
-          data-testid="hidden-error-success"
-          style="display: none;"
-        >
-          <span />
-          <span />
-        </div>
         <h2
           id="grid-form-title"
           style="display: none;"
@@ -233,6 +242,18 @@ exports[`App > matches snapshot 1`] = `
     </div>
     <div>
       Loading charts...
+    </div>
+    <div
+      aria-live="polite"
+      data-testid="hidden-error-success"
+      role="status"
+      style="color: green; margin-bottom: 1rem;"
+    >
+      <span
+        style="display: none;"
+      >
+        [App.jsx] errorMessage: , successMessage: , performance: null
+      </span>
     </div>
   </main>
 </DocumentFragment>

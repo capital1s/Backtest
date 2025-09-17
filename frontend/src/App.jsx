@@ -14,7 +14,7 @@ function App() {
   const [trades, setTrades] = useState([]);
   const [heldShares, setHeldShares] = useState([]);
   const [ticker, setTicker] = useState("");
-  const [tickerBlur, setTickerBlur] = useState(false);
+  const [_tickerBlur, _setTickerBlur] = useState(false);
   const [performance, setPerformance] = useState(null);
   const [theme, setTheme] = useState("light");
   // Always provide a valid tickers array for ChartDashboard
@@ -29,16 +29,16 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-  // Helper to show error
-  const showError = (msg) => {
-    setErrorMessage(msg);
-    setSuccessMessage("");
-  };
   // Helper to show success
   const showSuccess = (msg) => {
+    console.log("[App.jsx] showSuccess called with:", msg);
     setSuccessMessage(msg);
     setErrorMessage("");
-  setTimeout(() => setSuccessMessage(""), 5000);
+    if (window.successTimeout) clearTimeout(window.successTimeout);
+    window.successTimeout = setTimeout(() => {
+      setSuccessMessage("");
+      console.log("[App.jsx] successMessage cleared after timeout");
+    }, 10000);
   };
 
   return (
@@ -70,16 +70,18 @@ function App() {
             {successMessage}
           </div>
         </div>
-        <GridForm
-          setTrades={setTrades}
-          setHeldShares={setHeldShares}
-          setTicker={setTicker}
-          setTickerBlur={setTickerBlur}
-          setPerformance={setPerformance}
-          ticker={ticker}
-        />
+            <GridForm
+              setTrades={setTrades}
+              setHeldShares={setHeldShares}
+              setPerformance={setPerformance}
+              setErrorMessage={setErrorMessage}
+              setSuccessMessage={showSuccess}
+              ticker={ticker}
+              errorMessage={errorMessage}
+              successMessage={successMessage}
+            />
         <Suspense fallback={<div>Loading charts...</div>}>
-          <ChartDashboard ticker={tickerBlur ? ticker : ""} tickers={tickers} setTicker={setTicker} />
+          <ChartDashboard ticker={_tickerBlur ? ticker : ""} tickers={tickers} setTicker={setTicker} />
           <TradeChart trades={trades} />
           <div style={{ display: "flex", gap: "2rem" }}>
             <TradeTable trades={trades} type="buy" />
@@ -87,33 +89,39 @@ function App() {
           </div>
           <SharesHeld heldShares={heldShares} />
         </Suspense>
+        <div
+          aria-live="polite"
+          role="status"
+          data-testid="hidden-error-success"
+          style={{ color: errorMessage ? "red" : "green", marginBottom: "1rem" }}
+        >
+          {errorMessage && <span>{errorMessage}</span>}
+          {successMessage && <span>{successMessage}</span>}
+          {!errorMessage && !successMessage && performance && (
+            <span>Backtest completed successfully!</span>
+          )}
+          <span style={{ display: "none" }}>
+            {`[App.jsx] errorMessage: ${errorMessage}, successMessage: ${successMessage}, performance: ${JSON.stringify(performance)}`}
+          </span>
+        </div>
         {performance && (
-          <>
-            <div
-              aria-live="polite"
-              role="status"
-              style={{ color: "green", marginBottom: "1rem" }}
-            >
-              Backtest completed successfully!
-            </div>
-            <div
-              style={{
-                marginTop: "1rem",
-                padding: "1rem",
-                border: "1px solid #ccc",
-                borderRadius: "8px",
-              }}
-            >
-              <h3>Performance Metrics</h3>
-              <ul>
-                <li>Total Trades: {performance.total_trades}</li>
-                <li>PnL: {performance.pnl}</li>
-                <li>Win Rate: {performance.win_rate}</li>
-                <li>Wins: {performance.wins}</li>
-                <li>Losses: {performance.losses}</li>
-              </ul>
-            </div>
-          </>
+          <div
+            style={{
+              marginTop: "1rem",
+              padding: "1rem",
+              border: "1px solid #ccc",
+              borderRadius: "8px",
+            }}
+          >
+            <h3>Performance Metrics</h3>
+            <ul>
+              <li>Total Trades: {performance.total_trades}</li>
+              <li>PnL: {performance.pnl}</li>
+              <li>Win Rate: {performance.win_rate}</li>
+              <li>Wins: {performance.wins}</li>
+              <li>Losses: {performance.losses}</li>
+            </ul>
+          </div>
         )}
       </main>
     </ErrorBoundary>

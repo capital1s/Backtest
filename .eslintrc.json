@@ -29,7 +29,7 @@
   },
   "rules": {
     "no-unused-vars": "warn",
-    "@typescript-eslint/no-unused-vars": ["warn"],
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "jsx-a11y/no-autofocus": "off"
