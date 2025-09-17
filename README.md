@@ -49,12 +49,10 @@ This project implements advanced robustness features for both frontend and backe
 ## How to Test Robustness
 
 1. **Run Automated Tests**: All robustness features are covered by tests. Use:
-
    - `npx vitest run` (frontend)
    - `pytest` (backend)
 
 2. **Manual Testing**:
-
    - Submit forms with invalid, missing, or edge-case data to verify error messages and input validation.
    - Simulate API/network failures to confirm retry logic and error boundaries.
 
