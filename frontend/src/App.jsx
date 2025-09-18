@@ -13,12 +13,11 @@ import PropTypes from "prop-types";
 function App() {
   const [trades, setTrades] = useState([]);
   const [heldShares, setHeldShares] = useState([]);
-  const [ticker, setTicker] = useState("");
-  const [_tickerBlur, _setTickerBlur] = useState(false);
+  const [ticker, setTicker] = useState(""); // Start with empty selection to show dropdown
   const [performance, setPerformance] = useState(null);
   const [theme, setTheme] = useState("light");
   // Always provide a valid tickers array for ChartDashboard
-  const tickers = ticker ? [ticker] : ["AAPL", "MSFT", "GOOG"];
+  const tickers = ["AAPL", "MSFT", "GOOG"];
 
   React.useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -89,7 +88,7 @@ function App() {
         />
         <Suspense fallback={<div>Loading charts...</div>}>
           <ChartDashboard
-            ticker={_tickerBlur ? ticker : ""}
+            ticker={ticker}
             tickers={tickers}
             setTicker={setTicker}
           />

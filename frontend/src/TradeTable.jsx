@@ -5,28 +5,20 @@ function TradeTable({ trades, type }) {
   const [sortBy, setSortBy] = useState("time");
   const [order, setOrder] = useState("asc");
 
-  const filtered = trades ? trades.filter((t) => t.type === type) : [];
+  // Ensure trades is an array and safely filter
+  const safeTrades = Array.isArray(trades) ? trades : [];
+  const filtered = safeTrades.filter((t) => t.side === type);
 
   if (filtered.length === 0) {
     return <div>No {type} trades.</div>;
   }
 
-  TradeTable.propTypes = {
-    trades: PropTypes.arrayOf(
-      PropTypes.shape({
-        ticker: PropTypes.string.isRequired,
-        shares: PropTypes.number.isRequired,
-        price: PropTypes.number.isRequired,
-        time: PropTypes.number.isRequired,
-        type: PropTypes.string.isRequired,
-      }),
-    ),
-    type: PropTypes.string.isRequired,
-  };
-
   const sorted = [...filtered].sort((a, b) => {
     if (sortBy === "time") {
-      return order === "asc" ? a.time - b.time : b.time - a.time;
+      // Handle null timestamps by treating them as 0 or using id for ordering
+      const aTime = a.timestamp ? new Date(a.timestamp).getTime() : a.id || 0;
+      const bTime = b.timestamp ? new Date(b.timestamp).getTime() : b.id || 0;
+      return order === "asc" ? aTime - bTime : bTime - aTime;
     } else {
       return order === "asc" ? a.price - b.price : b.price - a.price;
     }
@@ -60,11 +52,11 @@ function TradeTable({ trades, type }) {
         </thead>
         <tbody>
           {sorted.map((t, i) => (
-            <tr key={i}>
+            <tr key={t.id || i}>
               <td>{t.ticker}</td>
               <td>{t.shares}</td>
-              <td>{t.price.toFixed(2)}</td>
-              <td>{t.time}</td>
+              <td>${t.price.toFixed(2)}</td>
+              <td>{t.timestamp || `Trade #${t.id}`}</td>
             </tr>
           ))}
         </tbody>
@@ -72,5 +64,19 @@ function TradeTable({ trades, type }) {
     </div>
   );
 }
+
+TradeTable.propTypes = {
+  trades: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      ticker: PropTypes.string.isRequired,
+      shares: PropTypes.number.isRequired,
+      price: PropTypes.number.isRequired,
+      side: PropTypes.string.isRequired,
+      timestamp: PropTypes.string,
+    }),
+  ),
+  type: PropTypes.string.isRequired,
+};
 
 export default React.memo(TradeTable);

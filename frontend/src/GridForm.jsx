@@ -12,7 +12,6 @@ function GridForm({
   setSuccessMessage,
 }) {
   const [form, setForm] = useState({
-    ticker: ticker || "",
     shares: "",
     grid_up: "",
     grid_down: "",
@@ -25,7 +24,6 @@ function GridForm({
   // Accept parent error/success setters
   // errorMessage and successMessage are now props, not setters
   const [isLoading, setIsLoading] = useState(false);
-  const tickerRef = useRef();
   const sharesRef = useRef();
   const gridUpRef = useRef();
   const gridDownRef = useRef();
@@ -42,7 +40,6 @@ function GridForm({
     // Do NOT clear successMessage here; it should persist until a new success
     // Check for missing required fields
     const requiredFields = [
-      "ticker",
       "shares",
       "grid_up",
       "grid_down",
@@ -52,10 +49,15 @@ function GridForm({
     const missing = requiredFields.some(
       (f) => !form[f] || String(form[f]).trim() === "",
     );
-    if (missing) {
-      setErrorMessage && setErrorMessage("Please fill in all fields.");
+    if (missing || !ticker) {
+      setErrorMessage &&
+        setErrorMessage("Please fill in all fields and select a ticker.");
       setIsLoading(false);
-      console.log("[GridForm.jsx] Validation failed: missing fields", form);
+      console.log(
+        "[GridForm.jsx] Validation failed: missing fields or ticker",
+        form,
+        ticker,
+      );
       return;
     }
     // Numeric validation with specific error messages
@@ -99,10 +101,10 @@ function GridForm({
     }
     try {
       const validTickers = ["AAPL", "MSFT", "GOOG"];
-      if (!validTickers.includes(form.ticker)) {
+      if (!validTickers.includes(ticker)) {
         setErrorMessage && setErrorMessage("Ticker: Invalid ticker selected.");
         setIsLoading(false);
-        console.log("[GridForm.jsx] Invalid ticker selected:", form.ticker);
+        console.log("[GridForm.jsx] Invalid ticker selected:", ticker);
         return;
       }
       let fetchUrl = `${API_BASE_URL}/backtest`;
@@ -114,7 +116,15 @@ function GridForm({
       ) {
         fetchUrl = "http://localhost/backtest";
       }
-      const requestBody = JSON.stringify(form);
+      const requestBody = JSON.stringify({
+        ticker: ticker,
+        shares: parseInt(form.shares),
+        grid_up: parseFloat(form.grid_up),
+        grid_down: parseFloat(form.grid_down),
+        grid_increment: parseFloat(form.grid_increment),
+        timeframe: form.timeframe,
+        interval: "1min", // Add required interval field
+      });
       console.log("[GridForm.jsx] Fetching:", fetchUrl, "Body:", requestBody);
       const response = await fetch(fetchUrl, {
         method: "POST",
@@ -259,25 +269,53 @@ function GridForm({
             required.
           </span>
           {/* ...existing code for form fields and button... */}
-          <div role="group" aria-labelledby="ticker-label">
-            <label id="ticker-label" htmlFor="ticker-select">
-              Ticker
-            </label>
-            <select
-              id="ticker-select"
-              name="ticker"
-              value={form.ticker}
-              onChange={handleChange}
-              required
-              aria-required="true"
-              aria-label="Ticker"
-              ref={tickerRef}
+          <div role="group" aria-labelledby="ticker-display">
+            <label
+              id="ticker-display"
+              style={{
+                fontWeight: "bold",
+                marginBottom: "0.5rem",
+                display: "block",
+              }}
             >
-              <option value="">Select ticker</option>
-              <option value="AAPL">AAPL</option>
-              <option value="MSFT">MSFT</option>
-              <option value="GOOG">GOOG</option>
-            </select>
+              Selected Ticker:{" "}
+              {ticker ? (
+                <strong style={{ color: "green" }}>{ticker}</strong>
+              ) : (
+                <em style={{ color: "#999" }}>None selected</em>
+              )}
+            </label>
+            {!ticker && (
+              <p
+                style={{
+                  fontSize: "0.9rem",
+                  color: "#e74c3c",
+                  margin: "0.5rem 0",
+                  padding: "0.5rem",
+                  backgroundColor: "#fdf2f2",
+                  border: "1px solid #fecaca",
+                  borderRadius: "4px",
+                }}
+              >
+                ⚠️ Please select a ticker using the dropdown in the Chart
+                section above before running a backtest.
+              </p>
+            )}
+            {ticker && (
+              <p
+                style={{
+                  fontSize: "0.9rem",
+                  color: "#27ae60",
+                  margin: "0.5rem 0",
+                  padding: "0.5rem",
+                  backgroundColor: "#f0f9f4",
+                  border: "1px solid #bbf7d0",
+                  borderRadius: "4px",
+                }}
+              >
+                ✅ Ready to backtest with {ticker}
+              </p>
+            )}
           </div>
           <div role="group" aria-labelledby="shares-label">
             <label id="shares-label" htmlFor="shares-input">

@@ -21,8 +21,16 @@ export default defineConfig({
   },
   // Optimize dev server
   server: {
-    open: true,
     port: 3000,
+    host: "0.0.0.0",
+    strictPort: true,
+    hmr: {
+      port: 3000,
+    },
+    watch: {
+      usePolling: true,
+    },
+    cors: true,
   },
   test: {
     environment: "jsdom",

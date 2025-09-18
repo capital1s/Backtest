@@ -9,7 +9,9 @@ function SharesHeld({ heldShares }) {
     return <div>No shares held.</div>;
   }
 
-  const sorted = [...heldShares].sort((a, b) => {
+  // Ensure heldShares is an array before spreading
+  const safeHeldShares = Array.isArray(heldShares) ? heldShares : [];
+  const sorted = [...safeHeldShares].sort((a, b) => {
     if (sortBy === "time") {
       return order === "asc" ? a.time - b.time : b.time - a.time;
     } else {

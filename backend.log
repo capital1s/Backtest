@@ -1,0 +1,40 @@
+INFO:backtest:Prometheus metrics endpoint exposed at /metrics
+{"timestamp": "2025-09-17 20:29:09,125", "level": "INFO", "name": "backtest-api", "message": "Prometheus metrics endpoint exposed at /metrics"}
+INFO:backtest-api:Prometheus metrics endpoint exposed at /metrics
+{"timestamp": "2025-09-17 20:29:09,255", "level": "INFO", "name": "backtest-api", "message": "Starting FastAPI server on http://localhost:8000"}
+INFO:backtest-api:Starting FastAPI server on http://localhost:8000
+INFO:     Started server process [74744]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+{"timestamp": "2025-09-17 20:29:24,698", "level": "INFO", "name": "backtest-api", "message": "Health endpoint requested."}
+INFO:backtest-api:Health endpoint requested.
+INFO:     127.0.0.1:56101 - "GET /health HTTP/1.1" 200 OK
+{"timestamp": "2025-09-17 20:29:26,083", "level": "INFO", "name": "backtest-api", "message": "Health endpoint requested."}
+INFO:backtest-api:Health endpoint requested.
+INFO:     127.0.0.1:56103 - "GET /health HTTP/1.1" 200 OK
+{"timestamp": "2025-09-17 20:29:43,074", "level": "INFO", "name": "backtest-api", "message": "US stock tickers requested."}
+INFO:backtest-api:US stock tickers requested.
+{"timestamp": "2025-09-17 20:29:43,074", "level": "INFO", "name": "backtest-api", "message": "Returning 7 tickers."}
+INFO:backtest-api:Returning 7 tickers.
+INFO:     127.0.0.1:56112 - "GET /us_stock_tickers HTTP/1.1" 200 OK
+{"timestamp": "2025-09-17 20:29:49,283", "level": "INFO", "name": "backtest-api", "message": "Backtest requested for ticker=AAPL, shares=100, grid_up=2.000, grid_down=2.000, grid_increment=1.000, timeframe=1 D, interval=1min, max_trades=1000"}
+INFO:backtest-api:Backtest requested for ticker=AAPL, shares=100, grid_up=2.000, grid_down=2.000, grid_increment=1.000, timeframe=1 D, interval=1min, max_trades=1000
+{"timestamp": "2025-09-17 20:29:49,283", "level": "INFO", "name": "backtest-api", "message": "Returning 4 trades for ticker=AAPL"}
+INFO:backtest-api:Returning 4 trades for ticker=AAPL
+{"timestamp": "2025-09-17 20:29:49,283", "level": "INFO", "name": "backtest-api", "message": "/backtest response time: 0.000s"}
+INFO:backtest-api:/backtest response time: 0.000s
+INFO:     127.0.0.1:56116 - "POST /backtest HTTP/1.1" 200 OK
+{"timestamp": "2025-09-17 20:30:24,979", "level": "INFO", "name": "backtest-api", "message": "Minute chart requested for ticker=AAPL, duration=1 D, bar_size=1 min, frequency=5min"}
+INFO:backtest-api:Minute chart requested for ticker=AAPL, duration=1 D, bar_size=1 min, frequency=5min
+{"timestamp": "2025-09-17 20:30:24,979", "level": "INFO", "name": "backtest-api", "message": "Returning 2 chart bars for ticker=AAPL"}
+INFO:backtest-api:Returning 2 chart bars for ticker=AAPL
+{"timestamp": "2025-09-17 20:30:24,979", "level": "INFO", "name": "backtest-api", "message": "/minute_chart response time: 0.000s"}
+INFO:backtest-api:/minute_chart response time: 0.000s
+INFO:     127.0.0.1:56130 - "POST /minute_chart HTTP/1.1" 200 OK
+{"timestamp": "2025-09-17 20:31:33,074", "level": "INFO", "name": "backtest-api", "message": "Health endpoint requested."}
+INFO:backtest-api:Health endpoint requested.
+INFO:     127.0.0.1:56155 - "GET /health HTTP/1.1" 200 OK
+{"timestamp": "2025-09-17 20:31:42,016", "level": "INFO", "name": "backtest-api", "message": "Health endpoint requested."}
+INFO:backtest-api:Health endpoint requested.
+INFO:     127.0.0.1:56161 - "GET /health HTTP/1.1" 200 OK

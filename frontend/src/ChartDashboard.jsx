@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Line } from "react-chartjs-2";
 import { API_BASE_URL } from "./apiConfig";
@@ -15,6 +15,12 @@ function ChartDashboard({ ticker, setTicker, tickers }) {
   const [chartData, setChartData] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const chartKey = useRef(0);
+
+  // Generate a new chart key whenever ticker or frequency changes
+  useEffect(() => {
+    chartKey.current += 1;
+  }, [ticker, frequency]);
 
   useEffect(() => {
     async function fetchChart() {
@@ -66,16 +72,37 @@ function ChartDashboard({ ticker, setTicker, tickers }) {
     fetchChart();
   }, [ticker, frequency]);
 
+  // Ensure chartData is an array before mapping
+  const safeChartData = Array.isArray(chartData) ? chartData : [];
   const data = {
-    labels: chartData.map((row) => row.date),
+    labels: safeChartData.map((row) => row.date),
     datasets: [
       {
         label: "Close",
-        data: chartData.map((row) => row.close),
+        data: safeChartData.map((row) => row.close),
         borderColor: "blue",
         fill: false,
       },
     ],
+  };
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: `${ticker} - ${frequency}`,
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: false,
+      },
+    },
   };
 
   return (
@@ -86,21 +113,47 @@ function ChartDashboard({ ticker, setTicker, tickers }) {
           {error}
         </div>
       )}
-      <label>
-        Ticker:
-        <select value={ticker} onChange={(e) => setTicker(e.target.value)}>
+      <div style={{ marginBottom: "1rem" }}>
+        <label
+          htmlFor="ticker-select"
+          style={{
+            display: "block",
+            marginBottom: "0.5rem",
+            fontWeight: "bold",
+          }}
+        >
+          Select Ticker:
+        </label>
+        <select
+          id="ticker-select"
+          value={ticker}
+          onChange={(e) => setTicker(e.target.value)}
+          style={{ padding: "0.5rem", fontSize: "1rem", minWidth: "120px" }}
+        >
+          <option value="">-- Choose a ticker --</option>
           {tickers.map((t) => (
             <option key={t} value={t}>
               {t}
             </option>
           ))}
         </select>
-      </label>
-      <label>
-        Frequency:
+      </div>
+      <div style={{ marginBottom: "1rem" }}>
+        <label
+          htmlFor="frequency-select"
+          style={{
+            display: "block",
+            marginBottom: "0.5rem",
+            fontWeight: "bold",
+          }}
+        >
+          Chart Frequency:
+        </label>
         <select
+          id="frequency-select"
           value={frequency}
           onChange={(e) => setFrequency(e.target.value)}
+          style={{ padding: "0.5rem", fontSize: "1rem", minWidth: "120px" }}
         >
           {FREQUENCIES.map((f) => (
             <option key={f.value} value={f.value}>
@@ -108,9 +161,16 @@ function ChartDashboard({ ticker, setTicker, tickers }) {
             </option>
           ))}
         </select>
-      </label>
-      {!loading && !error && (
-        <Line data={data} options={{}} data-testid="historical-chart-canvas" />
+      </div>
+      {!loading && !error && safeChartData.length > 0 && (
+        <div style={{ height: "400px", marginTop: "1rem" }}>
+          <Line
+            key={`chart-${ticker}-${frequency}-${chartKey.current}`}
+            data={data}
+            options={chartOptions}
+            data-testid="historical-chart-canvas"
+          />
+        </div>
       )}
     </div>
   );
