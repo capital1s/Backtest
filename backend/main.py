@@ -1,4 +1,6 @@
 # pylint: skip-file
+from fastapi import FastAPI, HTTPException, Query
+from functools import wraps
 import json
 import logging
 import os
@@ -21,7 +23,6 @@ if not TEST_MODE:
     limiter = Limiter(key_func=get_remote_address)
     app.state.limiter = limiter
     app.add_exception_handler(429, _rate_limit_exceeded_handler)
-import logging
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("backtest")
@@ -112,21 +113,6 @@ async def api_endpoint(
     """Mock endpoint for lint compliance test."""
     return {"result": "success", "params": [param1, param2, param3, param4, param5]}
 
-
-import json
-import logging
-import os
-import random
-import time
-from functools import wraps
-from typing import Optional
-
-from fastapi import FastAPI, HTTPException, Query, Request
-from fastapi.middleware.cors import CORSMiddleware
-from prometheus_fastapi_instrumentator import Instrumentator
-from pydantic import BaseModel
-from slowapi import Limiter, _rate_limit_exceeded_handler
-from slowapi.util import get_remote_address
 
 """
 Simple circuit breaker decorator for FastAPI endpoints.
@@ -295,20 +281,6 @@ logger.handlers = [handler]
 logger.info("Prometheus metrics endpoint exposed at /metrics")
 """Main FastAPI backend for grid trading and backtest API."""
 
-import json
-import logging
-import os
-import random
-import time
-from typing import Optional
-
-from fastapi import FastAPI, HTTPException, Query
-from fastapi.middleware.cors import CORSMiddleware
-from prometheus_fastapi_instrumentator import Instrumentator
-from pydantic import BaseModel
-from slowapi import Limiter, _rate_limit_exceeded_handler
-from slowapi.util import get_remote_address
-
 
 class Performance(BaseModel):
     """Performance metrics for backtest results."""
@@ -402,7 +374,8 @@ async def get_historical(
     )
     if not symbol:
         logger.warning("Missing required symbol param")
-        raise HTTPException(status_code=422, detail="Missing required symbol param")
+        raise HTTPException(
+            status_code=422, detail="Missing required symbol param")
     bars = [
         ChartBar(
             time="2025-09-12T09:30:00",
@@ -458,7 +431,8 @@ async def minute_chart(params: ChartParams) -> ChartResponse:
             volume=12000,
         ),
     ]
-    logger.info("Returning %d chart bars for ticker=%s", len(chart), params.ticker)
+    logger.info("Returning %d chart bars for ticker=%s",
+                len(chart), params.ticker)
     logger.info(
         "/minute_chart response time: %.3fs",
         time.time() - start_time,
@@ -499,7 +473,8 @@ async def run_backtest(params: GridParams) -> BacktestResponse:
     for i in range(1, int(params.grid_down) + 1):
         buy_price = base_price - (i * params.grid_increment)
         if buy_price > 0:
-            grid_levels.append({"price": buy_price, "action": "buy", "level": i})
+            grid_levels.append(
+                {"price": buy_price, "action": "buy", "level": i})
 
     # Create sell levels (above base price)
     for i in range(1, int(params.grid_up) + 1):
@@ -510,7 +485,8 @@ async def run_backtest(params: GridParams) -> BacktestResponse:
     grid_levels.sort(key=lambda x: x["price"])
 
     # Simulate price movements hitting grid levels
-    max_trades_per_direction = min(params.max_trades // 2, len(grid_levels) // 2)
+    max_trades_per_direction = min(
+        params.max_trades // 2, len(grid_levels) // 2)
 
     # First execute some buy orders (price goes down)
     buy_levels = [level for level in grid_levels if level["action"] == "buy"][
@@ -535,7 +511,8 @@ async def run_backtest(params: GridParams) -> BacktestResponse:
     sell_levels = [level for level in grid_levels if level["action"] == "sell"][
         :max_trades_per_direction
     ]
-    for level in sell_levels[: min(len(buy_levels), 2)]:  # Sell some of what we bought
+    # Sell some of what we bought
+    for level in sell_levels[: min(len(buy_levels), 2)]:
         if held_shares >= params.shares:
             trades.append(
                 Trade(
@@ -576,10 +553,12 @@ async def run_backtest(params: GridParams) -> BacktestResponse:
         performance = performance.model_dump()
         held_shares = params.shares
     else:
-        performance = Performance(total_return=total_return, max_drawdown=max_drawdown)
+        performance = Performance(
+            total_return=total_return, max_drawdown=max_drawdown)
         performance = performance.model_dump()
 
-    logger.info("Returning %d trades for ticker=%s", len(trades), params.ticker)
+    logger.info("Returning %d trades for ticker=%s",
+                len(trades), params.ticker)
     logger.info(
         "/backtest response time: %.3fs",
         time.time() - start_time,
@@ -656,7 +635,8 @@ async def run_backtest_detailed(
         start_balance=10000, end_balance=10500, num_trades=len(trades)
     )
     logger.info(
-        "Returning %d trades and summary for ticker=%s", len(trades), params.ticker
+        "Returning %d trades and summary for ticker=%s", len(
+            trades), params.ticker
     )
     logger.info(
         "/backtest/detailed response time: %.3fs",
